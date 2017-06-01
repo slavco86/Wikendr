@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html>
+<html ng-app="WikendrApp">
 <head>
     <title>Wikendr welcomes You!</title>
     <base href="/"> <!-- needed for Angular HTML5 mode -->
@@ -8,6 +8,14 @@
     <script type="text/javascript" src="bower_components/angular-route/angular-route.js"></script>
 </head>
 <body>
-    <h1>Welcome to Wikendr!</h1>
+    <div ng-view>
+
+    </div>
+    
+
+</body>
+<script src='js/app.js'></script>
+<script src='js/controller.js'></script>
+<script src='js/service.js'></script>
 </body>
 </html>
