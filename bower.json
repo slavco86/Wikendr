@@ -1,0 +1,22 @@
+{
+  "name": "wikendr",
+  "description": "travelling and dating app",
+  "main": "index.js",
+  "authors": [
+    "slavco"
+  ],
+  "license": "ISC",
+  "homepage": "https://github.com/slavco86/Wikendr",
+  "ignore": [
+    "**/.*",
+    "node_modules",
+    "bower_components",
+    "test",
+    "tests"
+  ],
+  "dependencies": {
+    "bootstrap": "^3.3.7",
+    "angular": "^1.6.4",
+    "angular-route": "^1.6.4"
+  }
+}
