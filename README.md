@@ -2,11 +2,11 @@
 ## Overview
 Wikendr is leisure aggregator service that allows users to plan their weekends based on location, time available with added benefit of being able to contact and meet other people interested in same leisure types.
 ### What is this app for?
-
+This app is for searching local leisure activities based on user interest preference, gps location and time avaialable for travelling. 
 ### What does it do?
-
+This app contains a set number of real service providers, registered with Google Maps. It allows user to enter search terms and browse through available leisure activities that match their search terms
 ### How does it work?
-
+This app compares search terms with service objects and displays relevant services as search results. The app makes API call to Google Maps to display location of any given service and time it takes to travel to this location, based on current users GPS together with other relevant data. So far, this app has no backend so the catalogue of services is stored locally and eveything is being run on the client side.
 ## Features
 ### Existing features
     - None yet!
