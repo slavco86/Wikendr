@@ -1,0 +1,19 @@
+{
+  "name": "wikendr",
+  "version": "1.0.0",
+  "description": "travelling and dating app",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/slavco86/Wikendr.git"
+  },
+  "author": "slavco",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/slavco86/Wikendr/issues"
+  },
+  "homepage": "https://github.com/slavco86/Wikendr#readme"
+}
