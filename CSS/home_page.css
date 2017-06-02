@@ -1,0 +1,117 @@
+a:link {
+    text-decoration: none;
+    color: #fdfed2;
+}
+
+#header-container{
+    width: 100%;
+    background-image: url("../img/home/home_header_background.jpg");
+    background-size: cover;
+    background-repeat: no-repeat;
+    height: 100vh;
+}
+#header-title{
+    padding-top: 10vh;
+    color: #fdfed2;
+    font-weight: 200;
+}
+#header-subtitle{
+    color: #c595c0;
+    font-weight: 100;
+    text-shadow: 0px 1px 5px black;
+}
+#links-row{
+    margin-top: 10vh;
+}
+#links-col{
+    float: none;
+    margin: 0 auto;
+    margin-bottom: 20px;
+}
+#link-register, #link-login{
+    font-weight: 100;
+    text-shadow: 0px 1px 10px black;
+}
+#links {
+    color: #fdfed2;
+    font-weight: 100;
+}
+#search-col{
+    float: none;
+    margin: 0 auto;
+}
+#search-box-wrapper{
+    box-shadow: 0px 1px 10px lightblue;
+}
+#intro-paragraph-row{
+    background-color: lightgray;
+}
+#intro-paragraph-col{
+    float: none;
+    margin: 0 auto;
+}
+#intro-paragraph{
+    margin-bottom: 0px;
+}
+#intro-title{
+    padding-top: 35px;
+    padding-bottom: 35px;
+}
+#review-box-row{
+    margin-top: 50px;
+}
+
+#review-box1, #review-box2, #review-box3{
+    padding-bottom: 20px;
+}
+#review-box1-pic, #review-box2-pic, #review-box3-pic{
+    width: 130px;
+}
+#review-box1-txt{
+    float: left;
+}
+#faq-container{
+    margin-bottom: 100px;
+}
+#faq-box1, #faq-box2, #faq-box3, #faq-box4{
+    padding-top: 50px;
+}
+#dating-container{
+    margin-bottom: 100px;
+}
+#dating-header-row{
+    margin-bottom: 50px;
+}
+#dating-profile1-pic, #dating-profile2-pic{
+    width: 200px;
+}
+#footer-container{
+    background-color: #d87f91;
+}
+#footer-row{
+    margin-bottom: 20px;
+}
+#footer-box-row{
+    display: flex;
+    justify-content: space-between;
+}
+#footer-box1-txt{
+    font-size: 60%;
+}
+#footer-links-row{
+    margin-top: 10px;
+}
+#footer-links-col{
+    float: none;
+    margin: 0 auto;
+    margin-bottom: 20px;
+}
+#footer-links-container{
+    font-size: 10px;
+    display: flex;
+    justify-content: space-between;
+}
+#footer-links-container a{
+    font-weight: 100;
+    font-size: 10px;
+}

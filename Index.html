@@ -1,18 +1,18 @@
 <!DOCTYPE html>
-<html ng-app="WikendrApp">
+<html ng-app="WikendrApp" ng-controller="HomeController">
 <head>
     <title>Wikendr welcomes You!</title>
     <base href="/"> <!-- needed for Angular HTML5 mode -->
     <link rel="stylesheet" type="text/css" href="bower_components/bootstrap/dist/css/bootstrap.css">
     <script type="text/javascript" src="bower_components/angular/angular.js"></script>
     <script type="text/javascript" src="bower_components/angular-route/angular-route.js"></script>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
 </head>
 <body>
+  
     <div ng-view>
 
     </div>
-    
-
 </body>
 <script src='js/app.js'></script>
 <script src='js/controller.js'></script>
