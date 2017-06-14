@@ -1,0 +1,143 @@
+#prof-pic, #prof-pic2{
+    max-width: 34px;
+}
+
+#profile, #prof-but-col{
+    padding: 0 0 0 0;
+    margin: 8px 16px 0 16px;
+    border: none;
+}
+#header-container{
+    width: 100%;
+    background-image: url("../img/home/home_header_background.jpg");
+    background-size: 100% 100vh;
+    background-repeat: no-repeat;
+    padding-bottom: 40px;
+}
+#nav{
+    background-color: rgba(217, 165, 224, 0.7);
+    border: none;
+}
+#men-but span{
+    background-color:#fdfed2;
+}
+.no-back{
+    background-color: rgba(0, 0, 0, 0) !important;
+}
+.no-border{
+    border: none;
+}
+.nav-txt-color{
+    color: #fdfed2 !important;
+}
+.hover:hover{
+    background-color: rgba(217, 165, 224, 1);
+}
+.drop-menu{
+    background-color: rgba(243, 178, 202, 1) !important;
+    color: #fdfed2 !important;
+    margin-top: 7px;
+}
+.hov-menu:hover{
+    background-color: rgba(217, 165, 224, 1) !important;
+}
+.cont-container{
+    margin-top: 7.5vh;
+}
+.glyph{
+    margin: 10px;
+    display: inline-block;
+}
+.cell{
+    min-width: 150px;
+    vertical-align: middle !important;
+}
+.cell2{
+    vertical-align: middle !important;
+    
+}
+.address{
+    margin: 0 0 0 0 !important;
+}
+.table-border{
+    border-top: 1px solid #C24A76 !important;
+}
+
+.map-wrap{
+    position: relative;
+    padding-bottom: 47%;
+    height: 0;
+}
+.map-wrap iframe{
+    position: absolute;
+    top:0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+}
+#review-box-row{
+    margin-top: 50px;
+}
+#review-box1, #review-box2, #review-box3{
+    padding-bottom: 20px;
+}
+#review-box1-pic, #review-box2-pic, #review-box3-pic{
+    width: 130px;
+}
+#review-box1-txt{
+    float: left;
+}
+#footer-container{
+    background-color: #d87f91;
+}
+#footer-row{
+    margin-bottom: 20px;
+}
+#footer-box-row{
+    display: flex;
+    justify-content: space-between;
+}
+#footer-box1-txt{
+    font-size: 60%;
+}
+#footer-links-row{
+    margin-top: 10px;
+}
+#footer-links-col{
+    float: none;
+    margin: 0 auto;
+    margin-bottom: 20px;
+}
+#footer-links-container{
+    font-size: 10px;
+    display: flex;
+    justify-content: space-between;
+}
+#footer-links-container a{
+    font-weight: 100;
+    font-size: 10px;
+}
+.center{
+    display: flex;
+    justify-content: space-around;
+}
+.text-box{
+    border-radius: 5px;
+    background-color: rgba(250, 214, 227, 0.75);
+    
+}
+.box-row{
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    justify-content: space-around;
+}
+.no-padding{
+    padding: 0 0 0 0;
+}
+.bot-margin{
+    margin-bottom: 20px;
+}
+.no-border{
+    border: none !important;   
+}

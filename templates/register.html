@@ -1,0 +1,51 @@
+<link rel="stylesheet" type="text/css" href="css/register.css">
+    <div class="background">
+        <img src="../img/home/home_header_background.jpg" alt="background-image">
+    </div>
+<header id="header-container" class="container-fluid">
+<h1 id="header-title" class="text-center">Let's Get You All Setup!<br>
+  <small id="header-subtitle">Please fill in the registration form</small></h1>
+    </header>
+    <article class="container-fluid">
+        <form>
+            <div class="form-group form">
+                <fieldset>
+                    <legend><span class="number-label"><strong>1</strong></span>Tell Us About Yourself</legend>
+                    <input type="text" name="field1" class="form-control" placeholder="What's Your First Name? *"><br>
+                    <input type="text" name="field2" class="form-control" placeholder="What's Your Second Name? *"><br>
+                    <input type="email" name="field3" class="form-control" placeholder="What's Your Email Address? *"><br>
+                    <label for="dob" class="padding-right" id="dob"> Date of Birth: </label><input type="date" class="form-control-inline" name="dob"><br>
+                    <label class="padding-right" id="gender">Your Gender: </label><label class="radio-inline">
+                    <input type="radio" name="radio">Male
+                    </label>
+                    <label class="radio-inline">
+                    <input type="radio" name="radio">Female
+                    </label><br>
+                    <div class="border-bottom">
+                    <label class="padding-right" id="file" >Give Us Your Best Pic:</label>
+                    <input type="file" id="file-upload">
+                    </div>
+                </fieldset>
+                <fieldset>
+                    <legend id="legend"><span class="number-label"><strong>2</strong></span>Give Us a Clue</legend>
+                    <ul id="interests">
+                        <li id="list">
+                            <label>Select What You Enjoy Doing</label><br>
+                            <input type="checkbox" value="cycling"><span class="input-label">Cycling</span><br>
+                            <input type="checkbox" value="hiking"><span class="input-label">Hiking</span><br>
+                            <input type="checkbox" value="active_sports"><span class="input-label">Active Sports</span><br>
+                            <input type="checkbox" value="extreme_sports"><span class="input-label">Extreme Sports</span><br>
+                            <input type="checkbox" value="clubbing_music"><span class="input-label">Clubbing/Music</span><br>
+                            <input type="checkbox" value="bars_restaurants"><span class="input-label">Bars/Restaurant</span><br>
+                            <input type="checkbox" value="cultural"><span class="input-label">Cultural</span><br>
+                        </li>
+                    </ul>
+                    <textarea id="about-you" class="form-control" rows="3" placeholder="How Would You Describe Yourself?"></textarea>
+                    <button id="register" type="submit" class="btn btn-primary btn-lg btn-block"><strong>Register</strong></button>
+                </fieldset>
+                
+            </div>
+        </form>
+    </article>
+  
+

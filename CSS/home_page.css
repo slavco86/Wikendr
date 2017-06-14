@@ -2,6 +2,10 @@ a:link {
     text-decoration: none;
     color: #fdfed2;
 }
+a:visited{
+    text-decoration: none;
+    color: #fdfed2;
+}
 
 #header-container{
     width: 100%;

@@ -10,5 +10,9 @@ angular.module('WikendrApp').config(function($locationProvider, $routeProvider) 
     .when('/accounts/register', {
         templateUrl: 'templates/register.html',
         controller: 'RegisterController'
-    });
+    })
+    .when('/products/product',{
+        templateUrl: 'templates/product.html',
+        controller:'ProductController'
+    })
 });
