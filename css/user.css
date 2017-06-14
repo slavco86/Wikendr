@@ -1,0 +1,112 @@
+#prof-pic, #prof-pic2{
+    max-width: 34px;
+}
+
+#profile, #prof-but-col{
+    padding: 0 0 0 0;
+    margin: 8px 16px 0 16px;
+    border: none;
+}
+.header-container{
+    width: 100%;
+    background-image: url("../img/home/home_header_background.jpg");
+    background-size: 100% 100vh;
+    background-repeat: no-repeat;
+    padding-bottom: 40px;
+}
+#nav{
+    background-color: rgba(217, 165, 224, 0.7);
+    border: none;
+}
+#men-but span{
+    background-color:#fdfed2;
+}
+.no-back{
+    background-color: rgba(0, 0, 0, 0) !important;
+}
+.no-border{
+    border: none;
+}
+.nav-txt-color{
+    color: #fdfed2 !important;
+}
+.hover:hover{
+    background-color: rgba(217, 165, 224, 1);
+}
+.drop-menu{
+    background-color: rgba(243, 178, 202, 1) !important;
+    color: #fdfed2 !important;
+    margin-top: 7px;
+}
+.hov-menu:hover{
+    background-color: rgba(217, 165, 224, 1) !important;
+}
+a:link {
+    text-decoration: none;
+    color: #fdfed2;
+}
+a:visited{
+    text-decoration: none;
+    color: #fdfed2;
+}
+
+#header-container{
+    width: 100%;
+    background-image: url("../img/home/home_header_background.jpg");
+    background-size: cover;
+    background-repeat: no-repeat;
+    height: auto;
+}
+.header-title{
+    padding-top: 10vh;
+    color: #fdfed2;
+    font-weight: 200;
+}
+.secondary-title{
+    color: #873992;
+    text-shadow: 0px 0px 5px white;
+    margin-bottom: 30px;
+}
+#header-subtitle{
+    font-weight: 200;
+    color: #c595c0;
+    font-weight: 100;
+    
+}
+#links-row{
+    margin-top: 5vh;
+}
+#links-col{
+    float: none;
+    margin: 0 auto;
+    margin-bottom: 20px;
+}
+#link-register, #link-login{
+    font-weight: 100;
+    text-shadow: 0px 1px 10px black;
+}
+#links {
+    color: #fdfed2;
+    font-weight: 100;
+}
+#search-row{
+    margin-top: 15vh;
+    padding-bottom: 10vh;
+}
+#search-box-wrapper{
+    box-shadow: 0px 1px 10px lightblue;
+    max-width: 400px;
+    margin: 0 auto;
+}
+.slider{
+    margin-top: 10px;
+}
+.submit{
+    margin: auto;
+    max-width: 500px;
+}
+.form-wrap{
+    display: flex;
+    justify-content: center;
+    flex-wrap: wrap;
+}

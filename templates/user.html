@@ -1,0 +1,266 @@
+<link rel="stylesheet" type="text/css" href="css/user.css">
+<link rel="stylesheet" type="text/css" href="css/product.css">
+<link rel="stylesheet" type="text/css" href="css/home_page.css">
+<!-- Nav Menu -->
+<nav class="navbar navbar-default navbar-fixed-top" id="nav">
+    <div class="container-fluid">
+            <!-- Logo Link -->
+        <div class="navbar-header"> 
+            <a class="navbar-brand nav-txt-color" href="/"><strong>Wikendr</strong></a>
+                <!-- Profile Pic Button -->
+             <button id="prof-but-col" type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#prof-list" aria-expanded="false">
+                <img src="img/picture_test.jpg" alt="profile picture" class="img-circle img-responsive" id="prof-pic">
+            </button>
+                <!-- Small Screen Menu Toggle Button -->
+            <button id="men-but" type="button" class="navbar-toggle collapsed no-border no-back" data-toggle="collapse" data-target="#navbar" aria-expanded="false">
+                <span class="sr-only">Toggle Navigation</span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+            </button>
+        </div>
+        <!-- Dropdown List for Small Screen Profile Pic Button (is hidden on md and lg screens) -->
+        <div class="collapse hidden-md hidden-lg" id="prof-list" aria-labelledby="prof-but-exp">
+        <ul class="nav navbar-nav">
+            <li><a class="nav-txt-color text-right" href="#">Profile</a></li>
+            <li><a class="nav-txt-color text-right" href="#">Settings</a></li>
+            <li><a class="nav-txt-color text-right" href="#">Logout</a></li>
+        </ul>
+        </div>
+        <!-- Profile Pic Button with Popup list for large screens (is hidden below sm screen size) -->
+        <div class="dropdown navbar-right">
+            <button class="btn btn-default dropdown-toggle visible-md-inline-block visible-lg-inline-block visible-sm-inline-block no-back" type="button" id="profile" data-toggle="dropdown" aria-haspopup="true" aria-expanded="true">
+                <img src="img/picture_test.jpg" alt="profile picture" class="img-circle img-responsive" id="prof-pic2">
+            </button>
+            <ul class="dropdown-menu drop-menu" aria-labelledby="profile">
+                <li><a class="hov-menu" href="#">Profile</a></li>
+                <li><a class="hov-menu" href="#">Settings</a></li>
+                <li><a class="hov-menu" href="#">Logout</a></li>
+            </ul>
+        </div>
+        <!-- Link List for small screen button and to be displayed on large screens -->
+        <div class="collapse navbar-collapse no-border" id="navbar">
+            <ul class="nav navbar-nav navbar-right">
+                <li class="hover"><a class="nav-txt-color" href="/">Home</a></li>
+                <li class="hover"><a class="nav-txt-color" href="#">Groups</a></li>
+                <li class="hover"><a class="nav-txt-color" href="#">People</a></li>
+            </ul>   
+        </div>
+    </div>
+</nav>
+   <!-- Header Element -->
+<header class="container-fluid header-container">
+    <!-- Header Title and Subtitle -->
+<h1 class="text-center header-title">Good Day to You,<strong>SlavCo!</strong><br>
+
+    <!-- Search Box -->
+<section id="search-row" class="row">
+  <article id="search-col" class="col-sm-12">
+  <form id="search-form">
+    <section id="search-box-wrapper" class="input-group">
+      <span id="search-symbol-placeholder" class="input-group-btn">
+        <button id="search-button" type="submit" class="btn btn-default">
+          <span id="search-symbol" class="glyphicon glyphicon-search" aria-hidden="true"></span>
+        </button>
+      </span>
+      <input id="search-box" type="text" class="form-control" placeholder="How Would You Like To Spend Your Time?" aria-describedby="search-symbol-placeholder"> 
+    </section>
+  </form>
+  </article>
+</section>
+</header> <!-- end of Header Element -->
+
+<div class="container-fluid">
+    <header class="row">
+        <h3 class="text-center secondary-title"> Let's Find You Something To Do </h3>
+    </header>
+    <section class="row">
+        <form>
+            <div class="col-sm-12 form-wrap">
+            <div class="col-xs-12 col-sm-2">
+                <div class="form-group">
+                    <label class="control-label" for="from-date">From</label>
+                    <input type="date" autofocus="autofocus" class="form-control date-width" id="from-date">
+                </div>
+                <div class="form-group">
+                    <label class="control-label" for="till-date">Till</label>
+                    <input type="date" class="form-control date-width" id="till-date" placeholder="Till">
+                </div>
+            </div>
+            <div class="col-xs-12 col-sm-3">
+                <div class="form-group">
+                    <label class="control-label" for="interest-select">Select Your Interest Group</label>
+                    <select class="form-control" id="interest-select">
+                        <option>Cycling</option>
+                        <option>Hiking</option>
+                        <option>Active Sports</option>
+                        <option>Extreme Sports</option>
+                        <option>Clubbing/Music</option>
+                        <option>Bars/Restaurant</option>
+                        <option>Cultural</option>
+                    </select>
+                </div>
+                <div class="form-group">
+                    <label class="control-label" for="time-slider">How Much Time Have You Got Available?</label>
+                    <input class="slider" id="time-slider" type="range" min="0" max="24">
+                </div>
+            </div>
+            </div>
+            <div class="col-xs-12">
+                <button type="submit" class=" submit btn btn-primary btn-large btn-block">Search</button>
+            </div>
+        </form>
+    </section>
+    <section class="row">
+        <div id="carousel-example-generic" class="carousel slide" data-ride="carousel">
+  <!-- Indicators -->
+  <ol class="carousel-indicators">
+    <li data-target="#carousel-example-generic" data-slide-to="0" class="active"></li>
+    <li data-target="#carousel-example-generic" data-slide-to="1"></li>
+    <li data-target="#carousel-example-generic" data-slide-to="2"></li>
+  </ol>
+
+  <!-- Wrapper for slides -->
+  <div class="carousel-inner" role="listbox">
+    <div class="item active">
+        <div class="carousel-caption">
+        <h1>Trafford American Golf</h1>
+      </div>
+      <div class="row cont-container box-row">
+            <!-- Product Image -->
+        <div class="col-xs-12 col-sm-4 no-padding bot-margin">
+            <img src="/img/product/american_golf.jpg" alt="Product Image" class="img-responsive img-rounded">
+        </div>
+            <!-- Product Description -->
+        <div class="col-xs-12 col-sm-6 text-box bot-margin">
+            <header><h1>Trafford American Golf</h1></header>
+            <address>Trafford Golf Centre, Trafford Quays, Old Park Ln, Stretford, Manchester M17 8PG</address>
+            <p>Here at American Golf Trafford, Manchester, we offer a wealth of services such as try before you buy, price match guarantee, and a trade in service, not to mention FREE custom fitting. Our knowledgeable and experienced staff, alongside our in store technology, allows us to analyse every aspect of your game, and make sure you not only buy the best golf gear, but the right gear.</p>
+        </div>
+    </div>
+    <div class="row top-margin box-row">
+        <div class="col-xs-12 col-sm-4 text-box no-padding">
+            <!-- Product Table -->
+            <table class="table table-condensed">
+                <tr>
+                    <td class="cell no-border"><span class="glyphicon glyphicon-map-marker glyph"></span>Location:</td>
+                    <td class="cell2 no-border"><address class="address">Trafford Golf Centre, Trafford Quays, Old Park Ln, Stretford, Manchester M17 8PG</address></td>
+                </tr>
+                <tr>
+                    <td class="cell table-border"><span class="glyphicon glyphicon-time glyph"></span>Time To Spend:</td>
+                    <td class="cell2 table-border">3 hrs</td>
+                </tr> 
+                <tr>
+                    <td class="cell table-border"><span class="glyphicon glyphicon-gbp glyph"></span>Cost:</td>
+                    <td class="cell2 table-border">£50</td>
+                </tr>
+                <tr>
+                    <td class="cell table-border"><span class="glyphicon glyphicon-road glyph"></span>Distance</td>
+                    <td class="cell2 table-border">15 miles</td>
+                </tr>
+                <tr>
+                    <td class="cell table-border"><div class="glyph"><span class="glyphicon glyphicon-star"></span><span class="glyphicon glyphicon-star"></span><span class="glyphicon glyphicon-star"></span><span class="glyphicon glyphicon-star"></span><span class="glyphicon glyphicon-star-empty"></span></div>Rating:</td>
+                    <td class="cell2 table-border">4.5</td>
+                </tr>
+            </table>
+        </div>
+        <!-- Maps -->
+        <div class="col-xs-12 col-sm-6 no-padding">
+            <div class="map-wrap">
+                <iframe src="https://www.google.com/maps/embed?pb=!1m14!1m8!1m3!1d18999.660286343624!2d-2.359724!3d53.469219!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x0%3A0x7ada4c0ac3b2f44!2sAmerican+Golf!5e0!3m2!1sen!2suk!4v1497272286773" width="485" height="260" frameborder="0" style="border-radius:5px" allowfullscreen></iframe>
+            </div>
+        </div>
+    </div>
+    </div>
+    <div class="item">
+      <div class="row cont-container box-row">
+        <!-- Product Image -->
+        <div class="col-xs-12 col-sm-4 col-sm-offset-1 no-padding bot-margin">
+            <img src="/img/product/american_golf.jpg" alt="Product Image" class="img-responsive img-rounded">
+        </div>
+        <!-- Product Description -->
+        <div class="col-xs-12 col-sm-6 text-box bot-margin">
+            <header><h1>Trafford American Golf</h1></header>
+            <address>Trafford Golf Centre, Trafford Quays, Old Park Ln, Stretford, Manchester M17 8PG</address>
+            <p>Here at American Golf Trafford, Manchester, we offer a wealth of services such as try before you buy, price match guarantee, and a trade in service, not to mention FREE custom fitting. Our knowledgeable and experienced staff, alongside our in store technology, allows us to analyse every aspect of your game, and make sure you not only buy the best golf gear, but the right gear.</p>
+        </div>
+    </div>
+    <div class="row top-margin box-row">
+        <div class="col-xs-12 col-sm-4 col-sm-offset-1 text-box no-padding">
+            <!-- Product Table -->
+            <table class="table table-condensed">
+                <tr>
+                    <td class="cell no-border"><span class="glyphicon glyphicon-map-marker glyph"></span>Location:</td>
+                    <td class="cell2 no-border"><address class="address">Trafford Golf Centre, Trafford Quays, Old Park Ln, Stretford, Manchester M17 8PG</address></td>
+                </tr>
+                <tr>
+                    <td class="cell table-border"><span class="glyphicon glyphicon-time glyph"></span>Time To Spend:</td>
+                    <td class="cell2 table-border">3 hrs</td>
+                </tr> 
+                <tr>
+                    <td class="cell table-border"><span class="glyphicon glyphicon-gbp glyph"></span>Cost:</td>
+                    <td class="cell2 table-border">£50</td>
+                </tr>
+                <tr>
+                    <td class="cell table-border"><span class="glyphicon glyphicon-road glyph"></span>Distance</td>
+                    <td class="cell2 table-border">15 miles</td>
+                </tr>
+                <tr>
+                    <td class="cell table-border"><div class="glyph"><span class="glyphicon glyphicon-star"></span><span class="glyphicon glyphicon-star"></span><span class="glyphicon glyphicon-star"></span><span class="glyphicon glyphicon-star"></span><span class="glyphicon glyphicon-star-empty"></span></div>Rating:</td>
+                    <td class="cell2 table-border">4.5</td>
+                </tr>
+            </table>
+        </div>
+        <!-- Maps -->
+        <div class="col-xs-12 col-sm-6 no-padding">
+            <div class="map-wrap">
+                <iframe src="https://www.google.com/maps/embed?pb=!1m14!1m8!1m3!1d18999.660286343624!2d-2.359724!3d53.469219!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x0%3A0x7ada4c0ac3b2f44!2sAmerican+Golf!5e0!3m2!1sen!2suk!4v1497272286773" width="485" height="260" frameborder="0" style="border-radius:5px" allowfullscreen></iframe>
+            </div>
+        </div>
+    </div>
+      <div class="carousel-caption">
+        ...
+      </div>
+    </div>
+    ...
+  </div>
+
+        <!-- Controls -->
+        <a class="left carousel-control" href="#carousel-example-generic" role="button" data-slide="prev">
+            <span class="glyphicon glyphicon-chevron-left" aria-hidden="true"></span>
+            <span class="sr-only">Previous</span>
+        </a>
+        <a class="right carousel-control" href="#carousel-example-generic" role="button" data-slide="next">
+            <span class="glyphicon glyphicon-chevron-right" aria-hidden="true"></span>
+            <span class="sr-only">Next</span>
+        </a>
+    </div>
+    </section>
+    <!-- Dating Section -->
+    <footer id="footer-container" class="container-fluid">
+    <!-- Footer Title -->
+  <article id="footer-row" class="row">
+  <section id="footer-title-col" class="col-lg-12">
+    <h1 id="footer-titele" class="text-center">Wikendr</h1>
+  </section>
+</article>
+    <!-- Footer Content Boxes -->
+<article id="footer-box-row" class="row">
+  <section id="footer-box1-col" class="col-sm-3">
+    <p id="footer-box1-txt" class="text-small">Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, and more recently with desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum.</p>
+  </section>
+  <section id="footer-box1-col" class="col-sm-3">
+    <p id="footer-box1-txt" class="text-small">Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, and more recently with desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum.</p>
+  </section>
+  <section id="footer-box1-col" class="col-sm-3">
+    <p id="footer-box1-txt" class="text-small">Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, and more recently with desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum.</p>
+  </section>
+</article>
+    <!-- Footer Links -->
+     <section id="footer-links-row" class="row">
+    <article id="footer-links-col" class="col-sm-12">
+      <h3 id="footer-links-container"><span id="footer-copyright" class="text-left">© All Rights Reserved 2017</span><span id="footer-links" class="text-center"><a href="#" id="footer-link-home">Home</a>  | <a href="#" id="footer-link-register">Register</a>  | <a href="#" id="footer-link-login">Login</a>  | <a href="#" id="footer-link-groups">Groups</a>  | <a href="#" id="footer-link-faq">FAQ</a>  | <a href="#" id="footer-link-advertisers">Advertisers</a>  | <a href="#" id="footer-link-corporate">Corporate</a>  | <a href="#" id="footer-link-careers">Careers</a></span><span id="footer-madeby" class="text-right">Website constructed by SlavCo</span></h3>
+    </article>
+  </section>
+</footer>
+</div>
