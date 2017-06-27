@@ -41,15 +41,24 @@
 .hov-menu:hover{
     background-color: rgba(217, 165, 224, 1) !important;
 }
-a:link {
+.links:link{
     text-decoration: none;
     color: #fdfed2;
 }
-a:visited{
+.links:visited{
     text-decoration: none;
     color: #fdfed2;
 }
-
+.user-product-link{
+    text-decoration: none !important;
+    color: inherit;
+}
+.user-product-link:hover{
+    color: inherit;
+}
+.carousel-max-height{
+    max-height: 90vh;
+}
 #header-container{
     width: 100%;
     background-image: url("../img/home/home_header_background.jpg");

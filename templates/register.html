@@ -3,24 +3,100 @@
         <img src="../img/home/home_header_background.jpg" alt="background-image">
     </div>
 <header id="header-container" class="container-fluid">
-<h1 id="header-title" class="text-center">Let's Get You All Setup!<br>
-  <small id="header-subtitle">Please fill in the registration form</small></h1>
-    </header>
-    <article class="container-fluid">
-        <form>
+    <div class="navbar-header">
+        <a class="navbar-brand nav-txt-color" href="/"><strong>Wikendr</strong></a>
+    </div>
+    <h1 id="header-title" class="text-center">Let's Get You All Setup!<br>
+    <small id="header-subtitle">Please fill in the registration form</small></h1>
+</header>
+<article class="container-fluid">
+        <form name="registrationForm" ng-submit="submitForm(registrationForm.$valid)" novalidate method="post">
             <div class="form-group form">
                 <fieldset>
                     <legend><span class="number-label"><strong>1</strong></span>Tell Us About Yourself</legend>
-                    <input type="text" name="field1" class="form-control" placeholder="What's Your First Name? *"><br>
-                    <input type="text" name="field2" class="form-control" placeholder="What's Your Second Name? *"><br>
-                    <input type="email" name="field3" class="form-control" placeholder="What's Your Email Address? *"><br>
-                    <label for="dob" class="padding-right" id="dob"> Date of Birth: </label><input type="date" class="form-control-inline" name="dob"><br>
-                    <label class="padding-right" id="gender">Your Gender: </label><label class="radio-inline">
-                    <input type="radio" name="radio">Male
-                    </label>
-                    <label class="radio-inline">
-                    <input type="radio" name="radio">Female
-                    </label><br>
+
+<!-- Username Input -->                    
+                    <div class="form-group" ng-class="{'has-error':!registrationForm.username.$valid && (!registrationForm.username.$pristine || registrationForm.$submitted),'has-success has-feedback':registrationForm.username.$valid && (!registrationForm.username.$pristine || registrationForm.$submitted)}">
+                        <input type="text" name="username" ng-required="true" ng-minlength="3" ng-maxlength="10" ng-model="user.name" ng-pattern="/^(?=.*[a-zA-Z])(?=.*[0-9])[\w]*$/" ng-trim="false" class="form-control " placeholder="Create Your Username *">
+                        <span class="glyphicon glyphicon-ok form-control-feedback" aria-hidden="true" ng-show="registrationForm.username.$valid && (!registrationForm.username.$pristine || registrationForm.$submitted)"></span>
+                        <span id="inputSuccess2Status" class="sr-only">(success)</span>
+                            <div class=" alert alert-danger no-bot-pad" role="alert" ng-show="registrationForm.username.$error.minlength">
+                                <p>Your Username is too Short</p>
+                            </div>
+                            <div class=" alert alert-danger no-bot-pad" ng-show="registrationForm.username.$error.maxlength">
+                                <p>Your Username is too Long</p>
+                            </div>
+                            <div class=" alert alert-danger no-bot-pad" ng-show="registrationForm.username.$error.pattern">
+                                <p>Your Username <strong>must</strong> contain only letters <strong>and</strong> numbers, without spaces or any other characters</p>
+                            </div>
+                            <p class="help-block" ng-show="registrationForm.username.$error.required && (!registrationForm.username.$pristine || registrationForm.$submitted)" >This field is required</p> 
+                    </div><br ng-hide="(registrationForm.username.$error.minlength || registrationForm.username.$error.maxlength || registrationForm.username.$error.pattern || registrationForm.username.$error.required) && !registrationForm.username.$pristine">
+<!-- Password Input -->
+                    <div class="form-group" ng-class="{'has-error':!registrationForm.password.$valid && (!registrationForm.password.$pristine || registrationForm.$submitted),'has-success has-feedback':registrationForm.password.$valid && (!registrationForm.password.$pristine || registrationForm.$submitted)}">
+                        <input type="password" name="password" ng-required="true" ng-pattern="/^(?=.*[a-z])(?=.*[A-Z])(?=.*\d).+$/" ng-trim="false" ng-minlength="8" ng-maxlength="10" ng-model="user.password" class="form-control" placeholder="Type in Your Password *">
+                        <span class="glyphicon glyphicon-ok form-control-feedback" aria-hidden="true" ng-show="registrationForm.password.$valid && (!registrationForm.password.$pristine || registrationForm.$submitted)"></span>
+                        <span id="inputSuccess2Status" class="sr-only">(success)</span>
+                        <small class="no-bot-pad" ng-hide="!registrationForm.password.$pristine">Between 8 and 10 characters, minimum 1 Capital letter and 1 number</small>
+                            <div class=" alert alert-danger no-bot-pad" ng-show="registrationForm.password.$error.minlength">
+                                <p>Your password is too short. It needs to be at least 8 characters long</p>
+                            </div>
+                            <div class=" alert alert-danger no-bot-pad" ng-show="registrationForm.password.$error.maxlength">
+                                <p>Your password is too long. It needs to be no more then 10 characters long</p>
+                            </div>
+                            <div class=" alert alert-danger no-bot-pad" ng-show="registrationForm.password.$error.pattern && (!registrationForm.password.$pristine && !registrationForm.password.$error.minlength && !registrationForm.password.$error.maxlength)">
+                                <p>Your password needs to include at least 1 Capital Letter AND at least 1 number</p>
+                            </div>
+                            <p class="help-block" ng-show="registrationForm.password.$error.required && (!registrationForm.password.$pristine || registrationForm.$submitted)" >This field is required</p> 
+                    </div><br ng-hide="(registrationForm.password.$error.minlength || registrationForm.password.$error.maxlength || registrationForm.password.$error.pattern || registrationForm.passsword.$error.required || !registrationForm.password.$valid) && !registrationForm.password.$pristine">
+                    <!-- Match Password Input -->
+                    <div class="form-group no-back" ng-class="{'has-error':!match,'has-success has-feedback': match}" ng-if="registrationForm.password.$valid">
+                        <input type="password" name="password2" ng-required="true" ng-model="confirm" class="form-control" placeholder="And again please... *" pass-match="{{user.password}}" >
+                        <span class="glyphicon glyphicon-ok form-control-feedback" aria-hidden="true" ng-show="match"></span>
+                        <span id="inputSuccess2Status" class="sr-only">(success)</span>
+                            <div class="alert alert-danger no-bot-pad" ng-show="!match && !registrationForm.password2.$pristine">
+                                <p>Your passwords don't match. Please try again.</p>
+                            </div>
+                            <br ng-hide="!match && !registrationForm.password2.$pristine">
+                    </div>
+                    
+<!-- Email Input -->
+                    <div class="form-group" ng-class="{'has-error':!registrationForm.email.$valid && (!registrationForm.email.$pristine || registrationForm.$submitted),'has-success has-feedback':!registrationForm.email.$pristine && registrationForm.email.$valid}">
+                        <input type="email" name="email" ng-required="true" ng-pattern="/^([A-Za-z0-9_\-\.]){1,}\@([A-Za-z0-9_\-\.]){1,}\.([A-Za-z]){2,4}$/" ng-model="user.email" class="form-control" placeholder="What's Your Email Address? *">
+                        <span class="glyphicon glyphicon-ok form-control-feedback" aria-hidden="true" ng-show="!registrationForm.email.$pristine && registrationForm.email.$valid"></span>
+                        <span id="inputSuccess2Status" class="sr-only">(success)</span>
+                            <div class="alert alert-danger no-bot-pad" ng-show="registrationForm.email.$error.pattern">
+                                <p>Your Email is invalid. Please select another one.</p>
+                            </div>
+                        <p class="help-block" ng-show="registrationForm.email.$error.required && (!registrationForm.email.$pristine || registrationForm.$submitted)">This field is required</p>
+                    </div>
+                    <br ng-hide="!registrationForm.email.$valid && !registrationForm.email.$pristine">
+
+<!-- DOB Input -->
+                    <div class="form-group mar-bot no-back" ng-class="{'has-error':!registrationForm.dob.$valid && (!registrationForm.dob.$pristine || registrationForm.$submitted),'has-success':!registrationForm.dob.$pristine && registrationForm.dob.$valid}">
+                        <div ng-class="{'error-box':registrationForm.dob.$error.required && (!registrationForm.dob.$pristine || registrationForm.$submitted),'success-box has-feedback':registrationForm.dob.$valid && !registrationForm.dob.$pristine}">
+                            <label for="dob" id="dob" class="padding-right no-bot-pad"> Date of Birth: <span class="glyphicon glyphicon-ok form-control-feedback" aria-hidden="true" ng-show="!registrationForm.dob.$pristine && registrationForm.dob.$valid"></span>
+                            <span id="inputSuccess2Status" class="sr-only">(success)</span></label>
+                            <input type="date" name="dob" class="form-control-inline dob-input" ng-required="true" min="1947-01-01" max="1999-01-01" ng-model="user.dob">
+                            <div class="alert alert-danger" ng-show="!registrationForm.dob.$pristine && (registrationForm.dob.$error.min || registrationForm.dob.$error.max)">
+                                <p>Your Date of Birth is invalid - You need to be between ages of 18 and 70 to use this service</p>
+                            </div>
+                        </div>
+                        <p class="help-block back no-marg help-block-pad" ng-show="registrationForm.dob.$error.required && (!registrationForm.dob.$pristine || registrationForm.$submitted)">This field is required</p>
+                    </div>
+
+<!-- Gender Input -->
+                    <div class="form-group no-back mar-bot" ng-class="{'has-error':registrationForm.$error.genderRequired && registrationForm.$submitted,'has-success':!registrationForm.$error.genderRequired}">
+                        <div ng-class="{'error-box':registrationForm.$error.genderRequired && registrationForm.$submitted, 'success-box has-feedback':!registrationForm.$error.genderRequired}">
+                            <label class="padding-right" id="gender">Your Gender: <span class="glyphicon glyphicon-ok form-control-feedback" aria-hidden="true" ng-show="!registrationForm.$error.genderRequired"></span>
+                            <span id="inputSuccess2Status" class="sr-only">(success)</span> </label><label class="radio-inline">
+                            <input type="radio" name="radio" value="male" ng-model="user.gender" gender="{{user.gender}}"><label class="label-text">Male</label>
+                            </label>
+                            <label class="radio-inline">
+                            <input type="radio" name="radio" ng-model="user.gender" value="female"><label class="label-text">Female</label>
+                            </label><br>
+                        </div>
+                        <p class="help-block back no-marg help-block-pad" ng-show="registrationForm.$error.genderRequired && registrationForm.$submitted">This field is required</p>
+                    </div>
                     <div class="border-bottom">
                     <label class="padding-right" id="file" >Give Us Your Best Pic:</label>
                     <input type="file" id="file-upload">
@@ -31,21 +107,21 @@
                     <ul id="interests">
                         <li id="list">
                             <label>Select What You Enjoy Doing</label><br>
-                            <input type="checkbox" value="cycling"><span class="input-label">Cycling</span><br>
-                            <input type="checkbox" value="hiking"><span class="input-label">Hiking</span><br>
-                            <input type="checkbox" value="active_sports"><span class="input-label">Active Sports</span><br>
-                            <input type="checkbox" value="extreme_sports"><span class="input-label">Extreme Sports</span><br>
-                            <input type="checkbox" value="clubbing_music"><span class="input-label">Clubbing/Music</span><br>
-                            <input type="checkbox" value="bars_restaurants"><span class="input-label">Bars/Restaurant</span><br>
-                            <input type="checkbox" value="cultural"><span class="input-label">Cultural</span><br>
+                            <input type="checkbox" name="cycling" ng-true-value="'cycling'" ng-model="user.interests.cycling"><span class="input-label">Cycling</span><br>
+                            <input type="checkbox" name="hiking" ng-true-value="'hiking'" ng-model="user.interests.hiking"  ><span class="input-label">Hiking</span><br>
+                            <input type="checkbox" name="active_sports" ng-true-value="'active sports'" ng-model="user.interests.activeSports" ><span class="input-label">Active Sports</span><br>
+                            <input type="checkbox" name="extreme_sports" ng-true-value="'extreme sports'" ng-model="user.interests.extremeSports"><span class="input-label">Extreme Sports</span><br>
+                            <input type="checkbox" name="clubbing_music" ng-true-value="'clubbing music'" ng-model="user.interests.clubbingMusic"><span class="input-label">Clubbing/Music</span><br>
+                            <input type="checkbox" name="bars_restaurants" ng-true-value="'bar restaurant'" ng-model="user.interests.barsRestaurants"><span class="input-label">Bars/Restaurant</span><br>
+                            <input type="checkbox" name="cultural" ng-true-value="'cultural'" ng-model="user.interests.cultural"><span class="input-label">Cultural</span><br>
                         </li>
                     </ul>
-                    <textarea id="about-you" class="form-control" rows="3" placeholder="How Would You Describe Yourself?"></textarea>
+                    <textarea id="about-you" class="form-control" rows="3" ng-model="user.about" placeholder="How Would You Describe Yourself?"></textarea>
                     <button id="register" type="submit" class="btn btn-primary btn-lg btn-block"><strong>Register</strong></button>
                 </fieldset>
                 
             </div>
         </form>
-    </article>
+</article>
   
 

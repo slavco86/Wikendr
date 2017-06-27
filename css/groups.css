@@ -1,0 +1,38 @@
+.search-box-width{
+    max-width: 600px;
+    margin: auto;
+}
+.cont-box{
+    height: 200px;
+    width: 200px;
+    overflow: hidden;
+    border: 1px solid black;
+    display: flex;
+    flex-direction: column;
+    align-content: space-between;
+}
+.lg-img{
+    min-height: 100px;
+    overflow: hidden;
+    margin-bottom: 15px;
+    padding-left: 2px;
+    padding-right: 2px;
+
+}
+.sm-img{
+    flex-grow: 1;
+    padding-left: 2px;
+    padding-right: 2px;
+ 
+    overflow: hidden;
+}
+.back{
+    background-color: grey;
+}
+.sliders-cont{
+    margin-top: 50px;
+    margin-bottom: 20px;
+}
+.sliders{
+    margin-bottom: 20px;
+}

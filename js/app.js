@@ -1,4 +1,4 @@
-angular.module('WikendrApp', ['ngRoute', 'RouteControllers']);
+angular.module('WikendrApp', ['ngRoute', 'RouteControllers', 'RouteDirectives']);
  
 angular.module('WikendrApp').config(function($locationProvider, $routeProvider) {
     $locationProvider.html5Mode(true);  // Enable href routing without hashes
@@ -12,7 +12,15 @@ angular.module('WikendrApp').config(function($locationProvider, $routeProvider) 
         controller: 'RegisterController'
     })
     .when('/products/product',{
-        templateUrl: 'templates/user.html',
+        templateUrl: 'templates/product.html',
         controller:'ProductController'
+    })
+    .when('/accounts/user', {
+        templateUrl: 'templates/user.html',
+        controller: 'UserController'
+    })
+    .when('/groups', {
+        templateUrl:'templates/groups.html',
+        controller: 'GroupsController'
     })
 });

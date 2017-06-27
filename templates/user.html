@@ -6,7 +6,7 @@
     <div class="container-fluid">
             <!-- Logo Link -->
         <div class="navbar-header"> 
-            <a class="navbar-brand nav-txt-color" href="/"><strong>Wikendr</strong></a>
+            <a class="navbar-brand nav-txt-color links" href="/"><strong>Wikendr</strong></a>
                 <!-- Profile Pic Button -->
              <button id="prof-but-col" type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#prof-list" aria-expanded="false">
                 <img src="img/picture_test.jpg" alt="profile picture" class="img-circle img-responsive" id="prof-pic">
@@ -22,9 +22,9 @@
         <!-- Dropdown List for Small Screen Profile Pic Button (is hidden on md and lg screens) -->
         <div class="collapse hidden-md hidden-lg" id="prof-list" aria-labelledby="prof-but-exp">
         <ul class="nav navbar-nav">
-            <li><a class="nav-txt-color text-right" href="#">Profile</a></li>
-            <li><a class="nav-txt-color text-right" href="#">Settings</a></li>
-            <li><a class="nav-txt-color text-right" href="#">Logout</a></li>
+            <li><a class="nav-txt-color text-right links" href="#">Profile</a></li>
+            <li><a class="nav-txt-color text-right links" href="#">Settings</a></li>
+            <li><a class="nav-txt-color text-right links" href="#">Logout</a></li>
         </ul>
         </div>
         <!-- Profile Pic Button with Popup list for large screens (is hidden below sm screen size) -->
@@ -33,17 +33,17 @@
                 <img src="img/picture_test.jpg" alt="profile picture" class="img-circle img-responsive" id="prof-pic2">
             </button>
             <ul class="dropdown-menu drop-menu" aria-labelledby="profile">
-                <li><a class="hov-menu" href="#">Profile</a></li>
-                <li><a class="hov-menu" href="#">Settings</a></li>
-                <li><a class="hov-menu" href="#">Logout</a></li>
+                <li><a class="hov-menu links" href="#">Profile</a></li>
+                <li><a class="hov-menu links" href="#">Settings</a></li>
+                <li><a class="hov-menu links" href="#">Logout</a></li>
             </ul>
         </div>
         <!-- Link List for small screen button and to be displayed on large screens -->
         <div class="collapse navbar-collapse no-border" id="navbar">
             <ul class="nav navbar-nav navbar-right">
-                <li class="hover"><a class="nav-txt-color" href="/">Home</a></li>
-                <li class="hover"><a class="nav-txt-color" href="#">Groups</a></li>
-                <li class="hover"><a class="nav-txt-color" href="#">People</a></li>
+                <li class="hover"><a class="nav-txt-color links" href="/">Home</a></li>
+                <li class="hover"><a class="nav-txt-color links" href="/groups">Groups</a></li>
+                <li class="hover"><a class="nav-txt-color links" href="#">People</a></li>
             </ul>   
         </div>
     </div>
@@ -111,9 +111,12 @@
             </div>
         </form>
     </section>
+
+    <!-- CAROUSEL -->
     <section class="row">
         <div id="carousel-example-generic" class="carousel slide" data-ride="carousel">
-  <!-- Indicators -->
+
+    <!-- Indicators -->
   <ol class="carousel-indicators">
     <li data-target="#carousel-example-generic" data-slide-to="0" class="active"></li>
     <li data-target="#carousel-example-generic" data-slide-to="1"></li>
@@ -123,9 +126,10 @@
   <!-- Wrapper for slides -->
   <div class="carousel-inner" role="listbox">
     <div class="item active">
-        <div class="carousel-caption">
-        <h1>Trafford American Golf</h1>
-      </div>
+        <a href="products/product" class="user-product-link carousel-max-height">
+
+
+<!-- CAROUSEL ITEM NO 1 -->
       <div class="row cont-container box-row">
             <!-- Product Image -->
         <div class="col-xs-12 col-sm-4 no-padding bot-margin">
@@ -171,7 +175,10 @@
             </div>
         </div>
     </div>
+        </a>
     </div>
+
+<!-- CAROUSEL PRODUCT NO 2 -->
     <div class="item">
       <div class="row cont-container box-row">
         <!-- Product Image -->
@@ -222,21 +229,57 @@
         ...
       </div>
     </div>
-    ...
   </div>
-
-        <!-- Controls -->
-        <a class="left carousel-control" href="#carousel-example-generic" role="button" data-slide="prev">
+        <!-- Carousel Controls -->
+        <a class="left carousel-control links" href="#carousel-example-generic" role="button" data-slide="prev">
             <span class="glyphicon glyphicon-chevron-left" aria-hidden="true"></span>
             <span class="sr-only">Previous</span>
         </a>
-        <a class="right carousel-control" href="#carousel-example-generic" role="button" data-slide="next">
+        <a class="right carousel-control links" href="#carousel-example-generic" role="button" data-slide="next">
             <span class="glyphicon glyphicon-chevron-right" aria-hidden="true"></span>
             <span class="sr-only">Next</span>
         </a>
     </div>
     </section>
+
+
     <!-- Dating Section -->
+<section id="dating-container" class="container-fluid">
+    <!-- Dating Title -->
+  <article id="dating-header-row" class="row">
+    <section id="dating-header-col" class="col-lg-12">
+      <h1 id="dating-header" class="text-center">Want to Meet Trully Like-Minded People?</h1>
+    </section>
+  </article>
+    <!-- Dating Boxes -->
+    <!-- Box1 -->
+  <article id="dating-row" class="row">
+    <section id="dating-profile1" class="col-sm-6">
+      <article id="dating-profile1-innerwrap" class="media">
+        <section id="dating-profile1-innerwrap-pic" class="media-left">
+          <img id="dating-profile1-pic" class="media-object" src="img/home/dating_pic1.jpg" alt="dating picture 1">
+        </section>
+        <section id="dating-profile1-innerwrap-txt" class="media-body">
+          <blockquote id="dating-profile1-txt-heading" class="media-heading">Lorem Ipsum is simply dummy text of the printing and typesetting industry.</blockquote>
+          <p id="dating-profile1-txt">Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, and more recently with desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum.</p>
+        </section>
+      </article>
+    </section>
+      <!-- Box2 -->
+    <section id="dating-profile2" class="col-sm-6">
+      <article id="dating-profile2-innerwrap" class="media">
+        <section id="dating-profile2-innerwrap-pic" class="media-left">
+          <img id="dating-profile2-pic" class="media-object" src="img/home/dating_pic2.jpg" alt="dating picture 2">
+        </section>
+        <section id="dating-profile2-innerwrap-txt" class="media-body">
+          <blockquote id="dating-profile2-txt-heading" class="media-heading">Lorem Ipsum is simply dummy text of the printing and typesetting industry.</blockquote>
+          <p id="dating-profile2-txt">Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, and more recently with desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum.</p>
+        </section>
+      </article>
+    </section>
+  </article>
+</section>
+    <!-- FOOTER -->
     <footer id="footer-container" class="container-fluid">
     <!-- Footer Title -->
   <article id="footer-row" class="row">
@@ -259,8 +302,10 @@
     <!-- Footer Links -->
      <section id="footer-links-row" class="row">
     <article id="footer-links-col" class="col-sm-12">
-      <h3 id="footer-links-container"><span id="footer-copyright" class="text-left">© All Rights Reserved 2017</span><span id="footer-links" class="text-center"><a href="#" id="footer-link-home">Home</a>  | <a href="#" id="footer-link-register">Register</a>  | <a href="#" id="footer-link-login">Login</a>  | <a href="#" id="footer-link-groups">Groups</a>  | <a href="#" id="footer-link-faq">FAQ</a>  | <a href="#" id="footer-link-advertisers">Advertisers</a>  | <a href="#" id="footer-link-corporate">Corporate</a>  | <a href="#" id="footer-link-careers">Careers</a></span><span id="footer-madeby" class="text-right">Website constructed by SlavCo</span></h3>
+      <h3 id="footer-links-container"><span id="footer-copyright" class="text-left">© All Rights Reserved 2017</span><span id="footer-links" class="text-center"><a href="#" id="footer-link-home" class="links">Home</a>  | <a href="#" id="footer-link-register" class="links">Register</a>  | <a href="#" id="footer-link-login" class="links">Login</a>  | <a href="#" id="footer-link-groups" class="links">Groups</a>  | <a href="#" id="footer-link-faq" class="links">FAQ</a>  | <a href="#" id="footer-link-advertisers" class="links">Advertisers</a>  | <a href="#" id="footer-link-corporate" class="links">Corporate</a>  | <a href="#" id="footer-link-careers" class="links">Careers</a></span><span id="footer-madeby" class="text-right">Website constructed by SlavCo</span></h3>
     </article>
   </section>
-</footer>
+</footer> <!-- END OF FOOTER -->
+
+
 </div>

@@ -1,12 +1,11 @@
-a:link {
+.links:link{
     text-decoration: none;
     color: #fdfed2;
 }
-a:visited{
+.links:visited{
     text-decoration: none;
     color: #fdfed2;
 }
-
 #header-container{
     width: 100%;
     background-image: url("../img/home/home_header_background.jpg");
