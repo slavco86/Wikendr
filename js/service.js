@@ -1,11 +1,6 @@
 angular.module('UserService', [])
-    .factory('interestCheck', function(){
-
-        interestCheck = {
-            check: function(){
-                
-            
-            }
-        };
-        return interestCheck;
-    });
+    .factory("Auth", ["$firebaseAuth",
+  function($firebaseAuth) {
+    return $firebaseAuth();
+  }
+]);

@@ -110,7 +110,7 @@
                     <legend id="legend"><span class="number-label"><strong>2</strong></span>Give Us a Clue</legend>
 <!-- Interest Checkboxes -->
                     <div class="form-group no-back mar-bot" ng-class="{'has-error':registrationForm.$error.interestRequired}">
-                        <div ng-class="{'error-box':registrationForm.$error.interestRequired && !registrationForm.$error.interestPristine}">
+                        <div ng-class="{'error-box':registrationForm.$error.interestRequired && (!registrationForm.$error.interestPristine || registrationForm.$submitted)}">
                             <ul id="interests">
                                 <li id="list">
                                     <label>Select What You Enjoy Doing</label><br>
@@ -123,14 +123,13 @@
                                     <input type="checkbox" ng-change="interestcheck()" name="cultural" interest="{{interests}}"ng-true-value="'cultural'" ng-model="interests.cultural"><span class="input-label">Cultural</span><br>
                                 </li>
                             </ul>
-                            <p class="help-block back no-marg help-block-pad text-center" ng-show="registrationForm.$error.interestRequired && !registrationForm.$error.interestPristine">Please provide at least 1 option</p>
                         </div>
+                        <p class="help-block back no-marg help-block-pad text-center" ng-show="registrationForm.$error.interestRequired && (!registrationForm.$error.interestPristine || registrationForm.$submitted)">Please provide at least 1 option</p>
                     </div>
 <!-- About Section -->
                     <textarea id="about-you" class="form-control" rows="3" ng-model="user.about" placeholder="How Would You Describe Yourself?"></textarea>
                     <button id="register" type="submit" class="btn btn-primary btn-lg btn-block"><strong>Register</strong></button>
                 </fieldset>
-                
             </div>
         </form>
 </article>

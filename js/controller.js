@@ -2,10 +2,9 @@ angular.module('RouteControllers', [])
     .controller('HomeController', function($scope) {
     })
 
-    .controller('RegisterController', function($scope, $firebaseStorage, $firebaseObject, interestCheck) {
+    .controller('RegisterController', function($scope, $firebaseStorage, $firebaseObject, Auth) {
         $scope.registrationUser = {};
         $scope.registrationUser.interests = [];
-        
         $scope.interestcheck = function(){
             angular.forEach($scope.interests, function(key,value){
                 if(key == false){
@@ -28,19 +27,25 @@ angular.module('RouteControllers', [])
             $scope.registrationUserFile = $scope.user.file;
             if ($scope.registrationUserFile !== undefined){
                 var storageRef = firebase.storage().ref('user-assets/' + $scope.registrationUser.username + "/" + $scope.registrationUserFile.name);
-                storageRef.put($scope.registrationUserFile);
+                $scope.storage = $firebaseStorage(storageRef);
+                var uploadTask = $scope.storage.$put($scope.registrationUserFile);
+                uploadTask.$complete(function(snapshot){
+                    $scope.registrationUser.picURL = snapshot.downloadURL;
+                })
             }
             $scope.registrationUser.about = $scope.user.about;
             if ($scope.registrationUser.about == undefined){
                 $scope.registrationUser.about = "undefined";
             }
             firebase.database().ref('users/' + $scope.registrationUser.username).set($scope.registrationUser);
-            
+            Auth.$createUserWithEmailAndPassword($scope.registrationUser.email, $scope.registrationUser.password).then(function(firebaseUser){
+                
+            });
             console.log($scope.registrationUser);
+
             }
             else{
-                alert(registrationForm);
-                
+                alert("Registration Form can not be submitted - please check if all fields have been entered correctly");
             }
         }
     })
