@@ -100,12 +100,17 @@ angular.module('RouteDirectives',[])
             require: 'ngModel',
             link: function(scope, element, attrs, ctrl){
                 var interestProvided = false;
+                var interestPristine = false;
                 attrs.$observe('interest', function(){
                     var interestProvided = false;
                     if(JSON.stringify(attrs.interest).length>4){
                     interestProvided = true;
+                    };  
+                    if(JSON.stringify(attrs.interest).length>2){
+                    interestPristine = true;
                     };
                 ctrl.$setValidity('interestRequired', interestProvided);
+                ctrl.$setValidity('interestPristine', interestPristine);
                 });
             }
         };

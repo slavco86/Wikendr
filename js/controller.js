@@ -10,7 +10,6 @@ angular.module('RouteControllers', [])
             angular.forEach($scope.interests, function(key,value){
                 if(key == false){
                    delete $scope.interests[value];
-                   console.log($scope.interests);
                 } if (angular.equals({},$scope.interests)){
                     $scope.interests = {};
                 }
