@@ -48,7 +48,7 @@
                             </div>
                             <div class="alert alert-danger no-bot-pad" ng-show="!usermatch && !registrationForm.password.$pristine">
                                 <p>Your password can't match your Username. Please select another one.</p>
-                            </div>
+                            </div> 
                             <p class="help-block" ng-show="registrationForm.password.$error.required && (!registrationForm.password.$pristine || registrationForm.$submitted)" >This field is required</p> 
                     </div><br ng-hide="(registrationForm.password.$error.minlength || registrationForm.password.$error.maxlength || registrationForm.password.$error.pattern || registrationForm.passsword.$error.required || !registrationForm.password.$valid) && !registrationForm.password.$pristine">
                     <!-- Match Password Input -->
