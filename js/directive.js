@@ -3,12 +3,12 @@ angular.module('RouteDirectives',[])
        return{
         restrict: 'A',
         controller: function($scope){
-            $scope.match = false;
+            $scope.passmatch = false;
             $scope.doMatch = function(values){
                 if($scope.confirm == values){
-                    $scope.match = true;
+                    $scope.passmatch = true;
                 } else {
-                    $scope.match = false;
+                    $scope.passmatch = false;
                 }
             };
         },
@@ -18,6 +18,30 @@ angular.module('RouteDirectives',[])
             });
             scope.$watch('confirm', function(){
                 scope.doMatch(attrs.passMatch);
+            });
+        }
+       };
+    })
+
+    .directive('userMatch', function(){
+       return{
+        restrict: 'A',
+        controller: function($scope){
+            $scope.usermatch = false;
+            $scope.doUserMatch = function(values){
+                if($scope.password !== values){
+                    $scope.usermatch = true;
+                } else {
+                    $scope.usermatch = false;
+                }
+            };
+        },
+        link: function(scope, element, attrs){
+            attrs.$observe('userMatch', function(){
+                scope.doUserMatch(attrs.userMatch);
+            });
+            scope.$watch('password', function(){
+                scope.doUserMatch(attrs.userMatch);
             });
         }
        };
@@ -33,6 +57,54 @@ angular.module('RouteDirectives',[])
                     genderProvided = true;
                     };
                 ctrl.$setValidity('genderRequired', genderProvided);
+                });
+            }
+        };
+    })
+
+    .directive('fileUpload', function($parse){
+        return{
+            restrict: 'A',
+            link: function(scope, elem, attr){
+                var model = $parse(attr.fileUpload);
+                var modelSetter = model.assign;
+                elem.bind('change', function(){
+                    scope.$apply(function(){
+                        modelSetter(scope, elem[0].files[0]);
+                    });
+                });
+            }
+        }
+    })
+
+    .directive('dobFormat', function($parse){
+        return{
+            restrict: 'A',
+            controller: function($scope){
+                $scope.userdob = null;
+                $scope.assignValue = function(value){
+                    $scope.userdob = value;
+                }
+            },
+            link: function(scope,elem,attr){
+                attr.$observe('dobFormat',function(){
+                    var value = attr.dobFormat;
+                    scope.assignValue(value);
+                    });
+            }
+        }
+    })
+
+    .directive('interest', function(){
+        return{
+            require: 'ngModel',
+            link: function(scope, element, attrs, ctrl){
+                var interestProvided = false;
+                attrs.$observe('interest', function(){
+                    if(attrs.interest !== ""){
+                    interestProvided = true;
+                    };
+                ctrl.$setValidity('interestRequired', interestProvided);
                 });
             }
         };

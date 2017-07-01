@@ -8,6 +8,20 @@
     <script type="text/javascript" src="bower_components/angular-route/angular-route.js"></script>
     <script type="text/javascript" src="bower_components/jquery/dist/jquery.js"></script>
     <script type="text/javascript" src="bower_components/bootstrap/dist/js/bootstrap.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/3.6.6/firebase.js"></script>
+    <script src="https://cdn.firebase.com/libs/angularfire/2.3.0/angularfire.min.js"></script>
+    <script>
+    // Initialize Firebase
+    var config = {
+        apiKey: "AIzaSyC3X79KT-tTZKe-SIgyIx_UfZPBHi5SNhI",
+        authDomain: "wikendr-f4e53.firebaseapp.com",
+        databaseURL: "https://wikendr-f4e53.firebaseio.com",
+        projectId: "wikendr-f4e53",
+        storageBucket: "wikendr-f4e53.appspot.com",
+        messagingSenderId: "890307275819"
+    };
+    firebase.initializeApp(config);
+    </script>
     <meta name="viewport" content="width=device-width, initial-scale=1">
 </head>
 <body>
