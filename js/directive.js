@@ -101,7 +101,8 @@ angular.module('RouteDirectives',[])
             link: function(scope, element, attrs, ctrl){
                 var interestProvided = false;
                 attrs.$observe('interest', function(){
-                    if(attrs.interest !== ""){
+                    var interestProvided = false;
+                    if(JSON.stringify(attrs.interest).length>4){
                     interestProvided = true;
                     };
                 ctrl.$setValidity('interestRequired', interestProvided);

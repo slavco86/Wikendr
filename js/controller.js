@@ -7,30 +7,13 @@ angular.module('RouteControllers', [])
         $scope.registrationUser.interests = [];
         
         $scope.interestcheck = function(){
-            var interests = $scope.registrationUser.interests;
-            var userInterests = $scope.interests;
-            console.log('ORIGINAL scope.interests:' + userInterests);
-            angular.forEach(userInterests, function(key,value){
-                console.log('key:' + key);
+            angular.forEach($scope.interests, function(key,value){
                 if(key == false){
-                   delete userInterests[value];
-                   console.log('After DELETE scope.interests:' + userInterests);
-                } else if(userInterests == {}){
-                    interests = [];
-                    console.log('if scope.interests is empty - reset database object:' + interests);
-                    } else{
-                    interests.push(key);
-                    console.log('valid value was pushed to database object');
-                    angular.forEach(interests, function(key,value){
-                        console.log('checking for duplicate values in database object...')
-                        var i = 0;
-                        if(interests[i] == interests[i++]){
-                            delete interests[i];
-                        } i++
-                    });
-                    }
-                
-                console.log($scope.registrationUser.interests);
+                   delete $scope.interests[value];
+                   console.log($scope.interests);
+                } if (angular.equals({},$scope.interests)){
+                    $scope.interests = {};
+                }
             });
         };
         $scope.submitForm = function(valid){
@@ -40,6 +23,9 @@ angular.module('RouteControllers', [])
             $scope.registrationUser.email = $scope.user.email;
             $scope.registrationUser.dob = $scope.userdob;
             $scope.registrationUser.gender = $scope.user.gender;
+            angular.forEach($scope.interests, function(key,value){
+                $scope.registrationUser.interests.push(key);
+            });
             $scope.registrationUserFile = $scope.user.file;
             if ($scope.registrationUserFile !== undefined){
                 var storageRef = firebase.storage().ref('user-assets/' + $scope.registrationUser.username + "/" + $scope.registrationUserFile.name);
