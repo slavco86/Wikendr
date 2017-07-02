@@ -2,7 +2,8 @@ angular.module('RouteControllers', [])
     .controller('HomeController', function($scope) {
     })
 
-    .controller('RegisterController', function($scope, $firebaseStorage, $firebaseObject, Auth, store) {
+    .controller('RegisterController', function($scope, $firebaseStorage, $firebaseObject, Auth, store, $location) {
+        $scope.formSubmitSuccess = false;
         $scope.registrationUser = {};
         $scope.registrationUser.interests = [];
         // Checking if "interests" object contains keys with value "false"(generated when user has 
@@ -20,6 +21,8 @@ angular.module('RouteControllers', [])
         };
         // Form submit 
         $scope.submitForm = function(valid){
+            $scope.registrationForm.$setPristine();
+                $scope.formSubmitSuccess = true;
             if(valid){
                 //Bind form input elements to user profile object to be pushed to DB
             $scope.registrationUser.username = $scope.user.username;
@@ -50,17 +53,21 @@ angular.module('RouteControllers', [])
             }
             //Create and authenticate new user
             Auth.$createUserWithEmailAndPassword($scope.registrationUser.email, $scope.password).then(function(firebaseUser){
+                //prepare local user object to be passed to local storage
+                //adding uid and token from Firebase user creation
                 $scope.localUserObj = $scope.registrationUser;
                 $scope.localUserObj.uid = firebaseUser.uid;
                 $scope.localUserObj.token = firebaseUser.refreshToken;
                 store.set('authUser', $scope.localUserObj);
+                //reset the form and ng-model
                 $scope.user = {};
                 $scope.password = "";
                 $scope.userdob = "";
                 $scope.interests = {};
-                alert("Thank you for registering with Wikendr! We hope you will enjoy the service.")
-                console.log("firebase user: ",firebaseUser);
-                console.log ("auth User: ", $scope.localUserObj);
+                if($scope.formSubmitSuccess){
+                    alert("Thank you for registering with Wikendr! We hope you will enjoy the service.");
+                    $location.url('/accounts/user');
+                }
             }).catch(function(error){
                 console.log("Created User Error: ",error);
             });
@@ -69,6 +76,7 @@ angular.module('RouteControllers', [])
             else{
                 alert("Registration Form can not be submitted - please check if all fields have been entered correctly");
             }
+
         }
     })
     .controller('ProductController', function($scope){
