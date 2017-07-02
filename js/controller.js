@@ -64,6 +64,7 @@ angular.module('RouteControllers', [])
                 $scope.password = "";
                 $scope.userdob = "";
                 $scope.interests = {};
+                localUserObj = {};
                 if($scope.formSubmitSuccess){
                     alert("Thank you for registering with Wikendr! We hope you will enjoy the service.");
                     $location.url('/accounts/user');
@@ -71,7 +72,7 @@ angular.module('RouteControllers', [])
             }).catch(function(error){
                 console.log("Created User Error: ",error);
             });
-            console.log($scope.registrationUser);
+            console.log("Created user with following object: ",$scope.registrationUser);
             }
             else{
                 alert("Registration Form can not be submitted - please check if all fields have been entered correctly");
@@ -82,8 +83,21 @@ angular.module('RouteControllers', [])
     .controller('ProductController', function($scope){
 
     })
-    .controller('UserController', function($scope){
+    .controller('UserController', function($scope, store, Auth, $firebaseStorage, $firebaseObject, $location ){
+        $scope.authUser = store.get("authUser");
+        console.log("User logged in with following object: ",$scope.authUser);
+        $scope.searchCompleted = false;
 
+        $scope.search = function(){
+            $scope.searchCompleted = true;
+        };
+        
+        $scope.logout = function(){
+            Auth.$signOut();
+            $location.url('/');
+            $scope.authUser = store.set("authUser",{});
+            alert("You have been successfully Logged-Out. Please sign-in again on homepage")
+        }
     })
     .controller('GroupsController', function($scope){
 
