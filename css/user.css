@@ -1,7 +1,9 @@
 #prof-pic, #prof-pic2{
     max-width: 34px;
 }
-
+.mar-bot{
+    margin-bottom: 20px;
+}
 #profile, #prof-but-col{
     padding: 0 0 0 0;
     margin: 8px 16px 0 16px;
@@ -118,4 +120,13 @@
     display: flex;
     justify-content: center;
     flex-wrap: wrap;
+}
+#dating-container{
+    margin-bottom: 100px;
+}
+#dating-header-row{
+    margin-bottom: 50px;
+}
+#dating-profile1-pic, #dating-profile2-pic{
+    width: 200px;
 }

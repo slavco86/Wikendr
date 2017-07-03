@@ -131,8 +131,14 @@ angular.module('RouteControllers', [])
         $scope.authUser = store.get("authUser");
         console.log("User logged in with following object: ",$scope.authUser);
         $scope.searchCompleted = false;
+        var i = 1;
         $scope.search = function(){
             $scope.searchCompleted = true;
+            i++;
+            if(i>2){
+                $scope.searchCompleted = false;
+                i=1;
+            }
         };
         $scope.logout = function(){
             Auth.$signOut();
