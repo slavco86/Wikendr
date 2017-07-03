@@ -8,12 +8,32 @@
     <!-- Links -->
     <section id="links-row" class="row">
     <div id="links-col" class="col-sm-12">
-      <h3 id="links" class="text-center"><a href="/accounts/user" id="link-login" class="links">Login</a>  | <a href="/accounts/register" id="link-register" class="links">Register</a></h3>
+      <h3 id="links" class="text-center"><a href="#" id="link-login" class="links" ng-click="showLogin()">Login</a>  | <a href="/accounts/register" id="link-register" class="links">Register</a></h3>
     </div>
   </section>
 
+<!-- Login Modal -->
+<div class="row">
+  <form name="loginForm" ng-submit="login(loginForm.$valid)" novalidate method="post" ng-show="loginShow">
+    <div class="form-group">
+      <div class="form-group">
+        <input type="text" name="email" ng-model="email" placeholder="Email" class="form-control" ng-pattern="/^([A-Za-z0-9_\-\.]){1,}\@([A-Za-z0-9_\-\.]){1,}\.([A-Za-z]){2,4}$/" ng-required="true">
+        <div class="alert alert-danger" ng-show="loginForm.email.$error.required && (!loginForm.email.$pristine || loginForm.$submitted)">
+        <p class="help-block" >Please provide valid email to login</p>
+        </div>
+      </div>
+      <div class="form-group">
+        <input type="password" name="password" ng-model="password" placeholder="Password" class="form-control" ng-required="true" ng-pattern="/^(?=.*[a-z])(?=.*[A-Z])(?=.*\d).+$/" ng-trim="false" ng-minlength="8" ng-maxlength="10">
+        <div class="alert alert-danger" ng-show="loginForm.password.$error.required && (!loginForm.password.$pristine || loginForm.$submitted)">
+        <p class="help-block">Please provide valid password to login</p>
+        </div>
+      </div>
+      <button id="loginButton" type="submit" class="btn btn-primary btn-lg btn-block "><strong>Login</strong></button>
+    </div>
+  </form>
+</div>
     <!-- Search Box -->
-<section id="search-row" class="row">
+<section id="search-row" class="row" ng-show="!loginShow">
   <article id="search-col" class="col-sm-6">
   <form id="search-form">
     <section id="search-box-wrapper" class="input-group">
