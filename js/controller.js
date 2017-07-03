@@ -140,6 +140,9 @@ angular.module('RouteControllers', [])
                 i=1;
             }
         };
+        if($scope.authUser.about = "undefined"){
+            $scope.authUser.about = ("Looks like " + $scope.authUser.username + "hasn't provided much info about themselves. If you would like to update your profile information, please head over to Settings section, under your user profile")
+        }
         $scope.logout = function(){
             Auth.$signOut();
             $location.url('/');
