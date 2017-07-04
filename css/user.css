@@ -1,13 +1,5 @@
-#prof-pic, #prof-pic2{
-    max-width: 34px;
-}
 .mar-bot{
     margin-bottom: 20px;
-}
-#profile, #prof-but-col{
-    padding: 0 0 0 0;
-    margin: 8px 16px 0 16px;
-    border: none;
 }
 .header-container{
     width: 100%;
@@ -16,12 +8,24 @@
     background-repeat: no-repeat;
     padding-bottom: 40px;
 }
+/* Nav Element */
 #nav{
     background-color: rgba(217, 165, 224, 0.7);
     border: none;
 }
+#profile, #prof-but-col{
+    padding: 0 0 0 0;
+    margin: 8px 16px 0 16px;
+    border: none;
+}
+#prof-pic, #prof-pic2{
+    max-width: 34px;
+}
 #men-but span{
     background-color:#fdfed2;
+}
+.modal-title small{
+    padding-left: 15px;
 }
 .no-back{
     background-color: rgba(0, 0, 0, 0) !important;
@@ -51,6 +55,8 @@
     text-decoration: none;
     color: #fdfed2;
 }
+
+/* Search Results */
 .user-product-link{
     text-decoration: none !important;
     color: inherit;

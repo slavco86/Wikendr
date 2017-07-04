@@ -114,4 +114,12 @@ angular.module('RouteDirectives',[])
                 });
             }
         };
+    })
+    
+// HTML Block Elemetns
+    .directive('navsection', function(){
+        return{
+            restrict: "E",
+            templateUrl: "templates/partials/navsection.html"
+        };
     });

@@ -1,20 +1,21 @@
 <link rel="stylesheet" type="text/css" href="css/home_page.css">
+<navsection ng-show="userLoggedIn"></navsection>
 <!-- Header Element -->
 <header id="header-container" class="container-fluid">
     <!-- Header Title and Subtitle -->
-<h1 id="header-title" class="text-center">Welcome to <strong>Wikendr!</strong><br>
+  <h1 id="header-title" class="text-center">Welcome to <strong>Wikendr!</strong><br>
   <small id="header-subtitle">A Place to Organise Your Weekend and Meet New People</small></h1>
 
     <!-- Links -->
-    <section id="links-row" class="row">
+  <section id="links-row" class="row" ng-show="!userLoggedIn">
     <div id="links-col" class="col-sm-12">
       <h3 id="links" class="text-center"><a href="#" id="link-login" class="links" ng-click="showLogin()">Login</a>  | <a href="/accounts/register" id="link-register" class="links">Register</a></h3>
     </div>
   </section>
 
-<!-- Login Modal -->
+<!-- Login Section -->
 <div class="row">
-  <form name="loginForm" ng-submit="login(loginForm.$valid)" novalidate method="post" ng-show="loginShow">
+  <form name="loginForm" id="loginForm" ng-submit="login(loginForm.$valid)" novalidate method="post" ng-show="loginShow">
     <div class="form-group">
       <div class="form-group">
         <input type="text" name="email" ng-model="email" placeholder="Email" class="form-control" ng-pattern="/^([A-Za-z0-9_\-\.]){1,}\@([A-Za-z0-9_\-\.]){1,}\.([A-Za-z]){2,4}$/" ng-required="true">
@@ -33,7 +34,7 @@
   </form>
 </div>
     <!-- Search Box -->
-<section id="search-row" class="row" ng-show="!loginShow">
+<section id="search-row" class="row" ng-show="!loginShow" ng-class="{'mar-top-50':userLoggedIn}">
   <article id="search-col" class="col-sm-6">
   <form id="search-form">
     <section id="search-box-wrapper" class="input-group">

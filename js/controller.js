@@ -1,8 +1,30 @@
 angular.module('RouteControllers', [])
     .controller('HomeController', function($scope, Auth, store, $firebaseObject, $firebaseStorage, $location) {
+        //Check for Auth User and Toggle Navigation
+        $scope.authUser = store.get("authUser");
+        if(angular.equals({},$scope.authUser)){
+            $scope.userLoggedIn = false;
+        } 
+        else {
+            $scope.userLoggedIn = true;
+                $scope.getAge = function(dateStr){
+                    var dob = dateStr.split("-");
+                    var birthday = new Date(dob[2], dob[1] - 1, dob[0]);
+                    var today = new Date();
+                    var age = ((today - birthday) / (31557600000));
+                    var age = Math.floor( age );
+                    return age;
+                };
+                if($scope.authUser.about == "undefined")
+                {
+                $scope.authUser.about = ("Looks like " + $scope.authUser.username + " hasn't provided much info about themselves. If you would like to update your profile information, please head over to Settings section, under your user profile")
+                }
+        }
+        // Toggle Login section
         $scope.loginShow = false;
         var i = 1;
         $scope.showLogin = function(){
+            
             $scope.loginShow = true;
             i++;
             if(i>2){
@@ -11,6 +33,8 @@ angular.module('RouteControllers', [])
                 $scope.loginForm.$setPristine();
             }
         };
+
+        // Login function
         $scope.login = function(valid){
             if (valid){
              Auth.$signInWithEmailAndPassword($scope.email,$scope.password).then(function(firebaseUser){
@@ -34,14 +58,33 @@ angular.module('RouteControllers', [])
                         $location.url('/accounts/user');
                     }
             });
-            }).catch(function(error){
-                console.log("Sign in error: ", error);
+        }).catch(function(error){
+                $scope.loginForm.$setPristine();
+                alert("Incorrect email or password, please try again...");
             });
-            } else {
-                alert("Login form is invalid, please check if all fields been entered correctly");
+        } else {
+                $scope.loginForm.$setPristine();
+                alert("Login form is invalid, please check if all fields been entered correctly. If you are not registered, please register first.");
             }
             
         }
+        
+        // Logout Function
+        $scope.logout = function(){
+            Auth.$signOut();
+            $location.url('/');
+            $scope.authUser = store.set("authUser",{});
+            $scope.userLoggedIn = false;
+            alert("You have been successfully Logged-Out. Please sign-in again on homepage");
+            console.log("Logout storage obj: ",$scope.authUser);
+        };
+
+        //Calculate Age
+        if ($scope.userLoggedIn == true){
+            
+        }
+
+        
     })
 
     .controller('RegisterController', function($scope, $firebaseStorage, $firebaseObject, Auth, store, $location) {
@@ -123,13 +166,57 @@ angular.module('RouteControllers', [])
         }
     })
 
-    .controller('ProductController', function($scope){
+    .controller('ProductController', function($scope, Auth, store, $firebaseObject, $firebaseStorage, $location){
+        // Logout Function
+        $scope.logout = function(){
+            Auth.$signOut();
+            $location.url('/');
+            $scope.authUser = store.set("authUser",{});
+            alert("You have been successfully Logged-Out. Please sign-in again on homepage");
+            $scope.userLoggedIn = false;
+            console.log("Logout storage obj: ",$scope.authUser);
+        };
+        //Calculate Age
+        if ($scope.userLoggedIn){
+            $scope.getAge = function(dateStr){
+                var dob = dateStr.split("-");
+                var birthday = new Date(dob[2], dob[1] - 1, dob[0]);
+                var today = new Date();
+                var age = ((today - birthday) / (31557600000));
+                var age = Math.floor( age );
+                return age;
+            };
+        }
 
+        //Check for Auth User and Toggle Navigation
+        $scope.authUser = store.get("authUser");
+        if(angular.equals({},$scope.authUser)){
+            $scope.userLoggedIn = false;
+        } 
+        else {
+            $scope.userLoggedIn = true;
+                if($scope.authUser.about == "undefined")
+                {
+                $scope.authUser.about = ("Looks like " + $scope.authUser.username + " hasn't provided much info about themselves. If you would like to update your profile information, please head over to Settings section, under your user profile")
+                }
+        }
     })
 
     .controller('UserController', function($scope, store, Auth, $firebaseStorage, $firebaseObject, $location ){
+        //Check for Auth User and Toggle Navigation
         $scope.authUser = store.get("authUser");
-        console.log("User logged in with following object: ",$scope.authUser);
+        if(angular.equals({},$scope.authUser)){
+            $scope.userLoggedIn = false;
+        } 
+        else {
+            $scope.userLoggedIn = true;
+                if($scope.authUser.about == "undefined")
+                {
+                $scope.authUser.about = ("Looks like " + $scope.authUser.username + " hasn't provided much info about themselves. If you would like to update your profile information, please head over to Settings section, under your user profile")
+                }
+        }
+
+        //toggle Search Results section
         $scope.searchCompleted = false;
         var i = 1;
         $scope.search = function(){
@@ -140,9 +227,8 @@ angular.module('RouteControllers', [])
                 i=1;
             }
         };
-        if($scope.authUser.about = "undefined"){
-            $scope.authUser.about = ("Looks like " + $scope.authUser.username + "hasn't provided much info about themselves. If you would like to update your profile information, please head over to Settings section, under your user profile")
-        }
+
+        //Logout Function
         $scope.logout = function(){
             Auth.$signOut();
             $location.url('/');
@@ -150,8 +236,50 @@ angular.module('RouteControllers', [])
             alert("You have been successfully Logged-Out. Please sign-in again on homepage")
             console.log("Logout storage obj: ",$scope.authUser);
         }
+        //Calculate Age
+        if ($scope.userLoggedIn){
+            $scope.getAge = function(dateStr){
+                var dob = dateStr.split("-");
+                var birthday = new Date(dob[2], dob[1] - 1, dob[0]);
+                var today = new Date();
+                var age = ((today - birthday) / (31557600000));
+                var age = Math.floor( age );
+                return age;
+            };
+        }
     })
 
-    .controller('GroupsController', function($scope){
-
+    .controller('GroupsController', function($scope, Auth, store, $firebaseObject, $firebaseStorage, $location){
+        //Check for Auth User and Toggle Navigation
+        $scope.authUser = store.get("authUser");
+        if(angular.equals({},$scope.authUser)){
+            $scope.userLoggedIn = false;
+        } 
+        else {
+            $scope.userLoggedIn = true;
+                if($scope.authUser.about == "undefined")
+                {
+                $scope.authUser.about = ("Looks like " + $scope.authUser.username + " hasn't provided much info about themselves. If you would like to update your profile information, please head over to Settings section, under your user profile")
+                }
+        }
+        // Logout Function
+        $scope.logout = function(){
+            Auth.$signOut();
+            $location.url('/');
+            $scope.authUser = store.set("authUser",{});
+            alert("You have been successfully Logged-Out. Please sign-in again on homepage");
+            $scope.userLoggedIn = false;
+            console.log("Logout storage obj: ",$scope.authUser);
+        };
+        //Calculate Age
+        if ($scope.userLoggedIn){
+            $scope.getAge = function(dateStr){
+                var dob = dateStr.split("-");
+                var birthday = new Date(dob[2], dob[1] - 1, dob[0]);
+                var today = new Date();
+                var age = ((today - birthday) / (31557600000));
+                var age = Math.floor( age );
+                return age;
+            };
+        }
     });

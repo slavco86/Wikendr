@@ -1,3 +1,48 @@
+/* Nav Section */
+#nav{
+    background-color: rgba(217, 165, 224, 0.7);
+    border: none;
+}
+#profile, #prof-but-col{
+    padding: 0 0 0 0;
+    margin: 8px 16px 0 16px;
+    border: none;
+}
+#prof-pic, #prof-pic2{
+    max-width: 34px;
+}
+.modal-title small{
+    padding-left: 15px;
+}
+.mar-top-50{
+    margin-top: 30vh;
+}
+#men-but span{
+    background-color:#fdfed2;
+}
+.mar-bot-10{
+    margin-bottom: 10px;
+}
+.no-back{
+    background-color: rgba(0, 0, 0, 0) !important;
+}
+.no-border{
+    border: none;
+}
+.nav-txt-color{
+    color: #fdfed2 !important;
+}
+.hover:hover{
+    background-color: rgba(217, 165, 224, 1);
+}
+.drop-menu{
+    background-color: rgba(243, 178, 202, 1) !important;
+    color: #fdfed2 !important;
+    margin-top: 7px;
+}
+.hov-menu:hover{
+    background-color: rgba(217, 165, 224, 1) !important;
+}
 .links:link{
     text-decoration: none;
     color: #fdfed2;

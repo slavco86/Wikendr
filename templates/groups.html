@@ -3,52 +3,7 @@
 <link rel="stylesheet" type="text/css" href="css/product.css">
 <link rel="stylesheet" type="text/css" href="css/home_page.css">
 
-<nav class="navbar navbar-default navbar-fixed-top" id="nav">
-    <div class="container-fluid">
-            <!-- Logo Link -->
-        <div class="navbar-header"> 
-            <a class="navbar-brand nav-txt-color links" href="/"><strong>Wikendr</strong></a>
-                <!-- Profile Pic Button -->
-             <button id="prof-but-col" type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#prof-list" aria-expanded="false">
-                <img src="img/picture_test.jpg" alt="profile picture" class="img-circle img-responsive" id="prof-pic">
-            </button>
-                <!-- Small Screen Menu Toggle Button -->
-            <button id="men-but" type="button" class="navbar-toggle collapsed no-border no-back" data-toggle="collapse" data-target="#navbar" aria-expanded="false">
-                <span class="sr-only">Toggle Navigation</span>
-                <span class="icon-bar"></span>
-                <span class="icon-bar"></span>
-                <span class="icon-bar"></span>
-            </button>
-        </div>
-        <!-- Dropdown List for Small Screen Profile Pic Button (is hidden on md and lg screens) -->
-        <div class="collapse hidden-md hidden-lg" id="prof-list" aria-labelledby="prof-but-exp">
-        <ul class="nav navbar-nav">
-            <li><a class="nav-txt-color text-right links" href="#">Profile</a></li>
-            <li><a class="nav-txt-color text-right links" href="#">Settings</a></li>
-            <li><a class="nav-txt-color text-right links" href="#">Logout</a></li>
-        </ul>
-        </div>
-        <!-- Profile Pic Button with Popup list for large screens (is hidden below sm screen size) -->
-        <div class="dropdown navbar-right">
-            <button class="btn btn-default dropdown-toggle visible-md-inline-block visible-lg-inline-block visible-sm-inline-block no-back" type="button" id="profile" data-toggle="dropdown" aria-haspopup="true" aria-expanded="true">
-                <img src="img/picture_test.jpg" alt="profile picture" class="img-circle img-responsive" id="prof-pic2">
-            </button>
-            <ul class="dropdown-menu drop-menu" aria-labelledby="profile">
-                <li><a class="hov-menu links" href="#">Profile</a></li>
-                <li><a class="hov-menu links" href="#">Settings</a></li>
-                <li><a class="hov-menu links" href="#">Logout</a></li>
-            </ul>
-        </div>
-        <!-- Link List for small screen button and to be displayed on large screens -->
-        <div class="collapse navbar-collapse no-border" id="navbar">
-            <ul class="nav navbar-nav navbar-right">
-                <li class="hover"><a class="nav-txt-color links" href="/">Home</a></li>
-                <li class="hover"><a class="nav-txt-color links" href="#">Groups</a></li>
-                <li class="hover"><a class="nav-txt-color links" href="#">People</a></li>
-            </ul>   
-        </div>
-    </div>
-</nav>
+<navsection ng-show="userLoggedIn"></navsection>
 <div id="sliders" class="container-fluid sliders-cont">
     <div id="Slider-1" class="sliders container-fluid">
         <div class="row">
