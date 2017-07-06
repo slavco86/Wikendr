@@ -12,7 +12,6 @@ This app compares search terms with service objects and displays relevant servic
     Full user registration/athentication/login/logout functionality implemented. User can register, using registration form with extensive validation rules and dynamic helpobex to help user submit valid registration. User can upload their profile picture, select their interests and write something about themselve. Upon registration, user will be redirected to thei profile page. User can view their profile, including profile photo in the top level menu, under User Profile, by clicking on their profile picture image in the nav bar. User Profile modal will display their individual profile with information that they have entered on registration.
 ### Features left to implement
 - User Based Features
-    - Registration - no backend, just form validation
     - Login - no backend, just loading pre-existing user profile for demonstration purpose only
     - Logout - offloading user profile to allow for another user profile to be loaded up
 - Service Based Features
