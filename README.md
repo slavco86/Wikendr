@@ -9,11 +9,12 @@ This app contains a set number of real service providers, registered with Google
 This app compares search terms with service objects and displays relevant services as search results. The app makes API call to Google Maps to display location of any given service and time it takes to travel to this location, based on current users GPS together with other relevant data. So far, this app has no backend so the catalogue of services is stored locally and eveything is being run on the client side.
 ## Features
 ### Existing features
+- User Based Features
+    - Registration - Firebase backend
+    - Login - Firebase backend, just loading pre-existing user profile for demonstration purpose only
+    - Logout - offloading user profile to allow for another user profile to be loaded up
 Full user registration/athentication/login/logout functionality implemented. User can register, using registration form with extensive validation rules and dynamic helpobex to help user submit valid registration. User can upload their profile picture, select their interests and write something about themselve. Upon registration, user will be redirected to thei profile page. User can view their profile, including profile photo in the top level menu, under User Profile, by clicking on their profile picture image in the nav bar. User Profile modal will display their individual profile with information that they have entered on registration.
 ### Features left to implement
-- User Based Features
-    - Login - no backend, just loading pre-existing user profile for demonstration purpose only
-    - Logout - offloading user profile to allow for another user profile to be loaded up
 - Service Based Features
     - Search through Services available - display a filteres list of pre-existing services based on matching keywords
     - Viewing individual Services offered - calling API to calculate and display distance, location and other available info by matching pre-existing service with services available through API
