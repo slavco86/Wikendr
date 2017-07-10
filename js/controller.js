@@ -2,7 +2,7 @@ angular.module('RouteControllers', [])
     .controller('HomeController', function($scope, Auth, store, $firebaseObject, $firebaseStorage, $location) {
         //Check for Auth User and Toggle Navigation
         $scope.authUser = store.get("authUser");
-        if(angular.equals({},$scope.authUser)){
+        if(angular.equals({},$scope.authUser) || $scope.authUser === null){
             $scope.userLoggedIn = false;
         } 
         else {
