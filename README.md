@@ -30,6 +30,8 @@ Full user registration/athentication/login/logout functionality implemented. Use
     - We use **npm** to help manage some of the dependencies in our application
 - [bower](https://bower.io/)
     - **Bower** is used to manage the installation of our libraries and frameworks
+- [FireBase](https://firebase.google.com/)
+    - **FireBase** is used as backend solution, managing Database queries, web-storage for user generated content and user authentication with JSON tokens 
 ## Contributing
  
 ### Getting the code up and running
