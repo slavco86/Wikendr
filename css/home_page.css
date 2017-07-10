@@ -73,7 +73,10 @@
     background-color: transparent !important;
     border: none;
     margin: 0 auto;
-    max-width: 500px;
+    max-width: 50vh;
+}
+.alert{
+    padding: 0px;
 }
 #loginButton{
     max-width: 50vh;

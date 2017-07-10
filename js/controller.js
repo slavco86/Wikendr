@@ -23,8 +23,7 @@ angular.module('RouteControllers', [])
         // Toggle Login section
         $scope.loginShow = false;
         var i = 1;
-        $scope.showLogin = function(){
-            
+        $scope.loginToggle = function(){
             $scope.loginShow = true;
             i++;
             if(i>2){
@@ -106,6 +105,7 @@ angular.module('RouteControllers', [])
         };
         // Form submit 
         $scope.submitForm = function(valid){
+            debugger
             $scope.registrationForm.$setPristine();
                 $scope.formSubmitSuccess = true;
             if(valid){
@@ -153,7 +153,7 @@ angular.module('RouteControllers', [])
                 localUserObj = {};
                 if($scope.formSubmitSuccess){
                     alert("Thank you for registering with Wikendr! We hope you will enjoy the service.");
-                    $location.url('/accounts/user');
+                   // $location.url('/accounts/user');
                 }
             }).catch(function(error){
                 console.log("Created User Error: ",error);
