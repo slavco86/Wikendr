@@ -31,7 +31,9 @@ Full user registration/athentication/login/logout functionality implemented. Use
 - [bower](https://bower.io/)
     - **Bower** is used to manage the installation of our libraries and frameworks
 - [FireBase](https://firebase.google.com/)
-    - **FireBase** is used as backend solution, managing Database queries, web-storage for user generated content and user authentication with JSON tokens 
+    - **FireBase** is used as backend solution, managing Database queries, web-storage for user generated content and user authentication with JSON tokens
+- [Angular Storage](https://github.com/auth0/angular-storage) 
+    - **Angular Storage** is used to store cached local storage object with user profile
 ## Contributing
  
 ### Getting the code up and running
