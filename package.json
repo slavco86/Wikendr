@@ -15,5 +15,9 @@
   "bugs": {
     "url": "https://github.com/slavco86/Wikendr/issues"
   },
-  "homepage": "https://github.com/slavco86/Wikendr#readme"
+  "homepage": "https://github.com/slavco86/Wikendr#readme",
+  "devDependencies": {
+    "jasmine": "^2.6.0",
+    "karma": "^1.7.0"
+  }
 }

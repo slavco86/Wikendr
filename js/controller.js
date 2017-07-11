@@ -7,6 +7,8 @@ angular.module('RouteControllers', [])
         } 
         else {
             $scope.userLoggedIn = true;
+            //Calculate Age
+            if ($scope.userLoggedIn == true){
                 $scope.getAge = function(dateStr){
                     var dob = dateStr.split("-");
                     var birthday = new Date(dob[2], dob[1] - 1, dob[0]);
@@ -15,10 +17,10 @@ angular.module('RouteControllers', [])
                     var age = Math.floor( age );
                     return age;
                 };
-                if($scope.authUser.about == "undefined")
-                {
+            }
+            if($scope.authUser.about == "undefined"){
                 $scope.authUser.about = ("Looks like " + $scope.authUser.username + " hasn't provided much info about themselves. If you would like to update your profile information, please head over to Settings section, under your user profile")
-                }
+            }
         }
         // Toggle Login section
         $scope.loginShow = false;
@@ -78,10 +80,7 @@ angular.module('RouteControllers', [])
             console.log("Logout storage obj: ",$scope.authUser);
         };
 
-        //Calculate Age
-        if ($scope.userLoggedIn == true){
-            
-        }
+        
 
         
     })
@@ -153,7 +152,7 @@ angular.module('RouteControllers', [])
                 localUserObj = {};
                 if($scope.formSubmitSuccess){
                     alert("Thank you for registering with Wikendr! We hope you will enjoy the service.");
-                   // $location.url('/accounts/user');
+                    $location.url('/accounts/user');
                 }
             }).catch(function(error){
                 console.log("Created User Error: ",error);
