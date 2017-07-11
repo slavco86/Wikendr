@@ -104,7 +104,6 @@ angular.module('RouteControllers', [])
         };
         // Form submit 
         $scope.submitForm = function(valid){
-            debugger
             $scope.registrationForm.$setPristine();
                 $scope.formSubmitSuccess = true;
             if(valid){
