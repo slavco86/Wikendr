@@ -19,7 +19,7 @@
         <!-- Dropdown List for Small Screen Profile Pic Button (is hidden on md and lg screens) -->
         <div class="collapse hidden-md hidden-lg" id="prof-list" aria-labelledby="prof-but-exp">
         <ul class="nav navbar-nav">
-            <li><a class="nav-txt-color text-right links" href="#" data-toggle="modal" data-target="#myModal">Profile</a></li>
+            <li><a class="nav-txt-color text-right links" href="#" data-toggle="modal" data-target="#myModal" ng-click="getAge()">Profile</a></li>
             <li><a class="nav-txt-color text-right links" href="#" ng-click="logout()">Logout</a></li>
         </ul>
         </div>
@@ -29,7 +29,7 @@
                 <img src={{authUser.picURL}} alt="profile picture" class="img-circle img-responsive" id="prof-pic2">
             </button>
             <ul class="dropdown-menu drop-menu" aria-labelledby="profile">
-                <li><a class="hov-menu links" href="#" data-toggle="modal" data-target="#myModal">Profile</a></li>
+                <li><a class="hov-menu links" href="#" data-toggle="modal" data-target="#myModal" ng-click="getAge()">Profile</a></li>
                 <li><a class="hov-menu links" href="#" ng-click="logout()">Logout</a></li>
             </ul>
         </div>
@@ -49,7 +49,7 @@
             <div class="modal-content">
             <div class="modal-header">
                 <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
-                <h4 class="modal-title" id="myModalLabel">{{authUser.username}}<small>{{authUser.gender}}</small><small>{{getAge(authUser.dob)}} years old</small></h4>
+                <h4 class="modal-title" id="myModalLabel">{{authUser.username}}<small>{{authUser.gender}}</small><small>{{userAge}} years old</small></h4>
             </div>
             <div class="modal-body">
                 <div class="row">

@@ -7,17 +7,6 @@ angular.module('RouteControllers', [])
         } 
         else {
             $scope.userLoggedIn = true;
-            //Calculate Age
-            if ($scope.userLoggedIn == true){
-                $scope.getAge = function(dateStr){
-                    var dob = dateStr.split("-");
-                    var birthday = new Date(dob[2], dob[1] - 1, dob[0]);
-                    var today = new Date();
-                    var age = ((today - birthday) / (31557600000));
-                    var age = Math.floor( age );
-                    return age;
-                };
-            }
             if($scope.authUser.about == "undefined"){
                 $scope.authUser.about = ("Looks like " + $scope.authUser.username + " hasn't provided much info about themselves. If you would like to update your profile information, please head over to Settings section, under your user profile")
             }
@@ -34,7 +23,6 @@ angular.module('RouteControllers', [])
                 $scope.loginForm.$setPristine();
             }
         };
-
         // Login function
         $scope.login = function(valid){
             if (valid){
@@ -125,37 +113,42 @@ angular.module('RouteControllers', [])
             //Check if the user has provided profile picture and submit it to storage
             $scope.registrationUserFile = $scope.user.file;
             if ($scope.registrationUserFile !== undefined){
+                console.log($scope.registrationUserFile);
                 var storageRef = firebase.storage().ref('user-assets/' + $scope.registrationUser.username + "/" + $scope.registrationUserFile.name);
                 $scope.storage = $firebaseStorage(storageRef);
                 var uploadTask = $scope.storage.$put($scope.registrationUserFile);
                 uploadTask.$complete(function(snapshot){
                     $scope.registrationUser.picURL = snapshot.downloadURL;
+                    //Create and authenticate new user
+                    Auth.$createUserWithEmailAndPassword($scope.registrationUser.email, $scope.password).then(function(firebaseUser){
+                        $scope.registrationUser.uid = firebaseUser.uid;
+                        $scope.registrationUser.token = firebaseUser.refreshToken;
+                        //Submit user profile to DB
+                        firebase.database().ref('users/' + $scope.registrationUser.uid).set($scope.registrationUser);
+                    });
+                })
+            } else {
+                $scope.registrationUser.picURL = "img/profile_pic_placeholder.png";
+                //Create and authenticate new user
+                Auth.$createUserWithEmailAndPassword($scope.registrationUser.email, $scope.password).then(function(firebaseUser){
+                    $scope.registrationUser.uid = firebaseUser.uid;
+                    $scope.registrationUser.token = firebaseUser.refreshToken;
                     //Submit user profile to DB
                     firebase.database().ref('users/' + $scope.registrationUser.uid).set($scope.registrationUser);
-                })
+                });
             }
-            //Create and authenticate new user
-            Auth.$createUserWithEmailAndPassword($scope.registrationUser.email, $scope.password).then(function(firebaseUser){
-                //prepare local user object to be passed to local storage
-                //adding uid and token from Firebase user creation
-                $scope.registrationUser.uid = firebaseUser.uid;
-                var localUserObj = $scope.registrationUser;
-                localUserObj.token = firebaseUser.refreshToken;
-                localUserObj.uid = firebaseUser.uid;
-                store.set('authUser',localUserObj);
-                //reset the form and ng-model
-                $scope.user = {};
-                $scope.password = "";
-                $scope.userdob = "";
-                $scope.interests = {};
-                localUserObj = {};
-                if($scope.formSubmitSuccess){
-                    alert("Thank you for registering with Wikendr! We hope you will enjoy the service.");
-                    $location.url('/accounts/user');
-                }
-            }).catch(function(error){
-                console.log("Created User Error: ",error);
-            });
+            var localUserObj = $scope.registrationUser;
+            store.set('authUser',localUserObj);
+            //reset the form and ng-model
+            $scope.user = {};
+            $scope.password = "";
+            $scope.userdob = "";
+            $scope.interests = {};
+            localUserObj = {};
+            if($scope.formSubmitSuccess){
+                alert("Thank you for registering with Wikendr! We hope you will enjoy the service.");
+                $location.url('/accounts/user');
+            }
             console.log("Created user with following object: ",$scope.registrationUser);
             }
             else{
@@ -175,16 +168,15 @@ angular.module('RouteControllers', [])
             console.log("Logout storage obj: ",$scope.authUser);
         };
         //Calculate Age
-        if ($scope.userLoggedIn){
-            $scope.getAge = function(dateStr){
-                var dob = dateStr.split("-");
-                var birthday = new Date(dob[2], dob[1] - 1, dob[0]);
-                var today = new Date();
-                var age = ((today - birthday) / (31557600000));
-                var age = Math.floor( age );
-                return age;
-            };
-        }
+        $scope.getAge = function(){
+            var dateStr = $scope.authUser.dob;
+            var dob = dateStr.split("-");
+            var birthday = new Date(dob[2], dob[1] - 1, dob[0]);
+            var today = new Date();
+            var age = ((today - birthday) / (31557600000));
+            var age = Math.floor( age );
+            $scope.userAge = age;
+        };
 
         //Check for Auth User and Toggle Navigation
         $scope.authUser = store.get("authUser");
@@ -235,16 +227,15 @@ angular.module('RouteControllers', [])
             console.log("Logout storage obj: ",$scope.authUser);
         }
         //Calculate Age
-        if ($scope.userLoggedIn){
-            $scope.getAge = function(dateStr){
-                var dob = dateStr.split("-");
-                var birthday = new Date(dob[2], dob[1] - 1, dob[0]);
-                var today = new Date();
-                var age = ((today - birthday) / (31557600000));
-                var age = Math.floor( age );
-                return age;
-            };
-        }
+        $scope.getAge = function(){
+            var dateStr = $scope.authUser.dob;
+            var dob = dateStr.split("-");
+            var birthday = new Date(dob[2], dob[1] - 1, dob[0]);
+            var today = new Date();
+            var age = ((today - birthday) / (31557600000));
+            var age = Math.floor( age );
+            $scope.userAge = age;
+        };
     })
 
     .controller('GroupsController', function($scope, Auth, store, $firebaseObject, $firebaseStorage, $location){
@@ -270,14 +261,13 @@ angular.module('RouteControllers', [])
             console.log("Logout storage obj: ",$scope.authUser);
         };
         //Calculate Age
-        if ($scope.userLoggedIn){
-            $scope.getAge = function(dateStr){
-                var dob = dateStr.split("-");
-                var birthday = new Date(dob[2], dob[1] - 1, dob[0]);
-                var today = new Date();
-                var age = ((today - birthday) / (31557600000));
-                var age = Math.floor( age );
-                return age;
-            };
-        }
+        $scope.getAge = function(){
+            var dateStr = $scope.authUser.dob;
+            var dob = dateStr.split("-");
+            var birthday = new Date(dob[2], dob[1] - 1, dob[0]);
+            var today = new Date();
+            var age = ((today - birthday) / (31557600000));
+            var age = Math.floor( age );
+            $scope.userAge = age;
+        };
     });
