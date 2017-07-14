@@ -1,4 +1,17 @@
-angular.module('RouteControllers', [])
+angular.module('WikendrApp', [])
+    .controller('PasswordController', function PasswordController($scope) {
+      $scope.password = '';
+      $scope.grade = function() {
+        var size = $scope.password.length;
+        if (size > 8) {
+          $scope.strength = 'strong';
+        } else if (size > 3) {
+          $scope.strength = 'medium';
+        } else {
+          $scope.strength = 'weak';
+        }
+      }
+    })
     .controller('HomeController', function($scope, Auth, store, $firebaseObject, $firebaseStorage, $location) {
         //Check for Auth User and Toggle Navigation
         $scope.authUser = store.get("authUser");
