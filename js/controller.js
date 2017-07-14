@@ -56,7 +56,7 @@ angular.module('RouteControllers', [])
                 alert("Login form is invalid, please check if all fields been entered correctly. If you are not registered, please register first.");
             }
             
-        }
+        };
         
         // Logout Function
         $scope.logout = function(){
@@ -68,7 +68,16 @@ angular.module('RouteControllers', [])
             console.log("Logout storage obj: ",$scope.authUser);
         };
 
-        
+        //Calculate Age
+        $scope.getAge = function(){
+            var dateStr = $scope.authUser.dob;
+            var dob = dateStr.split("-");
+            var birthday = new Date(dob[2], dob[1] - 1, dob[0]);
+            var today = new Date();
+            var age = ((today - birthday) / (31557600000));
+            var age = Math.floor( age );
+            $scope.userAge = age;
+        };
 
         
     })
