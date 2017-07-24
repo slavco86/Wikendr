@@ -1,4 +1,4 @@
-angular.module('WikendrApp', [])
+angular.module('Controllers', [])
     .controller('PasswordController', function PasswordController($scope) {
       $scope.password = '';
       $scope.grade = function() {
@@ -232,6 +232,8 @@ angular.module('WikendrApp', [])
         $scope.searchCompleted = false;
         var i = 1;
         $scope.search = function(){
+            console.log($scope.allPlacesPhotos);
+            console.log($scope.singlePlacePhotos);
             $scope.searchCompleted = true;
             i++;
             if(i>2){
@@ -239,6 +241,52 @@ angular.module('WikendrApp', [])
                 i=1;
             }
         };
+        // Search Function
+        $scope.placeIds = [];
+        $scope.placesObj = [];
+        $scope.allPlacesPhotos = [];
+        $scope.singlePlacePhotos = [];
+        $scope.searchSubmit = function(){
+            $scope.map = new google.maps.Map(document.getElementById('map'),{
+                center: {lat: 53.5002092, lng: -2.2860062},
+                zoom: 15
+            });
+            var request = {
+                location: {lat: 53.5002092, lng: -2.2860062},
+                radius: 5000,
+                type: ["bar"]
+            };
+            $scope.service = new google.maps.places.PlacesService($scope.map);
+            $scope.service.nearbySearch(request, callback);
+            function callback (results, status){
+                if (status == google.maps.places.PlacesServiceStatus.OK) {
+                    for(var i = 0, result; result = results[i]; i++){
+                        var detailsRequest = {};
+                        detailsRequest.placeId = result.place_id;
+                        $scope.placeIds.push(detailsRequest);
+                    }
+                    console.log($scope.placeIds);
+                    for (var a = 0; a < 4; a++){
+                        $scope.service.getDetails($scope.placeIds[a], detailsCallback);
+                        function detailsCallback (place, placeStatus){
+                            console.log(place);
+                            var placeDetails = place;
+                            $scope.placesObj.push(placeDetails);
+                            var photos = place.photos;
+                            for(var b = 0; b < photos.length; b++){
+                                var photo = photos[b].getUrl({'maxWidth': 789, 'maxHeight': 554});
+                                $scope.singlePlacePhotos.push(photo);
+                                console.log($scope.singlePlacePhotos[b]);
+                            }
+                            $scope.allPlacesPhotos.push($scope.singlePlacePhotos);
+                            console.log($scope.allPlacesPhotos);
+                        }
+                    }
+                } else {
+                    console.log(status);
+                } 
+            }
+        }
 
         //Logout Function
         $scope.logout = function(){

@@ -9,18 +9,19 @@
     <!-- Search Box -->
 <section id="search-row" class="row">
   <article id="search-col" class="col-sm-12">
-  <form id="search-form">
+  <form id="search-form" ng-submit="searchSubmit()">
     <section id="search-box-wrapper" class="input-group">
       <span id="search-symbol-placeholder" ng-click="search()" class="input-group-btn">
         <button id="search-button" type="submit"  class="btn btn-default">
           <span id="search-symbol" class="glyphicon glyphicon-search" aria-hidden="true"></span>
         </button>
       </span>
-      <input id="search-box" type="text" class="form-control" placeholder="How Would You Like To Spend Your Time?" aria-describedby="search-symbol-placeholder"> 
+      <input id="search-box" type="text" class="form-control" placeholder="How Would You Like To Spend Your Time?" ng-model="searchTerm" aria-describedby="search-symbol-placeholder">
     </section>
   </form>
-  </article>
+</article>
 </section>
+<div hidden id="map"></div>
 </header> <!-- end of Header Element -->
 
 <div class="container-fluid">

@@ -1,4 +1,4 @@
-angular.module('WikendrApp', ['ngRoute', 'RouteControllers', 'RouteDirectives', 'UserService', 'firebase', 'angular-storage']);
+angular.module('WikendrApp', ['ngRoute', 'Controllers', 'RouteDirectives', 'UserService', 'firebase', 'angular-storage']);
  
 angular.module('WikendrApp').config(function($locationProvider, $routeProvider) {
     $locationProvider.html5Mode(true);  // Enable href routing without hashes
