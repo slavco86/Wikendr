@@ -232,8 +232,6 @@ angular.module('Controllers', [])
         $scope.searchCompleted = false;
         var i = 1;
         $scope.search = function(){
-            console.log($scope.allPlacesPhotos);
-            console.log($scope.singlePlacePhotos);
             $scope.searchCompleted = true;
             i++;
             if(i>2){
@@ -242,6 +240,7 @@ angular.module('Controllers', [])
             }
         };
         // Search Function
+        $scope.searchResults=[];
         $scope.placeIds = [];
         $scope.placesObj = [];
         $scope.allPlacesPhotos = [];
@@ -265,21 +264,18 @@ angular.module('Controllers', [])
                         detailsRequest.placeId = result.place_id;
                         $scope.placeIds.push(detailsRequest);
                     }
-                    console.log($scope.placeIds);
                     for (var a = 0; a < 4; a++){
                         $scope.service.getDetails($scope.placeIds[a], detailsCallback);
                         function detailsCallback (place, placeStatus){
-                            console.log(place);
                             var placeDetails = place;
-                            $scope.placesObj.push(placeDetails);
                             var photos = place.photos;
                             for(var b = 0; b < photos.length; b++){
                                 var photo = photos[b].getUrl({'maxWidth': 789, 'maxHeight': 554});
                                 $scope.singlePlacePhotos.push(photo);
-                                console.log($scope.singlePlacePhotos[b]);
                             }
-                            $scope.allPlacesPhotos.push($scope.singlePlacePhotos);
-                            console.log($scope.allPlacesPhotos);
+                            placeDetails.photoUrls = $scope.singlePlacePhotos;
+                            $scope.placesObj.push(placeDetails);
+                            $scope.singlePlacePhotos = [];
                         }
                     }
                 } else {
