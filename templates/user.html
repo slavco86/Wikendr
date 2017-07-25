@@ -9,24 +9,24 @@
     <!-- Search Box -->
 <section id="search-row" class="row">
   <article id="search-col" class="col-sm-12">
-  <form id="search-form" ng-submit="searchSubmit()">
+  <form id="searchform">
     <section id="search-box-wrapper" class="input-group">
-      <span id="search-symbol-placeholder" ng-click="search()" class="input-group-btn">
+      <span id="search-symbol-placeholder" class="input-group-btn">
         <button id="search-button" type="submit"  class="btn btn-default">
           <span id="search-symbol" class="glyphicon glyphicon-search" aria-hidden="true"></span>
         </button>
       </span>
-      <input id="search-box" type="text" class="form-control" placeholder="How Would You Like To Spend Your Time?" ng-model="searchTerm" aria-describedby="search-symbol-placeholder">
+      <input id="search-box" type="text" class="form-control" placeholder="How Would You Like To Spend Your Time?" ng-model="searchTerm" ng-click="search()" aria-describedby="search-symbol-placeholder">
     </section>
   </form>
 </article>
 </section>
-<div hidden id="map"></div>
+
 </header> <!-- end of Header Element -->
 
 <div class="container-fluid">
-    <header class="row">
-        <h3 class="text-center secondary-title"> Let's Find You Something To Do </h3>
+   <!-- <header class="row">
+        <h3 class="text-center secondary-title"> Let's Find You Something To Do</h3>
     </header>
     <section class="row mar-bot">
         <form>
@@ -61,179 +61,188 @@
             </div>
             </div>
             <div class="col-xs-12">
-                <button type="submit" class=" submit btn btn-primary btn-large btn-block" ng-click="search()">Search</button>
+                <button type="submit" class=" submit btn btn-primary btn-large btn-block">Search</button>
             </div>
         </form>
-    </section>
-    <div ng-show="searchCompleted">
+    </section> -->
+        
         <!-- CAROUSEL -->
-        <section class="row">
-            <div id="carousel-example-generic" class="carousel slide" data-ride="carousel">
-
-        <!-- Indicators -->
-    <ol class="carousel-indicators">
-        <li data-target="#carousel-example-generic" data-slide-to="0" class="active"></li>
-        <li data-target="#carousel-example-generic" data-slide-to="1"></li>
-        <li data-target="#carousel-example-generic" data-slide-to="2"></li>
-    </ol>
-
-    <!-- Wrapper for slides -->
-    <div class="carousel-inner" role="listbox">
+        <section class="row" ng-show="searchCompleted">
+                <div id="carousel-example-generic" class="carousel slide" data-ride="carousel">
+        
+            <!-- Indicators -->
+        <ol class="carousel-indicators">
+            <li data-target="#carousel-example-generic" data-slide-to="0" class="active"></li>
+            <li data-target="#carousel-example-generic" data-slide-to="1"></li>
+            <li data-target="#carousel-example-generic" data-slide-to="2"></li>
+        </ol>
+        
+        <!-- Wrapper for slides -->
+        <div class="carousel-inner" role="listbox" data-interval="false">
+            
+        
         <div class="item active">
-            <a href="products/product" class="user-product-link carousel-max-height">
-
-
-    <!-- CAROUSEL ITEM NO 1 -->
-        <div class="row cont-container box-row">
-                <!-- Product Image -->
-            <div class="col-xs-12 col-sm-4 no-padding bot-margin">
-                <img src="/img/product/american_golf.jpg" alt="Product Image" class="img-responsive img-rounded">
-            </div>
-                <!-- Product Description -->
-            <div class="col-xs-12 col-sm-6 text-box bot-margin">
-                <header><h1>Trafford American Golf</h1></header>
-                <address>Trafford Golf Centre, Trafford Quays, Old Park Ln, Stretford, Manchester M17 8PG</address>
-                <p>Here at American Golf Trafford, Manchester, we offer a wealth of services such as try before you buy, price match guarantee, and a trade in service, not to mention FREE custom fitting. Our knowledgeable and experienced staff, alongside our in store technology, allows us to analyse every aspect of your game, and make sure you not only buy the best golf gear, but the right gear.</p>
-            </div>
-        </div>
-        <div class="row top-margin box-row">
-            <div class="col-xs-12 col-sm-4 text-box no-padding">
-                <!-- Product Table -->
-                <table class="table table-condensed">
-                    <tr>
-                        <td class="cell no-border"><span class="glyphicon glyphicon-map-marker glyph"></span>Location:</td>
-                        <td class="cell2 no-border"><address class="address">Trafford Golf Centre, Trafford Quays, Old Park Ln, Stretford, Manchester M17 8PG</address></td>
-                    </tr>
-                    <tr>
-                        <td class="cell table-border"><span class="glyphicon glyphicon-time glyph"></span>Time To Spend:</td>
-                        <td class="cell2 table-border">3 hrs</td>
-                    </tr> 
-                    <tr>
-                        <td class="cell table-border"><span class="glyphicon glyphicon-gbp glyph"></span>Cost:</td>
-                        <td class="cell2 table-border">£50</td>
-                    </tr>
-                    <tr>
-                        <td class="cell table-border"><span class="glyphicon glyphicon-road glyph"></span>Distance</td>
-                        <td class="cell2 table-border">15 miles</td>
-                    </tr>
-                    <tr>
-                        <td class="cell table-border"><div class="glyph"><span class="glyphicon glyphicon-star"></span><span class="glyphicon glyphicon-star"></span><span class="glyphicon glyphicon-star"></span><span class="glyphicon glyphicon-star"></span><span class="glyphicon glyphicon-star-empty"></span></div>Rating:</td>
-                        <td class="cell2 table-border">4.5</td>
-                    </tr>
-                </table>
-            </div>
-            <!-- Maps -->
-            <div class="col-xs-12 col-sm-6 no-padding">
-                <div class="map-wrap">
-                    <iframe src="https://www.google.com/maps/embed?pb=!1m14!1m8!1m3!1d18999.660286343624!2d-2.359724!3d53.469219!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x0%3A0x7ada4c0ac3b2f44!2sAmerican+Golf!5e0!3m2!1sen!2suk!4v1497272286773" width="485" height="260" frameborder="0" style="border-radius:5px" allowfullscreen></iframe>
+        
+        
+        <!-- CAROUSEL ITEM NO 1 -->
+            <div class="row cont-container box-row">
+                    <!-- Product Image -->
+                        <div class="col-xs-12 col-sm-4 no-padding bot-margin" id="nested-carousel">
+                                <img ng-repeat="photo in placesObj[0].photoUrls" class="slide-animation nonDraggableImage img-responsive img-rounded"
+                                     ng-swipe-right="nextSlide()" ng-swipe-left="prevSlide()"
+                                     ng-hide="!isCurrentSlideIndex($index)" ng-src="{{photo}}">
+                                <a class="arrow prev" href="#" ng-click="nextSlide()"></a>
+                                <a class="arrow next" href="#" ng-click="prevSlide()"></a>
+                                <nav class="carousel-nav">
+                                    <div class="wrapper">
+                                        <ul class="dots">
+                                            <li class="dot" ng-repeat="photo in placesObj[0].photoUrls">
+                                                <a href="#" ng-class="{'active':isCurrentSlideIndex($index)}"
+                                                   ng-click="setCurrentSlideIndex($index);"></a>
+                                                </li>
+                                        </ul>
+                                    </div>
+                                </nav>
+                            </div>
+                    <!-- Product Description -->
+                <div class="col-xs-12 col-sm-6 text-box bot-margin">
+                    <header><h1>{{placesObj[0].name}}</h1></header>
+                    <address>{{placesObj[0].formatted_address}}</address>
+                    <p>{{placesObj[0].reviews[0].text}}</p>
                 </div>
             </div>
-        </div>
-            </a>
-        </div>
-
-    <!-- CAROUSEL PRODUCT NO 2 -->
-        <div class="item">
-        <div class="row cont-container box-row">
-            <!-- Product Image -->
-            <div class="col-xs-12 col-sm-4 col-sm-offset-1 no-padding bot-margin">
-                <img src="/img/product/american_golf.jpg" alt="Product Image" class="img-responsive img-rounded">
-            </div>
-            <!-- Product Description -->
-            <div class="col-xs-12 col-sm-6 text-box bot-margin">
-                <header><h1>Trafford American Golf</h1></header>
-                <address>Trafford Golf Centre, Trafford Quays, Old Park Ln, Stretford, Manchester M17 8PG</address>
-                <p>Here at American Golf Trafford, Manchester, we offer a wealth of services such as try before you buy, price match guarantee, and a trade in service, not to mention FREE custom fitting. Our knowledgeable and experienced staff, alongside our in store technology, allows us to analyse every aspect of your game, and make sure you not only buy the best golf gear, but the right gear.</p>
-            </div>
-        </div>
-        <div class="row top-margin box-row">
-            <div class="col-xs-12 col-sm-4 col-sm-offset-1 text-box no-padding">
-                <!-- Product Table -->
-                <table class="table table-condensed">
-                    <tr>
-                        <td class="cell no-border"><span class="glyphicon glyphicon-map-marker glyph"></span>Location:</td>
-                        <td class="cell2 no-border"><address class="address">Trafford Golf Centre, Trafford Quays, Old Park Ln, Stretford, Manchester M17 8PG</address></td>
-                    </tr>
-                    <tr>
-                        <td class="cell table-border"><span class="glyphicon glyphicon-time glyph"></span>Time To Spend:</td>
-                        <td class="cell2 table-border">3 hrs</td>
-                    </tr> 
-                    <tr>
-                        <td class="cell table-border"><span class="glyphicon glyphicon-gbp glyph"></span>Cost:</td>
-                        <td class="cell2 table-border">£50</td>
-                    </tr>
-                    <tr>
-                        <td class="cell table-border"><span class="glyphicon glyphicon-road glyph"></span>Distance</td>
-                        <td class="cell2 table-border">15 miles</td>
-                    </tr>
-                    <tr>
-                        <td class="cell table-border"><div class="glyph"><span class="glyphicon glyphicon-star"></span><span class="glyphicon glyphicon-star"></span><span class="glyphicon glyphicon-star"></span><span class="glyphicon glyphicon-star"></span><span class="glyphicon glyphicon-star-empty"></span></div>Rating:</td>
-                        <td class="cell2 table-border">4.5</td>
-                    </tr>
-                </table>
-            </div>
-            <!-- Maps -->
-            <div class="col-xs-12 col-sm-6 no-padding">
-                <div class="map-wrap">
-                    <iframe src="https://www.google.com/maps/embed?pb=!1m14!1m8!1m3!1d18999.660286343624!2d-2.359724!3d53.469219!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x0%3A0x7ada4c0ac3b2f44!2sAmerican+Golf!5e0!3m2!1sen!2suk!4v1497272286773" width="485" height="260" frameborder="0" style="border-radius:5px" allowfullscreen></iframe>
+            <div class="row top-margin box-row">
+                <div class="col-xs-12 col-sm-4 text-box no-padding">
+                    <!-- Product Table -->
+                    <table class="table table-condensed">
+                            <tr>
+                                <td class="cell no-border"><span class="glyphicon glyphicon-map-marker glyph"></span>Location:</td>
+                                <td class="cell2 no-border"><address class="address">{{placesObj[0].formatted_address}}</address></td>
+                            </tr>
+                            <tr>
+                                <td class="cell table-border"><span class="glyphicon glyphicon-time glyph"></span>Opening Times:</td>
+                                <td class="cell2 table-border" ng-repeat="time in placesObj[0].opening_hours.weekday_text">{{time}}</td>
+                            </tr> 
+                            <tr>
+                                <td class="cell table-border"><div class="glyph"><span class="glyphicon glyphicon-star"></span><span class="glyphicon glyphicon-star"></span><span class="glyphicon glyphicon-star"></span><span class="glyphicon glyphicon-star"></span><span class="glyphicon glyphicon-star-empty"></span></div>Rating:</td>
+                                <td class="cell2 table-border">{{placesObj[0].rating}}</td>
+                            </tr>
+                        </table>
+                </div>
+                <!-- Maps -->
+                <div class="col-xs-12 col-sm-6 no-padding">
+                    <div class="map-wrap">
+                            <div id="map"></div>
+                    </div>
                 </div>
             </div>
-        </div>
-        <div class="carousel-caption">
-            ...
-        </div>
-        </div>
-    </div>
-            <!-- Carousel Controls -->
-            <a class="left carousel-control links" href="#carousel-example-generic" role="button" data-slide="prev">
-                <span class="glyphicon glyphicon-chevron-left" aria-hidden="true"></span>
-                <span class="sr-only">Previous</span>
-            </a>
-            <a class="right carousel-control links" href="#carousel-example-generic" role="button" data-slide="next">
-                <span class="glyphicon glyphicon-chevron-right" aria-hidden="true"></span>
-                <span class="sr-only">Next</span>
-            </a>
-        </div>
-        </section>
+            </div>
+        
+            <div class="item">
+                    
+                    
+                    <!-- CAROUSEL ITEM NO 1 -->
+                        <div class="row cont-container box-row">
+                                <!-- Product Image -->
+                                    <div class="col-xs-12 col-sm-4 no-padding bot-margin" id="nested-carousel">
+                                            <img ng-repeat="photo in placesObj[1].photoUrls" class="slide-animation nonDraggableImage img-responsive img-rounded"
+                                                 ng-swipe-right="nextSlide()" ng-swipe-left="prevSlide()"
+                                                 ng-hide="!isCurrentSlideIndex($index)" ng-src="{{photo}}">
+                                            <a class="arrow prev" href="#" ng-click="nextSlide()"></a>
+                                            <a class="arrow next" href="#" ng-click="prevSlide()"></a>
+                                            <nav class="carousel-nav">
+                                                <div class="wrapper">
+                                                    <ul class="dots">
+                                                        <li class="dot" ng-repeat="photo in placesObj[1].photoUrls">
+                                                            <a href="#" ng-class="{'active':isCurrentSlideIndex($index)}"
+                                                               ng-click="setCurrentSlideIndex($index);"></a>
+                                                            </li>
+                                                    </ul>
+                                                </div>
+                                            </nav>
+                                        </div>
+                                <!-- Product Description -->
+                            <div class="col-xs-12 col-sm-6 text-box bot-margin">
+                                <header><h1>{{placesObj[1].name}}</h1></header>
+                                <address>{{placesObj[1].formatted_address}}</address>
+                                <p>{{placesObj[1].reviews[0].text}}</p>
+                            </div>
+                        </div>
+                        <div class="row top-margin box-row">
+                            <div class="col-xs-12 col-sm-4 text-box no-padding">
+                                <!-- Product Table -->
+                                <table class="table table-condensed">
+                                        <tr>
+                                            <td class="cell no-border"><span class="glyphicon glyphicon-map-marker glyph"></span>Location:</td>
+                                            <td class="cell2 no-border"><address class="address">{{placesObj[1].formatted_address}}</address></td>
+                                        </tr>
+                                        <tr>
+                                            <td class="cell table-border"><span class="glyphicon glyphicon-time glyph"></span>Opening Times:</td>
+                                            <td class="cell2 table-border" ng-repeat="time in placesObj[0].opening_hours.weekday_text">{{time}}</td>
+                                        </tr> 
+                                        <tr>
+                                            <td class="cell table-border"><div class="glyph"><span class="glyphicon glyphicon-star"></span><span class="glyphicon glyphicon-star"></span><span class="glyphicon glyphicon-star"></span><span class="glyphicon glyphicon-star"></span><span class="glyphicon glyphicon-star-empty"></span></div>Rating:</td>
+                                            <td class="cell2 table-border">{{placesObj[1].rating}}</td>
+                                        </tr>
+                                    </table>
+                            </div>
+                            <!-- Maps -->
+                            <div class="col-xs-12 col-sm-6 no-padding">
+                                <div class="map-wrap">
+                                        <div id="map"></div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                <!-- Carousel Controls -->
+             <a class="left carousel-control links" data-target="#carousel-example-generic" role="button" data-slide="prev">
+                    <span class="glyphicon glyphicon-chevron-left" aria-hidden="true"></span>
+                    <span class="sr-only">Previous</span>
+                </a>
+                <a class="right carousel-control links" data-target="#carousel-example-generic" role="button" data-slide="next">
+                    <span class="glyphicon glyphicon-chevron-right" aria-hidden="true"></span>
+                    <span class="sr-only">Next</span>
+                </a>
+            </div>
+            </section>
 
-
-        <!-- Dating Section -->
-    <section id="dating-container" class="container-fluid">
+<!-- Dating Section - Want to Meet People? -->
+<section id="dating-container" class="container-fluid">
         <!-- Dating Title -->
-    <article id="dating-header-row" class="row">
+      <article id="dating-header-row" class="row">
         <section id="dating-header-col" class="col-lg-12">
-        <h1 id="dating-header" class="text-center">Want to Meet Trully Like-Minded People?</h1>
+          <h1 id="dating-header" class="text-center">Want to Meet Trully Like-Minded People?</h1>
         </section>
-    </article>
+      </article>
         <!-- Dating Boxes -->
         <!-- Box1 -->
-    <article id="dating-row" class="row">
+      <article id="dating-row" class="row">
         <section id="dating-profile1" class="col-sm-6">
-        <article id="dating-profile1-innerwrap" class="media">
+          <article id="dating-profile1-innerwrap" class="media">
             <section id="dating-profile1-innerwrap-pic" class="media-left">
-            <img id="dating-profile1-pic" class="media-object" src="img/home/dating_pic1.jpg" alt="dating picture 1">
+              <img id="dating-profile1-pic" class="media-object" src="img/home/dating_pic1.jpg" alt="dating picture 1">
             </section>
             <section id="dating-profile1-innerwrap-txt" class="media-body">
-            <blockquote id="dating-profile1-txt-heading" class="media-heading">Lorem Ipsum is simply dummy text of the printing and typesetting industry.</blockquote>
-            <p id="dating-profile1-txt">Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, and more recently with desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum.</p>
+              <blockquote id="dating-profile1-txt-heading" class="media-heading">When I met Tom, I was barely staying afloat, fighting with an overturned canoe that decided to sit on top of my head.</blockquote>
+              <p id="dating-profile1-txt">I was always fascinated by canoeing, specifically navigating mountain streams. Needless to say, I have never had a chance to actually try it myself. Then I found Wikendr. It turned out there was a beginners school just a little over an hour drive from my home. Most of my friends are married with kids. So it was one of those weekends when it looks like all your friends have much more important stuff to do, then jumping in some crazy adventure with you. I looked this place up and connected with couple of people, who were showing up as going there the same day. They agreed to look after me, since it would be my first time trying to canoe. Tom was obviously one of them. To cut long story short - 10 minutes on the water and I find myself almost drowning underneath this overturned canoe. Apparently Tom jumped into the water and got me from underneath this canoe. And the rest? Well… the rest is history ;)</p>
             </section>
-        </article>
+          </article>
         </section>
-        <!-- Box2 -->
+          <!-- Box2 -->
         <section id="dating-profile2" class="col-sm-6">
-        <article id="dating-profile2-innerwrap" class="media">
+          <article id="dating-profile2-innerwrap" class="media">
             <section id="dating-profile2-innerwrap-pic" class="media-left">
-            <img id="dating-profile2-pic" class="media-object" src="img/home/dating_pic2.jpg" alt="dating picture 2">
+              <img id="dating-profile2-pic" class="media-object" src="img/home/dating_pic2.jpg" alt="dating picture 2">
             </section>
             <section id="dating-profile2-innerwrap-txt" class="media-body">
-            <blockquote id="dating-profile2-txt-heading" class="media-heading">Lorem Ipsum is simply dummy text of the printing and typesetting industry.</blockquote>
-            <p id="dating-profile2-txt">Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, and more recently with desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum.</p>
+              <blockquote id="dating-profile2-txt-heading" class="media-heading">At some point Sarah said that I should move back to where I came from if in the next month I won’t visit a single art gallery in London.</blockquote>
+              <p id="dating-profile2-txt">I have graduated from the state college in California and got offered an opportunity to come and work for this design agency in London. So I did. I knew about Wikendr before I moved across the pond and was pleasantly surprised that it offered the same level of service as in U.S. Even though I am graphic designer by trade I just couldn’t find time to visit some of the famous London galleries. And then I matched with Sarah on Wikendr. I was intrigued by all the posts and reviews she was leaving almost every single weekend from some cool places around the city. When we started chatting and she found out that I am a designer who hasn’t visited any of the galleries, she almost banished me from the island. Needless to say I asked her to be my guide… smooth, I know. But to my surprise she agreed and the date was set. We spent 2 most interesting and inspiring days of my life over the next weekend. The best part of it is… 2 months later and these 2 days keep on coming. I think this might be beginning of something even more special. Thanks Wikendr!n</p>
             </section>
-        </article>
+          </article>
         </section>
-    </article>
-    </section>
-    </div>
+      </article>
+    </section> <!-- end of Dating Section -->
+
     <!-- FOOTER -->
     <footer id="footer-container" class="container-fluid">
     <!-- Footer Title -->

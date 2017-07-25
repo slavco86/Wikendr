@@ -122,4 +122,18 @@ angular.module('RouteDirectives',[])
             restrict: "E",
             templateUrl: "templates/partials/navsection.html"
         };
+    })
+
+    .directive('carousel', function(){
+        return{
+            restrict: "E",
+            templateUrl: "templates/partials/carousel.html"
+        }
+    })
+
+     .directive('carouselitems', function(){
+         return{
+            restrict: "E",
+            templateUrl: "templates/partials/carouselitems.html"
+         }
     });

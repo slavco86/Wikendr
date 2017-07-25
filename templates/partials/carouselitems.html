@@ -1,0 +1,54 @@
+
+<div class="item active" ng-repeat="place in placesObj">
+    <div class="row cont-container box-row">
+            <!-- Product Image -->
+        <div class="col-xs-12 col-sm-4 no-padding bot-margin" id="nested-carousel">
+                <img ng-repeat="photo in place.photoUrls" class="slide-animation nonDraggableImage img-responsive img-rounded"
+                        ng-swipe-right="nextSlide()" ng-swipe-left="prevSlide()"
+                        ng-hide="!isCurrentSlideIndex($index)" ng-src="{{photo}}">
+                <a class="arrow prev" href="#" ng-click="nextSlide()"></a>
+                <a class="arrow next" href="#" ng-click="prevSlide()"></a>
+                <nav class="carousel-nav">
+                    <div class="wrapper">
+                        <ul class="dots">
+                            <li class="dot" ng-repeat="dots in place.photoUrls">
+                                <a href="#" ng-class="{'active':isCurrentSlideIndex($index)}"
+                                    ng-click="setCurrentSlideIndex($index);"></a>
+                            </li>
+                        </ul>
+                    </div>
+                </nav>
+            </div>
+            <!-- Product Description -->
+        <div class="col-xs-12 col-sm-6 text-box bot-margin">
+            <header><h1>{{place.name}}</h1></header>
+            <address>{{place.formatted_address}}</address>
+            <p>{{place.review[0].text}}</p>
+        </div>
+    </div>
+    <div class="row top-margin box-row">
+        <div class="col-xs-12 col-sm-4 text-box no-padding">
+            <!-- Product Table -->
+            <table class="table table-condensed">
+                <tr>
+                    <td class="cell no-border"><span class="glyphicon glyphicon-map-marker glyph"></span>Location:</td>
+                    <td class="cell2 no-border"><address class="address">{{place.formatted_address}}</address></td>
+                </tr>
+                <tr>
+                    <td class="cell table-border"><span class="glyphicon glyphicon-time glyph"></span>Opening Times:</td>
+                    <td class="cell2 table-border" ng-repeat="time in place.opening_hours.weekday_text">{{time}}</td>
+                </tr> 
+                <tr>
+                    <td class="cell table-border"><div class="glyph"><span class="glyphicon glyphicon-star"></span><span class="glyphicon glyphicon-star"></span><span class="glyphicon glyphicon-star"></span><span class="glyphicon glyphicon-star"></span><span class="glyphicon glyphicon-star-empty"></span></div>Rating:</td>
+                    <td class="cell2 table-border">{{place.rating}}</td>
+                </tr>
+            </table>
+        </div>
+        <!-- Maps -->
+        <div class="col-xs-12 col-sm-6 no-padding">
+            <div class="map-wrap">
+                <div id="map"></div>
+            </div>
+        </div>
+    </div>
+</div>

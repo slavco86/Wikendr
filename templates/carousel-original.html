@@ -1,0 +1,142 @@
+<section class="row">
+        <div id="carousel-example-generic" class="carousel slide" data-ride="carousel">
+
+    <!-- Indicators -->
+<ol class="carousel-indicators">
+    <li data-target="#carousel-example-generic" data-slide-to="0" class="active"></li>
+    <li data-target="#carousel-example-generic" data-slide-to="1"></li>
+    <li data-target="#carousel-example-generic" data-slide-to="2"></li>
+</ol>
+
+<!-- Wrapper for slides -->
+<div class="carousel-inner" role="listbox">
+    
+
+<div class="item active">
+
+
+<!-- CAROUSEL ITEM NO 1 -->
+    <div class="row cont-container box-row">
+            <!-- Product Image -->
+                <div class="col-xs-12 col-sm-4 no-padding bot-margin" id="nested-carousel">
+                        <img ng-repeat="photo in placesObj[0].photoUrls" class="slide-animation nonDraggableImage img-responsive img-rounded"
+                             ng-swipe-right="nextSlide()" ng-swipe-left="prevSlide()"
+                             ng-hide="!isCurrentSlideIndex($index)" ng-src="{{photo}}">
+                        <a class="arrow prev" href="#" ng-click="nextSlide()"></a>
+                        <a class="arrow next" href="#" ng-click="prevSlide()"></a>
+                        <nav class="carousel-nav">
+                            <div class="wrapper">
+                                <ul class="dots">
+                                    <li class="dot" ng-repeat="photo in placesObj[0].photoUrls">
+                                        <a href="#" ng-class="{'active':isCurrentSlideIndex($index)}"
+                                           ng-click="setCurrentSlideIndex($index);"></a>
+                                        </li>
+                                </ul>
+                            </div>
+                        </nav>
+                    </div>
+            <!-- Product Description -->
+        <div class="col-xs-12 col-sm-6 text-box bot-margin">
+            <header><h1>Trafford American Golf</h1></header>
+            <address>Trafford Golf Centre, Trafford Quays, Old Park Ln, Stretford, Manchester M17 8PG</address>
+            <p>{{placesObj[0].photoUrls[0]}}</p>
+        </div>
+    </div>
+    <div class="row top-margin box-row">
+        <div class="col-xs-12 col-sm-4 text-box no-padding">
+            <!-- Product Table -->
+            <table class="table table-condensed">
+                <tr>
+                    <td class="cell no-border"><span class="glyphicon glyphicon-map-marker glyph"></span>Location:</td>
+                    <td class="cell2 no-border"><address class="address">Trafford Golf Centre, Trafford Quays, Old Park Ln, Stretford, Manchester M17 8PG</address></td>
+                </tr>
+                <tr>
+                    <td class="cell table-border"><span class="glyphicon glyphicon-time glyph"></span>Time To Spend:</td>
+                    <td class="cell2 table-border">3 hrs</td>
+                </tr> 
+                <tr>
+                    <td class="cell table-border"><span class="glyphicon glyphicon-gbp glyph"></span>Cost:</td>
+                    <td class="cell2 table-border">£50</td>
+                </tr>
+                <tr>
+                    <td class="cell table-border"><span class="glyphicon glyphicon-road glyph"></span>Distance</td>
+                    <td class="cell2 table-border">15 miles</td>
+                </tr>
+                <tr>
+                    <td class="cell table-border"><div class="glyph"><span class="glyphicon glyphicon-star"></span><span class="glyphicon glyphicon-star"></span><span class="glyphicon glyphicon-star"></span><span class="glyphicon glyphicon-star"></span><span class="glyphicon glyphicon-star-empty"></span></div>Rating:</td>
+                    <td class="cell2 table-border">4.5</td>
+                </tr>
+            </table>
+        </div>
+        <!-- Maps -->
+        <div class="col-xs-12 col-sm-6 no-padding">
+            <div class="map-wrap">
+                    <div id="map"></div>
+            </div>
+        </div>
+    </div>
+    </div>
+
+<!-- CAROUSEL PRODUCT NO 2 -->
+    <div class="item">
+    <div class="row cont-container box-row">
+        <!-- Product Image -->
+        <div class="col-xs-12 col-sm-4 col-sm-offset-1 no-padding bot-margin">
+            <img src="/img/product/american_golf.jpg" alt="Product Image" class="img-responsive img-rounded">
+        </div>
+        <!-- Product Description -->
+        <div class="col-xs-12 col-sm-6 text-box bot-margin">
+            <header><h1>Trafford American Golf</h1></header>
+            <address>Trafford Golf Centre, Trafford Quays, Old Park Ln, Stretford, Manchester M17 8PG</address>
+            <p>Here at American Golf Trafford, Manchester, we offer a wealth of services such as try before you buy, price match guarantee, and a trade in service, not to mention FREE custom fitting. Our knowledgeable and experienced staff, alongside our in store technology, allows us to analyse every aspect of your game, and make sure you not only buy the best golf gear, but the right gear.</p>
+        </div>
+    </div>
+    <div class="row top-margin box-row">
+        <div class="col-xs-12 col-sm-4 col-sm-offset-1 text-box no-padding">
+            <!-- Product Table -->
+            <table class="table table-condensed">
+                <tr>
+                    <td class="cell no-border"><span class="glyphicon glyphicon-map-marker glyph"></span>Location:</td>
+                    <td class="cell2 no-border"><address class="address">Trafford Golf Centre, Trafford Quays, Old Park Ln, Stretford, Manchester M17 8PG</address></td>
+                </tr>
+                <tr>
+                    <td class="cell table-border"><span class="glyphicon glyphicon-time glyph"></span>Time To Spend:</td>
+                    <td class="cell2 table-border">3 hrs</td>
+                </tr> 
+                <tr>
+                    <td class="cell table-border"><span class="glyphicon glyphicon-gbp glyph"></span>Cost:</td>
+                    <td class="cell2 table-border">£50</td>
+                </tr>
+                <tr>
+                    <td class="cell table-border"><span class="glyphicon glyphicon-road glyph"></span>Distance</td>
+                    <td class="cell2 table-border">15 miles</td>
+                </tr>
+                <tr>
+                    <td class="cell table-border"><div class="glyph"><span class="glyphicon glyphicon-star"></span><span class="glyphicon glyphicon-star"></span><span class="glyphicon glyphicon-star"></span><span class="glyphicon glyphicon-star"></span><span class="glyphicon glyphicon-star-empty"></span></div>Rating:</td>
+                    <td class="cell2 table-border">4.5</td>
+                </tr>
+            </table>
+        </div>
+        <!-- Maps -->
+        <div class="col-xs-12 col-sm-6 no-padding">
+            <div class="map-wrap">
+                <iframe src="https://www.google.com/maps/embed?pb=!1m14!1m8!1m3!1d18999.660286343624!2d-2.359724!3d53.469219!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x0%3A0x7ada4c0ac3b2f44!2sAmerican+Golf!5e0!3m2!1sen!2suk!4v1497272286773" width="485" height="260" frameborder="0" style="border-radius:5px" allowfullscreen></iframe>
+            </div>
+        </div>
+    </div>
+    <div class="carousel-caption">
+        ...
+    </div>
+    </div>
+</div>
+        <!-- Carousel Controls -->
+     <a class="left carousel-control links" data-target="#carousel-example-generic" role="button" data-slide="prev">
+            <span class="glyphicon glyphicon-chevron-left" aria-hidden="true"></span>
+            <span class="sr-only">Previous</span>
+        </a>
+        <a class="right carousel-control links" data-target="#carousel-example-generic" role="button" data-slide="next">
+            <span class="glyphicon glyphicon-chevron-right" aria-hidden="true"></span>
+            <span class="sr-only">Next</span>
+        </a>
+    </div>
+    </section>

@@ -214,7 +214,7 @@ angular.module('Controllers', [])
         }
     })
 
-    .controller('UserController', function($scope, store, Auth, $firebaseStorage, $firebaseObject, $location ){
+    .controller('UserController', function($scope, store, Auth, $firebaseStorage, $firebaseObject, $location, $timeout ){
         //Check for Auth User and Toggle Navigation
         $scope.authUser = store.get("authUser");
         if(angular.equals({},$scope.authUser)){
@@ -230,60 +230,145 @@ angular.module('Controllers', [])
 
         //toggle Search Results section
         $scope.searchCompleted = false;
-        var i = 1;
         $scope.search = function(){
-            $scope.searchCompleted = true;
+            var i = 1;
             i++;
             if(i>2){
                 $scope.searchCompleted = false;
                 i=1;
             }
+            $scope.searchSubmit();
         };
         // Search Function
-        $scope.searchResults=[];
-        $scope.placeIds = [];
-        $scope.placesObj = [];
-        $scope.allPlacesPhotos = [];
-        $scope.singlePlacePhotos = [];
         $scope.searchSubmit = function(){
-            $scope.map = new google.maps.Map(document.getElementById('map'),{
-                center: {lat: 53.5002092, lng: -2.2860062},
-                zoom: 15
-            });
-            var request = {
-                location: {lat: 53.5002092, lng: -2.2860062},
-                radius: 5000,
-                type: ["bar"]
-            };
-            $scope.service = new google.maps.places.PlacesService($scope.map);
-            $scope.service.nearbySearch(request, callback);
-            function callback (results, status){
-                if (status == google.maps.places.PlacesServiceStatus.OK) {
-                    for(var i = 0, result; result = results[i]; i++){
-                        var detailsRequest = {};
-                        detailsRequest.placeId = result.place_id;
-                        $scope.placeIds.push(detailsRequest);
-                    }
-                    for (var a = 0; a < 4; a++){
-                        $scope.service.getDetails($scope.placeIds[a], detailsCallback);
-                        function detailsCallback (place, placeStatus){
-                            var placeDetails = place;
-                            var photos = place.photos;
-                            for(var b = 0; b < photos.length; b++){
-                                var photo = photos[b].getUrl({'maxWidth': 789, 'maxHeight': 554});
-                                $scope.singlePlacePhotos.push(photo);
-                            }
-                            placeDetails.photoUrls = $scope.singlePlacePhotos;
-                            $scope.placesObj.push(placeDetails);
-                            $scope.singlePlacePhotos = [];
+            $scope.searchResults=[];
+            $scope.placeIds = [];
+            $scope.placesObj = [];
+            $scope.singlePlacePhotos = [];
+            $scope.currentCoordinate = {};
+            $scope.currrentLocation = navigator.geolocation.getCurrentPosition(function(position){
+                $scope.currentCoordinate.lat = position.coords.latitude;
+                $scope.currentCoordinate.lng = position.coords.longitude;
+                console.log($scope.currentCoordinate.lat);
+                console.log($scope.currentCoordinate.lng);
+                var currentLat = $scope.currentCoordinate.lat;
+                var currentLng = $scope.currentCoordinate.lng;
+                $scope.map = new google.maps.Map(document.getElementById('map'),{
+                    center: {lat: currentLat, lng: currentLng},
+                    zoom: 15
+                });
+                var request = {
+                    location: {lat: currentLat, lng: currentLng},
+                    radius: 5000,
+                    query: $scope.searchTerm
+                };
+                $scope.service = new google.maps.places.PlacesService($scope.map);
+                $scope.service.textSearch(request, callback);
+                function callback (results, status){
+                    if (status == google.maps.places.PlacesServiceStatus.OK) {
+                        console.log(results);
+                        for(var i = 0, result; result = results[i]; i++){
+                            var detailsRequest = {};
+                            detailsRequest.placeId = result.place_id;
+                            $scope.placeIds.push(detailsRequest);
                         }
-                    }
-                } else {
-                    console.log(status);
-                } 
-            }
+                        for (var a = 0; a < 4; a++){    
+                            $scope.service.getDetails($scope.placeIds[a], detailsCallback);
+                            function detailsCallback (place, placeStatus){
+                                if (placeStatus == google.maps.places.PlacesServiceStatus.OK){
+                                    var placeDetails = place;
+                                    var photos = place.photos;
+                                    for(var b = 0; b < photos.length; b++){
+                                        var photo = photos[b].getUrl({'maxWidth': 789, 'maxHeight': 554});
+                                        $scope.singlePlacePhotos.push(photo);
+                                    }
+                                    placeDetails.photoUrls = $scope.singlePlacePhotos;
+                                    $scope.placesObj.push(placeDetails);
+                                    $scope.singlePlacePhotos = [];
+                                    $scope.searchCompleted = true;
+                                    $scope.map.setCenter($scope.placesObj[0].geometry.location);
+                                    if($scope.searchCompleted){
+                                        var marker = new google.maps.Marker({
+                                            map: $scope.map,
+                                            position: $scope.placesObj[0].geometry.location
+                                        });
+                                    }
+                                    $scope.$apply();
+                                    console.log("Hi");
+                                } else {
+                                    console.log(placeStatus);
+                                }
+                            }
+                        }
+                        console.log($scope.placesObj);
+                        
+                    } else {
+                        console.log(status);
+                    } 
+                }
+            });
+            
         }
 
+        //Nested Carousel
+
+        $scope.direction = 'left';
+        $scope.currentIndex = 0;
+
+        $scope.setCurrentSlideIndex = function (index) {
+            $scope.direction = (index > $scope.currentIndex) ? 'left' : 'right';
+            $scope.currentIndex = index;
+        };
+
+        $scope.isCurrentSlideIndex = function (index) {
+            return $scope.currentIndex === index;
+        };
+
+        $scope.prevSlide = function () {
+            $scope.direction = 'left';
+            $scope.currentIndex = ($scope.currentIndex < $scope.placesObj[0].photoUrls.length - 1) ? ++$scope.currentIndex : 0;
+        };
+        $scope.nextSlide = function () {
+            $scope.direction = 'right';
+            $scope.currentIndex = ($scope.currentIndex > 0) ? --$scope.currentIndex : $scope.placesObj[0].photoUrls.length - 1;
+        };
+    })
+    .animation('.slide-animation', function () {
+        return {
+            beforeAddClass: function (element, className, done) {
+                var scope = element.scope();
+
+                if (className == 'ng-hide') {
+                    var finishPoint = element.parent().width();
+                    if(scope.direction !== 'right') {
+                        finishPoint = -finishPoint;
+                    }
+                    TweenMax.to(element, 0.5, {left: finishPoint, onComplete: done });
+                }
+                else {
+                    done();
+                }
+            },
+            removeClass: function (element, className, done) {
+                var scope = element.scope();
+
+                if (className == 'ng-hide') {
+                    element.removeClass('ng-hide');
+
+                    var startPoint = element.parent().width();
+                    if(scope.direction === 'right') {
+                        startPoint = -startPoint;
+                    }
+
+                    TweenMax.fromTo(element, 0.5, { left: startPoint }, {left: 0, onComplete: done });
+                }
+                else {
+                    done();
+                }
+            }
+        };
+
+        
         //Logout Function
         $scope.logout = function(){
             Auth.$signOut();
