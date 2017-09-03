@@ -1,5 +1,5 @@
 angular.module('Controllers', [])
-    .controller('PasswordController', function PasswordController($scope) {
+    .controller('PasswordController', function($scope, Auth, store) {
       $scope.password = '';
       $scope.grade = function() {
         var size = $scope.password.length;
@@ -11,6 +11,7 @@ angular.module('Controllers', [])
           $scope.strength = 'weak';
         }
       }
+      $scope.authUser = store.get("authUser");
     })
     .controller('HomeController', function($scope, Auth, store, $firebaseObject, $firebaseStorage, $location) {
         //Check for Auth User and Toggle Navigation
@@ -163,7 +164,6 @@ angular.module('Controllers', [])
             store.set('authUser',localUserObj);
             //reset the form and ng-model
             $scope.user = {};
-            $scope.password = "";
             $scope.userdob = "";
             $scope.interests = {};
             localUserObj = {};
@@ -211,23 +211,25 @@ angular.module('Controllers', [])
                 {
                 $scope.authUser.about = ("Looks like " + $scope.authUser.username + " hasn't provided much info about themselves. If you would like to update your profile information, please head over to Settings section, under your user profile")
                 }
-        }
+        };
+        //Get placeObj
+        $scope.placeObj = store.get("placeObj");
+        console.log($scope.placeObj);
+
     })
 
     .controller('UserController', function($scope, store, Auth, $firebaseStorage, $firebaseObject, $location, $timeout ){
         //Check for Auth User and Toggle Navigation
         $scope.authUser = store.get("authUser");
-        if(angular.equals({},$scope.authUser)){
+        if(angular.equals({},$scope.authUser) || $scope.authUser === null){
             $scope.userLoggedIn = false;
         } 
         else {
             $scope.userLoggedIn = true;
-                if($scope.authUser.about == "undefined")
-                {
+            if($scope.authUser.about == "undefined"){
                 $scope.authUser.about = ("Looks like " + $scope.authUser.username + " hasn't provided much info about themselves. If you would like to update your profile information, please head over to Settings section, under your user profile")
-                }
+            }
         }
-
         //toggle Search Results section
         $scope.searchCompleted = false;
         $scope.search = function(){
@@ -241,18 +243,18 @@ angular.module('Controllers', [])
         };
         // Search Function
         $scope.searchSubmit = function(){
+            $scope.ratingStatementBank=["Stay Away","Not Good","Half-Decent","Not Bad","Alright","Good","Nice","Great","Super","Awesome","Exceptional","Crazy Good","Heaven!"]
             $scope.searchResults=[];
             $scope.placeIds = [];
             $scope.placesObj = [];
             $scope.singlePlacePhotos = [];
             $scope.currentCoordinate = {};
+            $scope.index = 0;
             $scope.currrentLocation = navigator.geolocation.getCurrentPosition(function(position){
-                $scope.currentCoordinate.lat = position.coords.latitude;
-                $scope.currentCoordinate.lng = position.coords.longitude;
-                console.log($scope.currentCoordinate.lat);
-                console.log($scope.currentCoordinate.lng);
-                var currentLat = $scope.currentCoordinate.lat;
-                var currentLng = $scope.currentCoordinate.lng;
+                var currentLat = position.coords.latitude;
+                var currentLng = position.coords.longitude;
+                $scope.currentLat = currentLat;
+                $scope.currentLng = currentLng;
                 $scope.map = new google.maps.Map(document.getElementById('map'),{
                     center: {lat: currentLat, lng: currentLng},
                     zoom: 15
@@ -266,35 +268,132 @@ angular.module('Controllers', [])
                 $scope.service.textSearch(request, callback);
                 function callback (results, status){
                     if (status == google.maps.places.PlacesServiceStatus.OK) {
-                        console.log(results);
                         for(var i = 0, result; result = results[i]; i++){
+                            if(result.photos === undefined){continue;}
                             var detailsRequest = {};
                             detailsRequest.placeId = result.place_id;
                             $scope.placeIds.push(detailsRequest);
                         }
-                        for (var a = 0; a < 4; a++){    
+                        for (var a = 0; a < 4; a++){
+                            if(a === 3){
+                                $scope.searchCompleted = true;
+                            }
                             $scope.service.getDetails($scope.placeIds[a], detailsCallback);
                             function detailsCallback (place, placeStatus){
                                 if (placeStatus == google.maps.places.PlacesServiceStatus.OK){
+                                    $scope.placesObj.push(place);
                                     var placeDetails = place;
+                                    var placeRating = place.rating;
+                                    var halfRating = false;
+                                    var ratingArray=[];
+                                    var fullRating = placeRating.toFixed(0);
+                                    if(placeRating % 1 != 0){
+                                        halfRating = true;
+                                    }
+                                    placeDetails.halfRating = halfRating;
+                                    if(fullRating > placeRating){
+                                        fullRating--;
+                                        for(var q = 0; q < fullRating; q++){
+                                            ratingArray.push(q);
+                                        }
+                                         placeDetails.ratingArray = ratingArray
+                                    } else {
+                                        for(var w = 0; w < fullRating; w++){
+                                            ratingArray.push(w);
+                                        }
+                                        placeDetails.ratingArray = ratingArray;
+                                    }
+                                    if(placeRating > 0 && placeRating < 2){
+                                        placeDetails.ratingStatement = $scope.ratingStatementBank[0];
+                                    } else if (placeRating >= 2 && placeRating < 3){
+                                        placeDetails.ratingStatement = $scope.ratingStatementBank[1];
+                                    } else if (placeRating >= 3 && placeRating < 4){
+                                        placeDetails.ratingStatement = $scope.ratingStatementBank[2];
+                                    } else if (placeRating == 4){
+                                        placeDetails.ratingStatement = $scope.ratingStatementBank[3];
+                                    } else if (placeRating == 4.1){
+                                        placeDetails.ratingStatement = $scope.ratingStatementBank[4];
+                                    } else if (placeRating == 4.2){
+                                        placeDetails.ratingStatement = $scope.ratingStatementBank[5];
+                                    } else if (placeRating == 4.3){
+                                        placeDetails.ratingStatement = $scope.ratingStatementBank[6];
+                                    } else if (placeRating == 4.4){
+                                        placeDetails.ratingStatement = $scope.ratingStatementBank[7];
+                                    } else if (placeRating == 4.5){
+                                        placeDetails.ratingStatement = $scope.ratingStatementBank[8];
+                                    } else if (placeRating == 4.6){
+                                        placeDetails.ratingStatement = $scope.ratingStatementBank[9];
+                                    } else if (placeRating == 4.7){
+                                        placeDetails.ratingStatement = $scope.ratingStatementBank[10];
+                                    } else if (placeRating == 4.8){
+                                        placeDetails.ratingStatement = $scope.ratingStatementBank[11];
+                                    } else if (placeRating == 4.9){
+                                        placeDetails.ratingStatement = $scope.ratingStatementBank[12];
+                                    } else if (placeRating >= 5){
+                                        placeDetails.ratingStatement = $scope.ratingStatementBank[13];
+                                    }
+                                    var period = place.opening_hours.periods;
+                                    placeDetails.timeArray = new Array(7);
+                                    for(var c = 0; c < period.length; c++){
+                                        var openHours = "0";
+                                        if(period[c].open.hours === 0){
+                                            openHours = "12"
+                                        } else  if(period[c].open.hours < 10){
+                                            openHours = openHours + period[c].open.hours.toString();
+                                        } else{
+                                            openHours = period[c].open.hours.toString();
+                                        }
+                                        var openMinutes = "0";
+                                        if(period[c].open.minutes < 10){
+                                            openMinutes = openMinutes + period[c].open.minutes.toString();
+                                        } else {
+                                            openMinutes = period[c].open.minutes.toString();
+                                        }
+                                        var openTime = openHours + ":" + openMinutes;
+                                        var closeHours = "0";
+                                        if(period[c].close.hours < 10){
+                                            closeHours = closeHours + period[c].close.hours.toString();
+                                        } else if(period[c].close.hours === 0){
+                                            closeHours = "12"
+                                        } else {
+                                            closeHours = period[c].close.hours.toString();
+                                        }
+                                        var closeMinutes = "0";
+                                        if(period[c].close.minutes < 10){
+                                            closeMinutes = closeMinutes + period[c].close.minutes.toString();
+                                        } else {
+                                            closeMinutes = period[c].close.minutes.toString();
+                                        }
+                                        var closeTime = closeHours + ":" + closeMinutes;
+                                        var operatingHours = openTime + " - " + closeTime;
+                                        var day = period[c].open.day;
+                                        if(day == 0){
+                                            day = 7;
+                                        } else {
+                                            day = day-1;
+                                        }
+                                        placeDetails.timeArray[day] = operatingHours;
+                                    }
+                                    for( var v = 0; v < placeDetails.timeArray.length; v++){
+                                        if(placeDetails.timeArray[v] === undefined){
+                                            placeDetails.timeArray[v] = "Closed"
+                                        } else {
+                                            continue;
+                                        }
+                                    }
                                     var photos = place.photos;
                                     for(var b = 0; b < photos.length; b++){
                                         var photo = photos[b].getUrl({'maxWidth': 789, 'maxHeight': 554});
                                         $scope.singlePlacePhotos.push(photo);
                                     }
                                     placeDetails.photoUrls = $scope.singlePlacePhotos;
-                                    $scope.placesObj.push(placeDetails);
                                     $scope.singlePlacePhotos = [];
-                                    $scope.searchCompleted = true;
-                                    $scope.map.setCenter($scope.placesObj[0].geometry.location);
-                                    if($scope.searchCompleted){
-                                        var marker = new google.maps.Marker({
-                                            map: $scope.map,
-                                            position: $scope.placesObj[0].geometry.location
-                                        });
-                                    }
                                     $scope.$apply();
-                                    console.log("Hi");
+                                    console.log($scope.singlePlacePhotos);
+                                    $scope.index++;
+                                    if($scope.index == 4){
+                                        $scope.createMaps();
+                                    }
                                 } else {
                                     console.log(placeStatus);
                                 }
@@ -302,73 +401,36 @@ angular.module('Controllers', [])
                         }
                         console.log($scope.placesObj);
                         
+                        
                     } else {
                         console.log(status);
                     } 
                 }
+                
             });
             
         }
-
-        //Nested Carousel
-
-        $scope.direction = 'left';
-        $scope.currentIndex = 0;
-
-        $scope.setCurrentSlideIndex = function (index) {
-            $scope.direction = (index > $scope.currentIndex) ? 'left' : 'right';
-            $scope.currentIndex = index;
-        };
-
-        $scope.isCurrentSlideIndex = function (index) {
-            return $scope.currentIndex === index;
-        };
-
-        $scope.prevSlide = function () {
-            $scope.direction = 'left';
-            $scope.currentIndex = ($scope.currentIndex < $scope.placesObj[0].photoUrls.length - 1) ? ++$scope.currentIndex : 0;
-        };
-        $scope.nextSlide = function () {
-            $scope.direction = 'right';
-            $scope.currentIndex = ($scope.currentIndex > 0) ? --$scope.currentIndex : $scope.placesObj[0].photoUrls.length - 1;
-        };
-    })
-    .animation('.slide-animation', function () {
-        return {
-            beforeAddClass: function (element, className, done) {
-                var scope = element.scope();
-
-                if (className == 'ng-hide') {
-                    var finishPoint = element.parent().width();
-                    if(scope.direction !== 'right') {
-                        finishPoint = -finishPoint;
-                    }
-                    TweenMax.to(element, 0.5, {left: finishPoint, onComplete: done });
-                }
-                else {
-                    done();
-                }
-            },
-            removeClass: function (element, className, done) {
-                var scope = element.scope();
-
-                if (className == 'ng-hide') {
-                    element.removeClass('ng-hide');
-
-                    var startPoint = element.parent().width();
-                    if(scope.direction === 'right') {
-                        startPoint = -startPoint;
-                    }
-
-                    TweenMax.fromTo(element, 0.5, { left: startPoint }, {left: 0, onComplete: done });
-                }
-                else {
-                    done();
-                }
+        // Create Maps
+        $scope.createMaps = function(){
+            for(index = 0; index < 4; index++){
+                var elemId = "map-" + index;
+                var placePosition = $scope.placesObj[index].geometry.location;
+                var map = new google.maps.Map(document.getElementById(elemId), {
+                  zoom: 15,
+                  center: placePosition
+                });
+                var marker = new google.maps.Marker({
+                  position: placePosition,
+                  map: map
+                });
             }
-        };
-
-        
+        }
+        //Redirect
+        $scope.redirect = function(index){
+            $location.url('/products/product')
+            var placeObj = $scope.placesObj[index];
+            store.set('placeObj',placeObj);
+        }
         //Logout Function
         $scope.logout = function(){
             Auth.$signOut();
@@ -379,7 +441,9 @@ angular.module('Controllers', [])
         }
         //Calculate Age
         $scope.getAge = function(){
+            $scope.authUser = store.get("authUser");
             var dateStr = $scope.authUser.dob;
+            console.log($scope.authUser.dob);
             var dob = dateStr.split("-");
             var birthday = new Date(dob[2], dob[1] - 1, dob[0]);
             var today = new Date();

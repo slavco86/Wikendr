@@ -65,146 +65,58 @@
             </div>
         </form>
     </section> -->
-        
-        <!-- CAROUSEL -->
-        <section class="row" ng-show="searchCompleted">
-                <div id="carousel-example-generic" class="carousel slide" data-ride="carousel">
-        
-            <!-- Indicators -->
-        <ol class="carousel-indicators">
-            <li data-target="#carousel-example-generic" data-slide-to="0" class="active"></li>
-            <li data-target="#carousel-example-generic" data-slide-to="1"></li>
-            <li data-target="#carousel-example-generic" data-slide-to="2"></li>
-        </ol>
-        
-        <!-- Wrapper for slides -->
-        <div class="carousel-inner" role="listbox" data-interval="false">
-            
-        
-        <div class="item active">
-        
-        
-        <!-- CAROUSEL ITEM NO 1 -->
-            <div class="row cont-container box-row">
-                    <!-- Product Image -->
-                        <div class="col-xs-12 col-sm-4 no-padding bot-margin" id="nested-carousel">
-                                <img ng-repeat="photo in placesObj[0].photoUrls" class="slide-animation nonDraggableImage img-responsive img-rounded"
-                                     ng-swipe-right="nextSlide()" ng-swipe-left="prevSlide()"
-                                     ng-hide="!isCurrentSlideIndex($index)" ng-src="{{photo}}">
-                                <a class="arrow prev" href="#" ng-click="nextSlide()"></a>
-                                <a class="arrow next" href="#" ng-click="prevSlide()"></a>
-                                <nav class="carousel-nav">
-                                    <div class="wrapper">
-                                        <ul class="dots">
-                                            <li class="dot" ng-repeat="photo in placesObj[0].photoUrls">
-                                                <a href="#" ng-class="{'active':isCurrentSlideIndex($index)}"
-                                                   ng-click="setCurrentSlideIndex($index);"></a>
-                                                </li>
-                                        </ul>
-                                    </div>
-                                </nav>
-                            </div>
-                    <!-- Product Description -->
-                <div class="col-xs-12 col-sm-6 text-box bot-margin">
-                    <header><h1>{{placesObj[0].name}}</h1></header>
-                    <address>{{placesObj[0].formatted_address}}</address>
-                    <p>{{placesObj[0].reviews[0].text}}</p>
-                </div>
-            </div>
-            <div class="row top-margin box-row">
-                <div class="col-xs-12 col-sm-4 text-box no-padding">
-                    <!-- Product Table -->
-                    <table class="table table-condensed">
-                            <tr>
-                                <td class="cell no-border"><span class="glyphicon glyphicon-map-marker glyph"></span>Location:</td>
-                                <td class="cell2 no-border"><address class="address">{{placesObj[0].formatted_address}}</address></td>
-                            </tr>
-                            <tr>
-                                <td class="cell table-border"><span class="glyphicon glyphicon-time glyph"></span>Opening Times:</td>
-                                <td class="cell2 table-border" ng-repeat="time in placesObj[0].opening_hours.weekday_text">{{time}}</td>
-                            </tr> 
-                            <tr>
-                                <td class="cell table-border"><div class="glyph"><span class="glyphicon glyphicon-star"></span><span class="glyphicon glyphicon-star"></span><span class="glyphicon glyphicon-star"></span><span class="glyphicon glyphicon-star"></span><span class="glyphicon glyphicon-star-empty"></span></div>Rating:</td>
-                                <td class="cell2 table-border">{{placesObj[0].rating}}</td>
-                            </tr>
-                        </table>
-                </div>
-                <!-- Maps -->
-                <div class="col-xs-12 col-sm-6 no-padding">
-                    <div class="map-wrap">
-                            <div id="map"></div>
-                    </div>
-                </div>
-            </div>
-            </div>
-        
-            <div class="item">
-                    
-                    
-                    <!-- CAROUSEL ITEM NO 1 -->
-                        <div class="row cont-container box-row">
-                                <!-- Product Image -->
-                                    <div class="col-xs-12 col-sm-4 no-padding bot-margin" id="nested-carousel">
-                                            <img ng-repeat="photo in placesObj[1].photoUrls" class="slide-animation nonDraggableImage img-responsive img-rounded"
-                                                 ng-swipe-right="nextSlide()" ng-swipe-left="prevSlide()"
-                                                 ng-hide="!isCurrentSlideIndex($index)" ng-src="{{photo}}">
-                                            <a class="arrow prev" href="#" ng-click="nextSlide()"></a>
-                                            <a class="arrow next" href="#" ng-click="prevSlide()"></a>
-                                            <nav class="carousel-nav">
-                                                <div class="wrapper">
-                                                    <ul class="dots">
-                                                        <li class="dot" ng-repeat="photo in placesObj[1].photoUrls">
-                                                            <a href="#" ng-class="{'active':isCurrentSlideIndex($index)}"
-                                                               ng-click="setCurrentSlideIndex($index);"></a>
-                                                            </li>
-                                                    </ul>
-                                                </div>
-                                            </nav>
-                                        </div>
-                                <!-- Product Description -->
-                            <div class="col-xs-12 col-sm-6 text-box bot-margin">
-                                <header><h1>{{placesObj[1].name}}</h1></header>
-                                <address>{{placesObj[1].formatted_address}}</address>
-                                <p>{{placesObj[1].reviews[0].text}}</p>
+    <div id="map" hidden ></div>
+
+    <div class="results-wrapper">
+        <div class="list-group" ng-show="searchCompleted">
+                <a href="#" class="list-group-item" ng-repeat="place in placesObj" ng-click="redirect($index)">
+                    <div class="row">
+                        <div class="col-md-3 col-sm-4 col-xs-12">
+                            <div class="img-wrapper">
+                                <img ng-src="{{place.photoUrls[0]}}" class="img-responsive">
                             </div>
                         </div>
-                        <div class="row top-margin box-row">
-                            <div class="col-xs-12 col-sm-4 text-box no-padding">
-                                <!-- Product Table -->
-                                <table class="table table-condensed">
-                                        <tr>
-                                            <td class="cell no-border"><span class="glyphicon glyphicon-map-marker glyph"></span>Location:</td>
-                                            <td class="cell2 no-border"><address class="address">{{placesObj[1].formatted_address}}</address></td>
-                                        </tr>
-                                        <tr>
-                                            <td class="cell table-border"><span class="glyphicon glyphicon-time glyph"></span>Opening Times:</td>
-                                            <td class="cell2 table-border" ng-repeat="time in placesObj[0].opening_hours.weekday_text">{{time}}</td>
-                                        </tr> 
-                                        <tr>
-                                            <td class="cell table-border"><div class="glyph"><span class="glyphicon glyphicon-star"></span><span class="glyphicon glyphicon-star"></span><span class="glyphicon glyphicon-star"></span><span class="glyphicon glyphicon-star"></span><span class="glyphicon glyphicon-star-empty"></span></div>Rating:</td>
-                                            <td class="cell2 table-border">{{placesObj[1].rating}}</td>
-                                        </tr>
-                                    </table>
-                            </div>
-                            <!-- Maps -->
-                            <div class="col-xs-12 col-sm-6 no-padding">
-                                <div class="map-wrap">
-                                        <div id="map"></div>
+                        <div class="col-md-4 col-sm-6 col-xs-10">
+                            <h4 class="list-group-item-heading text-nowrap">{{place.name}}
+                                <div class="rating-wrapper">
+                                    <span class="glyphicon glyphicon-star" aria-hidden="true" ng-repeat="rating in place.ratingArray"></span>
+                                    <span class="glyphicon glyphicon-star-empty" aria-hidden="true" ng-show="place.halfRating"></span> 
                                 </div>
-                            </div>
+                            </h4>
+                            <p class="list-group-item-text">{{place.formatted_address}}</p>
+                            <table class="table table-condensed">
+                              <tr>
+                                <th>Mon</th>
+                                <th>Tue</th>
+                                <th>Wed</th>
+                                <th>Thur</th>
+                                <th>Fri</th>
+                                <th>Sat</th>
+                                <th>Sun</th>
+                              </tr>
+                              <tr>
+                                <td>{{place.timeArray[0]}}</td>
+                                <td>{{place.timeArray[1]}}</td>
+                                <td>{{place.timeArray[2]}}</td>
+                                <td>{{place.timeArray[3]}}</td>
+                                <td>{{place.timeArray[4]}}</td>
+                                <td>{{place.timeArray[5]}}</td>
+                                <td>{{place.timeArray[6]}}</td>
+                              </tr>
+                            </table>
                         </div>
-                    </div>
-                <!-- Carousel Controls -->
-             <a class="left carousel-control links" data-target="#carousel-example-generic" role="button" data-slide="prev">
-                    <span class="glyphicon glyphicon-chevron-left" aria-hidden="true"></span>
-                    <span class="sr-only">Previous</span>
-                </a>
-                <a class="right carousel-control links" data-target="#carousel-example-generic" role="button" data-slide="next">
-                    <span class="glyphicon glyphicon-chevron-right" aria-hidden="true"></span>
-                    <span class="sr-only">Next</span>
-                </a>
-            </div>
-            </section>
+                        <div class="col-md-2 col-sm-2 col-xs-2">
+                            <h4 class="list-group-item-heading text-nowrap right">{{place.ratingStatement}}</h4>
+                            <span class="badge right">{{place.rating}}</span>
+                            <p class="text-nowrap right">{{place.reviews.length}} reviews</p>
+                        </div>
+                        <div class="col-md-3">
+                            <div id="map-{{$index}}" class="map-wrapper" ></div>
+                        </div>
+                </div>
+            </a>
+        </div>
+    </div>
 
 <!-- Dating Section - Want to Meet People? -->
 <section id="dating-container" class="container-fluid">
