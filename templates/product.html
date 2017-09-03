@@ -2,7 +2,7 @@
 <navsection ng-show="userLoggedIn"></navsection>
 <div class="container-fluid carousel-container">
   <div class="row">
-    <div class="col-md-7">
+    <div class="col-md-12">
         <div id="carousel-example-generic" class="carousel slide" data-ride="carousel">
          
             
@@ -26,11 +26,11 @@
             </a>
           </div>
     </div>
-    <div class="col-md-3">
+    <div class="col-md-12">
       <div class="row">
-        <div class="col-md-3" ng-repeat="url in placeObj.photoUrls" >
+        <div class="col-md-1 text-center " ng-repeat="url in placeObj.photoUrls">
            
-              <img ng-src="{{url}}" class="ind">
+              <img ng-src="{{url}}" class="ind image-responsive thumbnail">
             
       </div>
     </div>

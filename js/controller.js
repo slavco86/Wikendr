@@ -335,45 +335,52 @@ angular.module('Controllers', [])
                                     var period = place.opening_hours.periods;
                                     placeDetails.timeArray = new Array(7);
                                     for(var c = 0; c < period.length; c++){
-                                        var openHours = "0";
-                                        if(period[c].open.hours === 0){
-                                            openHours = "12"
-                                        } else  if(period[c].open.hours < 10){
-                                            openHours = openHours + period[c].open.hours.toString();
-                                        } else{
-                                            openHours = period[c].open.hours.toString();
-                                        }
-                                        var openMinutes = "0";
-                                        if(period[c].open.minutes < 10){
-                                            openMinutes = openMinutes + period[c].open.minutes.toString();
+                                        if(period[c].close === undefined){
+                                            for( var m = 0; m < placeDetails.timeArray.length; m++){
+                                                placeDetails.timeArray[m] = "Unkown"
+                                            }
                                         } else {
-                                            openMinutes = period[c].open.minutes.toString();
+                                            var openHours = "0";
+                                            if(period[c].open.hours === 0){
+                                                openHours = "12"
+                                            } else  if(period[c].open.hours < 10){
+                                                openHours = openHours + period[c].open.hours.toString();
+                                            } else{
+                                                openHours = period[c].open.hours.toString();
+                                            }
+                                            var openMinutes = "0";
+                                            if(period[c].open.minutes < 10){
+                                                openMinutes = openMinutes + period[c].open.minutes.toString();
+                                            } else {
+                                                openMinutes = period[c].open.minutes.toString();
+                                            }
+                                            var openTime = openHours + ":" + openMinutes;
+                                            var closeHours = "0";
+                                            if(period[c].close.hours < 10){
+                                                closeHours = closeHours + period[c].close.hours.toString();
+                                            } else if(period[c].close.hours === 0){
+                                                closeHours = "12"
+                                            } else {
+                                                closeHours = period[c].close.hours.toString();
+                                            }
+                                            var closeMinutes = "0";
+                                            if(period[c].close.minutes < 10){
+                                                closeMinutes = closeMinutes + period[c].close.minutes.toString();
+                                            } else {
+                                                closeMinutes = period[c].close.minutes.toString();
+                                            }
+                                            var closeTime = closeHours + ":" + closeMinutes;
+                                            var operatingHours = openTime + " - " + closeTime;
+                                            var day = period[c].open.day;
+                                            if(day == 0){
+                                                day = 7;
+                                            } else {
+                                                day = day-1;
+                                            }
+                                            placeDetails.timeArray[day] = operatingHours;
                                         }
-                                        var openTime = openHours + ":" + openMinutes;
-                                        var closeHours = "0";
-                                        if(period[c].close.hours < 10){
-                                            closeHours = closeHours + period[c].close.hours.toString();
-                                        } else if(period[c].close.hours === 0){
-                                            closeHours = "12"
-                                        } else {
-                                            closeHours = period[c].close.hours.toString();
-                                        }
-                                        var closeMinutes = "0";
-                                        if(period[c].close.minutes < 10){
-                                            closeMinutes = closeMinutes + period[c].close.minutes.toString();
-                                        } else {
-                                            closeMinutes = period[c].close.minutes.toString();
-                                        }
-                                        var closeTime = closeHours + ":" + closeMinutes;
-                                        var operatingHours = openTime + " - " + closeTime;
-                                        var day = period[c].open.day;
-                                        if(day == 0){
-                                            day = 7;
-                                        } else {
-                                            day = day-1;
-                                        }
-                                        placeDetails.timeArray[day] = operatingHours;
                                     }
+                                    
                                     for( var v = 0; v < placeDetails.timeArray.length; v++){
                                         if(placeDetails.timeArray[v] === undefined){
                                             placeDetails.timeArray[v] = "Closed"

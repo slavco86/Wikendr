@@ -56,7 +56,9 @@
 .ind {
     width: 80px;
     height: 80px;
+    padding: 10px;
 }
+
 .carousel{
     width: 600px;
     margin: 0 auto;
