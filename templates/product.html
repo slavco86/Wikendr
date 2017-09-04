@@ -1,5 +1,18 @@
 <link rel="stylesheet" type="text/css" href="css/product.css">
 <navsection ng-show="userLoggedIn"></navsection>
+<div class="container-fluid title-container">
+  <div class="row">
+    <div class="col-md-12 text-center">
+      <h2>{{placeObj.name}}</h2>
+      <small class="text-center header-address">{{placeObj.formatted_address}}
+          <div class="rating-wrapper">
+            <span class="glyphicon glyphicon-star" aria-hidden="true" ng-repeat="rating in placeObj.ratingArray"></span>
+            <span class="glyphicon glyphicon-star-empty" aria-hidden="true" ng-show="placeObj.halfRating"></span> 
+          </div>
+      </small>
+    </div>
+    </div>
+</div>
 <div class="container-fluid carousel-container">
   <div class="row">
     <div class="col-md-12">
@@ -9,31 +22,26 @@
             <!-- Wrapper for slides -->
             <div class="carousel-inner" role="listbox">
               <div class="item" ng-repeat="url in placeObj.photoUrls" ng-class="{'active': url == placeObj.photoUrls[0]}">
-                <img ng-src="{{url}}" alt="photo of your selected place" class="img-responsive">
+                  <a class="left carousel-control" data-target="#carousel-example-generic" role="button" data-slide="prev">
+                      <span class="glyphicon glyphicon-chevron-left" aria-hidden="true"></span>
+                      <span class="sr-only">Previous</span>
+                    </a>
+                    <a class="right carousel-control" data-target="#carousel-example-generic" role="button" data-slide="next">
+                      <span class="glyphicon glyphicon-chevron-right" aria-hidden="true"></span>
+                      <span class="sr-only">Next</span>
+                    </a>
+                <img ng-src="{{url}}" alt="photo of your selected place">
                 <div class="carousel-caption">
                 </div>
               </div>
             </div>
           
             <!-- Controls -->
-            <a class="left carousel-control" href="#carousel-example-generic" role="button" data-slide="prev">
-              <span class="glyphicon glyphicon-chevron-left" aria-hidden="true"></span>
-              <span class="sr-only">Previous</span>
-            </a>
-            <a class="right carousel-control" href="#carousel-example-generic" role="button" data-slide="next">
-              <span class="glyphicon glyphicon-chevron-right" aria-hidden="true"></span>
-              <span class="sr-only">Next</span>
-            </a>
+            
           </div>
     </div>
-    <div class="col-md-12">
-      <div class="row">
-        <div class="col-md-1 text-center " ng-repeat="url in placeObj.photoUrls">
-           
-              <img ng-src="{{url}}" class="ind image-responsive thumbnail">
-            
-      </div>
-    </div>
+    <div class="col-md-12 text-center hidden-xs carousel-indicators">
+      <img data-target="#carousel-example-generic" data-slide-to="{{$index}}" ng-src="{{url}}" class="ind image-responsive img-rounded " ng-repeat="url in placeObj.photoUrls">
   </div>
   
 <!-- Indicators -->
