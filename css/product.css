@@ -74,19 +74,7 @@
 .hov-menu:hover{
     background-color: rgba(217, 165, 224, 1) !important;
 }
-.carousel-container{
-    padding: 5px;
-}
-.title-container{
-    margin-top: 5vh;
-    margin-bottom: 10px;
-}
-.title-container h2{
-    margin-bottom: 0px;
-}
-.title-container small{
-    font-size: 100%;
-}
+
 .header-address .rating-wrapper{
     display: inline;
     margin-left: 10px;
@@ -106,38 +94,62 @@
     margin-right: 5px;
     margin-bottom: 5px;
 }
+.carousel-container{
+    padding: 5px;
+}
+.title-container{
+    margin-top: 5vh;
+    margin-bottom: 10px;
+}
+.title-container h2{
+    margin-bottom: 0px;
+}
+.title-container small{
+    font-size: 100%;
+}
+.table-container .table{
+    width: 700px;
+    margin: 0 auto;
+}
 .carousel-indicators{
     position: relative;
     margin-top: 25px;
+    width: 100% !important;
+    left: 0% !important;
+    margin-left: 0% !important;
 }
 .carousel-indicators img:hover{
     border: 3px solid rgba(217, 165, 224, 1);
 }
 .carousel{
-    width: 400px;
+    width: 1000px;
     margin: 0 auto;
     height: 200px !important;
     overflow: hidden;
     background-color: transparent;
 }
-.map-wrapper{
-    height: 225px;
-    width: 100%;
+.back{
+    background-color: red;
 }
 .item img{
-    height: 400px;
-    width: 600px;
+    height: 100%;
+    width: 100%;
+    object-fit: cover;
+    object-position: 50% 50%;
+}
+.map-wrapper{
+    height: 225px;
+    width: 700px;
     margin: 0 auto;
-    
 }
 @media only screen and (max-width: 700px){
     .carousel{
-        width: 395px;
+        width: 340px;
         height: 200px;
         margin: 0 auto;
     }
     .item img{
-        width: 400px;
+        width: 340px;
         height: 200px;
         margin: 0 auto;
     }

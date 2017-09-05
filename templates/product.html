@@ -19,7 +19,7 @@
                 </div>
             </div>
       </div>
-      <div class="col-md-6">
+      <div class="col-md-6 ">
         <div class="container-fluid carousel-container">
           <div class="row">
             <div class="col-md-12">
@@ -37,20 +37,23 @@
                               <span class="sr-only">Next</span>
                             </a>
                             <!-- Slides -->
-                        <img ng-src="{{url}}" alt="photo of your selected place" class="img-responsive">
+                        <img ng-src="{{url}}" alt="photo of your selected place">
                       </div>
                     </div>
                   </div>
             </div>
             <!-- Indicators -->
             <div class="col-md-12 text-center hidden-xs carousel-indicators">
-              <img data-target="#carousel-example-generic" data-slide-to="{{$index}}" ng-src="{{url}}" class="ind image-responsive " ng-repeat="url in placeObj.photoUrls">
+              <img data-target="#carousel-example-generic" data-slide-to="{{$index}}" ng-src="{{url}}" class="ind image-responsive" ng-repeat="url in placeObj.photoUrls">
           </div>
         </div>
         </div>
       </div>
-      <div class="col-md-5 table-container">
+      <div class="col-md-6 table-container text-center">
         <div class="row">
+            <div class="col-mad-12">
+                <div class="map-wrapper" id="map"></div>
+              </div>
           <div class="col-md-12">
           <table class="table table-condensed ">
               <tr>
@@ -74,9 +77,7 @@
             </table>
           </div>
         </div>
-        <div class="col-mad-12">
-          <div class="map-wrapper" id="map"></div>
-        </div>
+        
       </div>
   </div>
 </div>
