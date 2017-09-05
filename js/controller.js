@@ -216,6 +216,22 @@ angular.module('Controllers', [])
         $scope.placeObj = store.get("placeObj");
         console.log($scope.placeObj);
 
+        //Create Map
+        $scope.createMap = function(){
+            console.log("Creating map")
+            var elemId = "map";
+            var placePosition = $scope.placeObj.geometry.location;
+            var map = new google.maps.Map(document.getElementById(elemId), {
+              zoom: 15,
+              center: placePosition
+            });
+            var marker = new google.maps.Marker({
+              position: placePosition,
+              map: map
+            });
+        }
+        $scope.createMap();
+
     })
 
     .controller('UserController', function($scope, store, Auth, $firebaseStorage, $firebaseObject, $location, $timeout ){

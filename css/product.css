@@ -1,7 +1,37 @@
 #prof-pic, #prof-pic2{
     max-width: 34px;
 }
-
+.header-container{
+    width: 100%;
+    background-image: url("../img/home/home_header_background.jpg");
+    background-size: 100% 100vh;
+    background-repeat: no-repeat;
+    padding-bottom: 40px;
+    filter: blur(5px) grayscale(30%);
+    height: 100vh;
+    z-index: -1;
+    position: fixed;
+}
+.header-container .title-container{
+    filter: none;
+    z-index: 9999;
+    position: fixed;
+}
+.title-container .text-center{
+    color: black;
+}
+.header-container .carousel-container{
+    filter: none;
+    position: fixed;
+    z-index: 9999;
+}
+.table-container{
+    margin-top: 5px;
+    color: black;
+}
+.table-container table{
+    border-color: rgba(217, 165, 224, 0.7)
+}
 #profile, #prof-but-col{
     padding: 0 0 0 0;
     margin: 8px 16px 0 16px;
@@ -49,14 +79,20 @@
 }
 .title-container{
     margin-top: 5vh;
-    
+    margin-bottom: 10px;
 }
-.header-address{
+.title-container h2{
+    margin-bottom: 0px;
+}
+.title-container small{
     font-size: 100%;
 }
 .header-address .rating-wrapper{
     display: inline;
     margin-left: 10px;
+}
+.rating-wrapper .glyphicon-star-empty{
+    margin-left: -5px;
 }
 .ind-wrap{  
     width: 80px;
@@ -64,25 +100,29 @@
     overflow: hidden;
 }
 .ind {
-    width: 80px;
-    height: 80px;
+    width: 60px;
+    height: 60px;
     margin-left: 5px;
     margin-right: 5px;
     margin-bottom: 5px;
 }
 .carousel-indicators{
     position: relative;
-    margin-top: 10px;
+    margin-top: 25px;
 }
 .carousel-indicators img:hover{
-    border: 3px solid #7D7878;
+    border: 3px solid rgba(217, 165, 224, 1);
 }
 .carousel{
-    width: 600px;
+    width: 400px;
     margin: 0 auto;
-    height: 400px !important;
+    height: 200px !important;
     overflow: hidden;
     background-color: transparent;
+}
+.map-wrapper{
+    height: 225px;
+    width: 100%;
 }
 .item img{
     height: 400px;
