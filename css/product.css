@@ -27,11 +27,8 @@
 }
 .table-container{
     margin-top: 5px;
-    color: black;
 }
-.table-container table{
-    border-color: rgba(217, 165, 224, 0.7)
-}
+
 #profile, #prof-but-col{
     padding: 0 0 0 0;
     margin: 8px 16px 0 16px;
@@ -96,6 +93,7 @@
 }
 .carousel-container{
     padding: 5px;
+    background-color: rgba(217, 165, 224, 0.43);
 }
 .title-container{
     margin-top: 5vh;
@@ -108,8 +106,16 @@
     font-size: 100%;
 }
 .table-container .table{
-    width: 700px;
+    width: 84%;
     margin: 0 auto;
+    background-color: rgba(217, 165, 224, 0.43);
+    color: #DCD4D4;
+    
+}
+.ratings{
+    background-color: rgba(217, 165, 224, 0.43);
+    color: black;
+
 }
 .carousel-indicators{
     position: relative;
@@ -119,14 +125,15 @@
     margin-left: 0% !important;
 }
 .carousel-indicators img:hover{
-    border: 3px solid rgba(217, 165, 224, 1);
+    border: 3px solid #DCD4D4;
 }
 .carousel{
-    width: 1000px;
+    width: 90%;
     margin: 0 auto;
-    height: 200px !important;
+    height: 250px !important;
     overflow: hidden;
     background-color: transparent;
+    padding: 0px;
 }
 .back{
     background-color: red;
@@ -138,9 +145,10 @@
     object-position: 50% 50%;
 }
 .map-wrapper{
-    height: 225px;
-    width: 700px;
+    height: 250px;
+    width: 80%;
     margin: 0 auto;
+    border: 10px solid  rgba(217, 165, 224, 0.43);
 }
 @media only screen and (max-width: 700px){
     .carousel{

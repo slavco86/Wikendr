@@ -7,7 +7,17 @@
     background-size: 100% 100vh;
     background-repeat: no-repeat;
     padding-bottom: 40px;
-    z-index: -9999;
+}
+.header-container{
+    width: 100%;
+    background-image: url("../img/home/home_header_background.jpg");
+    background-size: 100% 100vh;
+    background-repeat: no-repeat;
+    padding-bottom: 40px;
+
+    height: 100vh;
+
+    
 }
 .header-container .title-container{
     filter: none;
