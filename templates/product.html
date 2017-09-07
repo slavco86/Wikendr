@@ -19,9 +19,9 @@
                 </div>
             </div>
       </div>
-      <div class="col-md-6 ">
+      <div class="col-md-6">
         <div class="container-fluid carousel-container">
-          <div class="row">
+          <div class="row back">
             <div class="col-md-12">
                 <div id="carousel-example-generic" class="carousel slide" data-ride="carousel">
                     <!-- Wrapper for slides -->
@@ -49,23 +49,24 @@
         </div>
         </div>
       </div>
-      <div class="col-md-6 table-container text-center">
-        <div class="row">
+      <div class="col-md-6 ">
+        <div class="container-fluid table-container text-center">
+        <div class="row back">
             <div class="col-mad-12">
                 <div class="row">
-                <div class="map-wrapper" id="map"></div>
+                <div class="map-wrapper img-responsive" id="map"></div>
                 </div>
             </div>
-          <div class="col-md-12">
+          <div class="col-md-12 ">
           <table class="table table-condensed ">
               <tr>
-                <th>Mon</th>
-                <th>Tue</th>
-                <th>Wed</th>
-                <th>Thur</th>
-                <th>Fri</th>
-                <th>Sat</th>
-                <th>Sun</th>
+                <th class="text-center">Mon</th>
+                <th class="text-center">Tue</th>
+                <th class="text-center">Wed</th>
+                <th class="text-center">Thur</th>
+                <th class="text-center">Fri</th>
+                <th class="text-center">Sat</th>
+                <th class="text-center">Sun</th>
               </tr>
               <tr>
                 <td>{{placeObj.timeArray[0]}}</td>
@@ -93,7 +94,7 @@
             </div>
           </div>
         </div>
-        
+        </div>
       </div>
   </div>
 </div>
@@ -104,42 +105,18 @@
     <header><h2 class="text-center"> What Others Are Saying?</h2></header>
     <!-- Box1 -->
   <article id="review-box-row" class="row">
-    <section id="review-box1" class="col-sm-4">
-      <article id="review-box1-innerwrap" class="media">
+    <section id="review-box1" class="col-sm-4" ng-repeat="review in placeObj.reviews">
+      <article id="review-box1-innerwrap" class="media back">
         <section id="review-box1-innerwrap-pic" class="media-left">
-          <img id="review-box1-pic" class="media-object" src="../img/home/Review_pic1.jpeg" alt="User picture 1">
+          <img id="review-box1-pic" class="media-object" ng-src="{{review.profile_photo_url}}" alt="User picture 1">
         </section>
         <section id="review-box1-innerwrap-txt" class="media-body">
-          <blockquote id="review-box1-txt-heading" class="media-heading">Lorem Ipsum is simply dummy text of the printing and typesetting industry.</blockquote>
-          <p id="review-box1-txt"> Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged.</p>
+          <blockquote id="review-box1-txt-heading" class="media-heading">{{review.author_name}}</blockquote>
+          <p id="review-box1-txt">{{review.text}}</p>
         </section>
       </article>
     </section>
-      <!-- Box2 -->
-    <section id="review-box2" class="col-sm-4">
-      <article id="review-box2-innerwrap" class="media">
-        <section id="review-box2-innerwrap-pic" class="media-left">
-          <img id="review-box2-pic" class="media-object" src="../img/home/Review_pic2.jpeg" alt="User picture 2">
-        </section>
-        <section id="review-box2-innerwrap-txt" class="media-body">
-          <blockquote id="review-box2-txt-heading" class="media-heading">Lorem Ipsum is simply dummy text of the printing and typesetting industry.</blockquote>
-          <p id="review-box2-txt"> Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged.</p>
-        </section>
-      </article>   
-    </section>
-      <!-- Box3 -->
-    <section id="review-box3" class="col-sm-4">
-      <article id="review-box3-innerwrap" class="media">
-        <section id="review-box3-innerwrap-pic" class="media-left">
-          <img id="review-box3-pic" class="media-object" src="../img/home/Review_pic3.jpeg" alt="User picture 3">
-        </section>
-        <section id="review-box3-innerwrap-txt" class="media-body">
-          <blockquote id="review-box3-txt-heading" class="media-heading">Lorem Ipsum is simply dummy text of the printing and typesetting industry.</blockquote>
-          <p id="review-box3-txt"> Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged.</p>
-        </section>
-      </article>
-    </section>
-  </article> <!-- end of Review Boxes -->
+    
 </div>
 <!-- Footer Section -->
 <footer id="footer-container" class="container-fluid">
