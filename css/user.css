@@ -15,7 +15,7 @@
     background-repeat: no-repeat;
     padding-bottom: 40px;
 
-    height: 100vh;
+    height: 50vh;
 
     
 }
@@ -24,6 +24,20 @@
 }
 .header-container .carousel-container{
     filter: none;
+}
+.loader {
+    border: 12px solid #DAD9D9; /* Light grey */
+    border-top: 12px solid #873992; /* Blue */
+    border-radius: 50%;
+    width: 80px;
+    height: 80px;
+    animation: spin 2s linear infinite;
+    margin: 0 auto;
+}
+
+@keyframes spin {
+    0% { transform: rotate(0deg); }
+    100% { transform: rotate(360deg); }
 }
 /* Nav Element */
 #nav{
@@ -195,7 +209,7 @@
 }
 .results-wrapper .table{
     margin-top: 10px;
-    font-size: 60%;
+    
 }
 .results-wrapper .table th{
     padding-right: 25px;
@@ -203,6 +217,11 @@
 .map-wrapper{
     height: 150px;
     width: 100%;
+}
+@media only screen and (max-width: 1644px){
+    .results-wrapper table{
+        font-size: 60%;
+    }
 }
 @media only screen and (max-width: 768px){
     .list-group-item-heading .list-group-item-text{
@@ -238,4 +257,70 @@
         display: block;
     }
     
+}
+#review-box-row{
+    margin-top: 50px;
+}
+#review-box1{
+    padding-bottom: 20px;
+}
+#review-box1-pic{
+    width: 130px;
+}
+#review-box1-txt{
+    float: left;
+}
+#footer-container{
+    background-color: #d87f91;
+}
+#footer-row{
+    margin-bottom: 20px;
+}
+#footer-box-row{
+    display: flex;
+    justify-content: space-between;
+}
+#footer-box1-txt{
+    font-size: 60%;
+}
+#footer-links-row{
+    margin-top: 10px;
+}
+#footer-links-col{
+    float: none;
+    margin: 0 auto;
+    margin-bottom: 20px;
+}
+#footer-links-container{
+    font-size: 10px;
+    display: flex;
+    justify-content: space-between;
+}
+#footer-links-container a{
+    font-weight: 100;
+    font-size: 10px;
+}
+.center{
+    display: flex;
+    justify-content: space-around;
+}
+.text-box{
+    border-radius: 5px;
+    background-color: rgba(250, 214, 227, 0.75);
+    box-shadow: 0px 50px 50px white;
+}
+.box-row{
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    justify-content: space-around;
+}
+.no-padding{
+    padding: 0 0 0 0;
+}
+.bot-margin{
+    margin-bottom: 20px;
+}
+.no-border{
+    border: none !important;   
 }

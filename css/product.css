@@ -184,24 +184,31 @@
         margin-top: 10px;
     }
     .top-container .col-md-6, .carousel-container, .table-container, .back, .table-container .col-md-12{
-        padding: 0px;
+        padding: 0px;   
     }
     .table-container .back{
         padding-left: 20px;
-        padding-right: 20px;    
+        padding-right: 20px;
+        
     }
     .table-container{
         margin-top: 10px;
+    }
+    .table-container .back, .carousel-container .back{
+        padding-top: 10px;
+    }
+    .carousel-container .back{
+        padding-bottom: 10px;
     }
     
 }
 #review-box-row{
     margin-top: 50px;
 }
-#review-box1, #review-box2, #review-box3{
+#review-box1{
     padding-bottom: 20px;
 }
-#review-box1-pic, #review-box2-pic, #review-box3-pic{
+#review-box1-pic{
     width: 130px;
 }
 #review-box1-txt{

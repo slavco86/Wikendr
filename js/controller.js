@@ -248,6 +248,7 @@ angular.module('Controllers', [])
         }
         //toggle Search Results section
         $scope.searchCompleted = false;
+        $scope.loader = false;
         $scope.search = function(){
             var i = 1;
             i++;
@@ -259,6 +260,7 @@ angular.module('Controllers', [])
         };
         // Search Function
         $scope.searchSubmit = function(){
+            $scope.loader = true;
             $scope.ratingStatementBank=["Stay Away","Not Good","Half-Decent","Not Bad","Alright","Good","Nice","Great","Super","Awesome","Exceptional","Crazy Good","Heaven!"]
             $scope.searchResults=[];
             $scope.placeIds = [];
@@ -416,6 +418,8 @@ angular.module('Controllers', [])
                                     $scope.index++;
                                     if($scope.index == 4){
                                         $scope.createMaps();
+                                        $scope.loader = false;
+                                        $scope.$apply();
                                     }
                                 } else {
                                     console.log(placeStatus);
