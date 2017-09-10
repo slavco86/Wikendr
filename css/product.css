@@ -23,8 +23,7 @@
 }
 .title-container h4{
     color: #fdfed2;
-
-text-shadow: 0px 1px 20px black;
+    text-shadow: 0px 1px 20px black;
 }
 .header-container .carousel-container{
     filter: none;
@@ -100,7 +99,6 @@ text-shadow: 0px 1px 20px black;
     margin-bottom: 5px;
 }
 .carousel-container{
-
     width: 80%;
     margin: 0 auto;
 }
@@ -118,25 +116,13 @@ text-shadow: 0px 1px 20px black;
 .title-container small{
     font-size: 100%;
 }
-.table-container .table{
-    width: 85%;
-    margin: 0 auto;
-    color: #DCD4D4;
-    padding-left: 5px;
-    padding-right: 500px;
-    
-}
+
 .ratings{
     color: black;
 }
 .table-container .ratings{
     width: 85%;
     margin: 0 auto;
-}
-.table-container .table{
-    width: 80%;
-    margin: 0 auto;
-    margin-top: 5px;
 }
 
 .carousel-indicators{
@@ -174,12 +160,40 @@ text-shadow: 0px 1px 20px black;
     margin: 0 auto;
     width: 90%;
 }
+.badge{
+    font-size: 20px;
+    color: #fdfed2;
+    background-color: #c595c0;
+}
+.review-container h2{
+    color: #fdfed2;
+    text-shadow: 0px 1px 20px black;
+}
+.media-body {
+    overflow: visible;
+}
 @media only screen and (max-width: 700px){
-    .carousel, item img, .map-wrapper, .table-container .table{
-        width: 90%;
+    .carousel, item img, .map-wrapper{
+
         height: 200px;
         margin: 0 auto;
+        min-height: 0px;
     }
+    .table{
+        font-size: 12px;
+        margin-top: 10px;
+    }
+    .top-container .col-md-6, .carousel-container, .table-container, .back, .table-container .col-md-12{
+        padding: 0px;
+    }
+    .table-container .back{
+        padding-left: 20px;
+        padding-right: 20px;    
+    }
+    .table-container{
+        margin-top: 10px;
+    }
+    
 }
 #review-box-row{
     margin-top: 50px;
