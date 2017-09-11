@@ -229,8 +229,10 @@ angular.module('Controllers', [])
               position: placePosition,
               map: map
             });
+            google.maps.event.trigger(map, 'resize')
         }
         $scope.createMap();
+        ;
 
     })
 
@@ -302,6 +304,15 @@ angular.module('Controllers', [])
                                     $scope.placesObj.push(place);
                                     var placeDetails = place;
                                     var placeRating = place.rating;
+                                    var reviews = place.reviews;
+                                    var reviewRatingsArray = [];
+                                    placeDetails.reviewRatingsArray = [];
+                                    for (var k=0; k<reviews.length; k++){
+                                        var rating = reviews[k].rating;
+                                        reviewRatingsArray.push(new Array(rating));
+                                        
+                                    }
+                                    placeDetails.reviewRatingsArray[k] = reviewRatingsArray;
                                     var halfRating = false;
                                     var ratingArray=[];
                                     var fullRating = placeRating.toFixed(0);

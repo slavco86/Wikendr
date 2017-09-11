@@ -111,7 +111,7 @@
           <img id="review-box1-pic" class="media-object" ng-src="{{review.profile_photo_url}}" alt="User picture 1">
         </section>
         <section id="review-box1-innerwrap-txt" class="media-body">
-          <blockquote id="review-box1-txt-heading" class="media-heading">{{review.author_name}}</blockquote>
+          <blockquote id="review-box1-txt-heading" class="media-heading">{{review.author_name}}<span class="glyphicon glyphicon-star" aria-hidden="true" ng-repeat="rating in placeObj.reviewRatingsArray[$index]"></span></blockquote>
           <p id="review-box1-txt">{{review.text}}</p>
         </section>
       </article>
