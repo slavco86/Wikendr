@@ -215,25 +215,35 @@ angular.module('Controllers', [])
         //Get placeObj
         $scope.placeObj = store.get("placeObj");
         console.log($scope.placeObj);
-
+        
+        
         //Create Map
         $scope.createMap = function(){
-            console.log("Creating map")
-            var elemId = "map";
-            var placePosition = $scope.placeObj.geometry.location;
-            var map = new google.maps.Map(document.getElementById(elemId), {
+            var placePosition = $scope.placeObj.placePosition;
+            var map = new google.maps.Map(document.getElementById("map"), {
               zoom: 15,
               center: placePosition
             });
+            
+            $scope.map = map;
             var marker = new google.maps.Marker({
-              position: placePosition,
-              map: map
-            });
-            google.maps.event.trigger(map, 'resize')
-        }
+                position: placePosition,
+                map: map
+              });
+              $scope.map = map;
+              $scope.placePosition = placePosition;
+            
+            console.log(placePosition);
+        };
         $scope.createMap();
-        ;
-
+        $scope.resize = function(){
+            var map = $scope.map;
+            var placePosition = $scope.placePosition;
+            google.maps.event.trigger(map, 'resize');
+            map.setCenter(placePosition);
+            console.log("resizing")
+        };
+        setTimeout($scope.resize, 50);
     })
 
     .controller('UserController', function($scope, store, Auth, $firebaseStorage, $firebaseObject, $location, $timeout ){
@@ -453,10 +463,12 @@ angular.module('Controllers', [])
             for(index = 0; index < 4; index++){
                 var elemId = "map-" + index;
                 var placePosition = $scope.placesObj[index].geometry.location;
+                console.log(placePosition);
                 var map = new google.maps.Map(document.getElementById(elemId), {
                   zoom: 15,
                   center: placePosition
                 });
+                $scope.map = map;
                 var marker = new google.maps.Marker({
                   position: placePosition,
                   map: map
@@ -465,9 +477,16 @@ angular.module('Controllers', [])
         }
         //Redirect
         $scope.redirect = function(index){
-            $location.url('/products/product')
+            var map = $scope.map;
             var placeObj = $scope.placesObj[index];
+            var lat = placeObj.geometry.location.lat();
+            var lng = placeObj.geometry.location.lng();
+            placeObj.placePosition = {};
+            placeObj.placePosition.lat = lat;
+            placeObj.placePosition.lng = lng;
             store.set('placeObj',placeObj);
+            store.set('map',map);
+            $location.url('/products/product');
         }
         //Logout Function
         $scope.logout = function(){
